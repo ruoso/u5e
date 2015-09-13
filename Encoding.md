@@ -6,6 +6,6 @@ The Encoding concept allows several encoding class traits to be implemented and 
 
 ```TYPE enc_buffer_type```: The type of buffer, see [u5e::buffer](U5EBuffer.md) for details.
 
-# Attributes
+# Methods
 
-```enc_buffer_type buffer```: the buffer attribute will hold the buffer for the data in this encoding. But, again, only the encoding type is expected to manipulate this buffer. Every other part of this library will only access the in-memory representation through the encoding layer.
+The methods here are the primitives required to implement the access to the encoded buffer.

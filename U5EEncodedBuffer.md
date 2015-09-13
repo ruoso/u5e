@@ -1,4 +1,4 @@
-# u5e::encoded_buffer<ENCODINGTYPE encoding>
+# u5e::encoded_buffer&lt;ENCODINGTYPE encoding&gt;
 
 This represents the buffer in a particular encoding, and the access to it, codepoint by codepoint regardless of the specific in-memory representation. However, this still does not offer the higher-level constructs of unicode text.
 

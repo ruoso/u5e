@@ -28,3 +28,22 @@ The basic guiding principles for the design of this library are:
    3. grapheme: The grapheme is the unit of rendering, also referenced in the standard as "grapheme cluster". It represents a sequence of one or more codepoints that represent a single graphical symbol, previous versions of the unicode standard had a simple rule of "base character" and "combining characters", but more recent versions of the standard support more complex definitions for grapheme cluster boundaries.
    4. word: A word is a set of graphemes that form a unit, it can be as simple as "two words" for english, but it requires the use of the unicode database for full internationalization support.
    5. sentence: A collection of words. There is a property of codepoints in the unicode database that specifies if a given character is a sentence separator or not.
+
+# The different aspects of Text
+
+In order to allow maximum reusability of the code, each aspect of the text is going to be expressed in this library as a concept. Different traits will implement that concept in different ways in order to at the same time allow room for optimizations. For instance, UTF32 with native endianess will be able to use the native integer type, while UTF32 with the foreign endianess will need to use four octets and will need to do the byte-swapping at runtime for most operations.
+
+The usage of traits for this also gives us transparent type-safety. Such that we can statically evaluate if you are incorrectly mixing texts of different encodings, which is the most common form of mistake when handling internationalized text.
+
+## Encoding
+
+The encoding concept will provide that basic interface from the in-memory representation to iteration and access of codepoints.
+
+## Normalization Form
+
+Normalization is what allows equivalent sequences of characters to be treated as being the same. By making the normalization a trait of the text, we allow the implicit re-normalization when dealing with denormalized text, at te same time that it gives room for important optimizations when two different texts have the same normalization form.
+
+## Locale tailoring
+
+The unicode standard has several features that are coupled with the tailoring to specific locales, this will also be applicable to different features. Making this into a trait allows to selectively disable the tailoring for application where the speed gain from not supporting this is more important than the use cases where such support is a requirement. Making this into a trait even allows optimizing away the storage required for storing the language of the text, or if an application needs optimization for the tailoring for a single language, it could be implemented directly as code and avoid any runtime language queries.
+

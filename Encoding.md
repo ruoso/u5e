@@ -16,4 +16,4 @@ The Encoding concept allows several encoding class traits to be implemented and 
 
 # Methods
 
-The methods here are the primitives required to implement the access to the encoded buffer.
+The methods here are the primitives required to implement the access to the encoded buffer. This will also include additional primitives for the mutating operations.

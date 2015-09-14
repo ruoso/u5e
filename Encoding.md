@@ -6,7 +6,13 @@ The Encoding concept allows several encoding class traits to be implemented and 
 
 ```TYPE enc_buffer_type```: The type of buffer, see [u5e::buffer](U5EBuffer.md) for details.
 
+```TYPE enc_iterator_type```: Since some encodings may give the oportunity for some guarantees that other encodings won't, the iterator type is delegated to the encoding.
+
+```TYPE enc_reverse_iterator_type```: Since some encodings may give the oportunity for some guarantees that other encodings won't, the iterator type is delegated to the encoding.
+
 # Attributes
+
+```const static enc_buffer_type.size_type min_codepoint_size```: minimum size required by a single codepoint
 
 ```const static enc_buffer_type.size_type max_codepoint_size```: maximum size required by a single codepoint
 

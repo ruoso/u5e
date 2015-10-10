@@ -16,10 +16,8 @@
  * not to use the experimental version.
  */
 namespace u5e {
-  template <class CharT,
-            class Traits = std::char_traits<CharT> >
-  class buffer: public basic_string_view<CharT, Traits> {
-  };
+  template <class CharT, class Traits = std::char_traits<CharT> >
+  using buffer = std::experimental::basic_string_view<CharT, Traits>;
 }
 
 #endif

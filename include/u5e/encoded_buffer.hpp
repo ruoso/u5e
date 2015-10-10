@@ -23,6 +23,7 @@ namespace u5e {
    */
   template <class EncodingT>
   class encoded_buffer {
+  public:
     /**
      * Member types
      */
@@ -38,13 +39,13 @@ namespace u5e {
     // reference to encoded_buffer
     typedef encoded_buffer<EncodingT>& reference;
     // iterator, delegated to the encoding
-    typedef EncodingT::enc_iterator_type iterator;
+    typedef typename EncodingT::enc_iterator_type iterator;
     // const iterator, delegated to the encoding
-    typedef EncodingT::enc_iterator_type const_iterator;
+    typedef typename EncodingT::enc_iterator_type const_iterator;
     // reverse iterator, delegated to the encoding
-    typedef EncodingT::enc_reverse_iterator_type reverse_iterator;
+    typedef typename EncodingT::enc_reverse_iterator_type reverse_iterator;
     // reverse const iterator, delegated to the encoding
-    typedef EncodingT::enc_reverse_iterator_type const_reverse_iterator;
+    typedef typename EncodingT::enc_reverse_iterator_type const_reverse_iterator;
     // const reference to encoded_buffer
     typedef const encoded_buffer<EncodingT>& const_reference;
     // size type is always size_t, regardless of encoding, in order to
@@ -59,21 +60,29 @@ namespace u5e {
      * Member attributes
      */
     // raw buffer as specified by the encoding
-    const EncodingT::enc_buffer_type raw_buffer;
+    const typename EncodingT::enc_buffer_type raw_buffer;
 
     /**
      * Constructors
      */
     constexpr encoded_buffer() = default;
     constexpr encoded_buffer(const encoded_buffer& other) = default;
-    constexpr encoded_buffer(const EncodingT::enc_buffer_type raw_buffer)
+    constexpr encoded_buffer(const typename EncodingT::enc_buffer_type raw_buffer)
       : raw_buffer(raw_buffer) { };
+    constexpr encoded_buffer(const typename EncodingT::enc_buffer_type::value_type *data,
+                             const typename EncodingT::enc_buffer_type::size_type size)
+      : raw_buffer(data, size) { };
     encoded_buffer& operator= (const encoded_buffer &other) = delete;
     
     /**
      * Member functions
      */
-    
+    inline iterator begin() {
+      return EncodingT::begin(raw_buffer);
+    }
+    inline iterator end() {
+      return EncodingT::end(raw_buffer);
+    }
   };
 
 }

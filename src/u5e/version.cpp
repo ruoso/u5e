@@ -1,5 +1,7 @@
 #include <u5e/version.hpp>
 
 namespace u5e {
-  const int version::patch = 0;
+  namespace version {
+    int patch = 0;
+  }
 }

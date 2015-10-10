@@ -27,7 +27,7 @@ TEST(t_003_utf8_encoded_iterator, constructor3) {
 TEST(t_003_utf8_encoded_iterator, iterator) {
   const char r[5] = { 'O', 'l', (char)0xC3, (char)0x81, '!' };
   encoded_buffer<utf8> e(r, 5);
-  utf8::enc_iterator_type it = e.begin();
+  utf8::iterator it = e.begin();
   ASSERT_EQ(*it, 'O');
   it++;
   ASSERT_EQ(*it, 'l');

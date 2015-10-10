@@ -39,13 +39,13 @@ namespace u5e {
     // reference to encoded_buffer
     typedef encoded_buffer<EncodingT>& reference;
     // iterator, delegated to the encoding
-    typedef typename EncodingT::enc_iterator_type iterator;
+    typedef typename EncodingT::iterator iterator;
     // const iterator, delegated to the encoding
-    typedef typename EncodingT::enc_iterator_type const_iterator;
+    typedef typename EncodingT::iterator const_iterator;
     // reverse iterator, delegated to the encoding
-    typedef typename EncodingT::enc_reverse_iterator_type reverse_iterator;
+    typedef typename EncodingT::reverse_iterator reverse_iterator;
     // reverse const iterator, delegated to the encoding
-    typedef typename EncodingT::enc_reverse_iterator_type const_reverse_iterator;
+    typedef typename EncodingT::reverse_iterator const_reverse_iterator;
     // const reference to encoded_buffer
     typedef const encoded_buffer<EncodingT>& const_reference;
     // size type is always size_t, regardless of encoding, in order to

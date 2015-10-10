@@ -27,7 +27,7 @@ TEST(t_002_utf32_encoded_iterator, constructor3) {
 TEST(t_002_utf32_encoded_iterator, iterator) {
   const codepoint r[5] = { 'H', 'e', 'l' ,'l', 'o' };
   encoded_buffer<utf32_native> e(r, 5);
-  utf32_native::enc_iterator_type it = e.begin();
+  utf32_native::iterator it = e.begin();
   ASSERT_EQ(*it, 'H');
   it++;
   ASSERT_EQ(*it, 'e');

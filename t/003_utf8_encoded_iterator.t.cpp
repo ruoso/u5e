@@ -9,7 +9,7 @@ using u5e::enc::utf8;
 
 TEST(t_003_utf8_encoded_iterator, constructor1) {
   const char r[5] = { 'O', 'l', (char)0xC3, (char)0x81, '!' };
-  u5e::buffer<char> b(r, 5);
+  u5e::buffer<const char> b(r, 5);
   encoded_buffer<utf8> e(b);
 }
 
@@ -36,5 +36,5 @@ TEST(t_003_utf8_encoded_iterator, iterator) {
   it++;
   ASSERT_EQ(*it, '!');
   it++;
-  //ASSERT_EQ(it, e.end());
+  ASSERT_EQ(it, e.end());
 }

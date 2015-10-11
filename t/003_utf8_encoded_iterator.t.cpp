@@ -1,11 +1,11 @@
-#include <u5e/enc/utf8.hpp>
+#include <u5e/utf8.hpp>
 #include <u5e/codepoint.hpp>
 #include <u5e/encoded_buffer.hpp>
 #include "gtest/gtest.h"
 
 using u5e::encoded_buffer;
 using u5e::codepoint;
-using u5e::enc::utf8;
+using u5e::utf8;
 
 TEST(t_003_utf8_encoded_iterator, constructor1) {
   const char r[5] = { 'O', 'l', (char)0xC3, (char)0x81, '!' };

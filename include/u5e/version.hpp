@@ -3,12 +3,14 @@
 
 namespace u5e {
   namespace version {
-    // Major version, avaialable at compile time
+    // Compile-time version definition
     static const int major = 0;
-    // Minor version, also available at compile time
     static const int minor = 0;
-    // Patch version, only available at run time
-    extern int patch;
+
+    // Run-time introspection
+    extern int lib_major;
+    extern int lib_minor;
+    extern int lib_patch;
   }
 }
 

@@ -22,3 +22,11 @@ foreach(TEST
   target_link_libraries(${TEST}.t u5e gtest gtest_main)
   add_test(${TEST} ${TEST}.t)
 endforeach(TEST)
+
+foreach(EXAMPLE
+    simple_iteration
+    )
+  add_executable(${EXAMPLE} examples/${EXAMPLE}.cpp)
+  target_compile_options(${EXAMPLE} PUBLIC -std=c++1y)
+  target_link_libraries(${EXAMPLE} u5e)
+endforeach(EXAMPLE)

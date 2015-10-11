@@ -85,13 +85,13 @@ namespace u5e {
         enc_buffer_type::iterator raw_iterator_;
         
       public:
-        iterator(const enc_buffer_type::const_iterator& raw_iterator)
+        inline iterator(const enc_buffer_type::const_iterator& raw_iterator)
           : raw_iterator_(raw_iterator) { };
 
-        iterator(const iterator& tocopy)
+        inline iterator(const iterator& tocopy)
           : raw_iterator_(tocopy.raw_iterator_) { };
 
-        iterator operator++() {
+        inline iterator operator++(int junk) {
           iterator copy(raw_iterator_);
           char octet = *raw_iterator_;
           int size = codepoint_size(octet);
@@ -99,13 +99,13 @@ namespace u5e {
           return copy;
         }
 
-        iterator operator++(int junk) {
+        inline iterator operator++() {
           difference_type size = codepoint_size(*raw_iterator_);
           raw_iterator_ += size;
           return *this;
         }
 
-        const codepoint operator*() {
+        inline const codepoint operator*() const {
           enc_buffer_type::const_iterator copy = raw_iterator_;
           char octets[max_codepoint_size];
           memset(octets, 0, max_codepoint_size);
@@ -118,8 +118,8 @@ namespace u5e {
           return octets_to_codepoint(octets, size);
         }
         
-        bool operator==(const iterator& rhs) const { return raw_iterator_ == rhs.raw_iterator_; }
-        bool operator!=(const iterator& rhs) const { return raw_iterator_ != rhs.raw_iterator_; }
+        inline bool operator==(const iterator& rhs) const { return raw_iterator_ == rhs.raw_iterator_; }
+        inline bool operator!=(const iterator& rhs) const { return raw_iterator_ != rhs.raw_iterator_; }
       };
       
       static inline u5e::enc::utf8::iterator begin(const enc_buffer_type& raw_buffer) {

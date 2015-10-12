@@ -2,5 +2,5 @@ language: cpp
 compiler:
   - gcc
 script:
-  - cmake
+  - cmake .
   - make all test

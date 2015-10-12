@@ -8,24 +8,24 @@ using u5e::codepoint;
 using u5e::utf8;
 
 TEST(t_003_utf8_encoded_iterator, constructor1) {
-  const char r[5] = { 'O', 'l', (char)0xC3, (char)0x81, '!' };
+  const char r[] = "Ol\xC3\x81!";
   u5e::buffer<const char> b(r, 5);
   encoded_buffer<utf8> e(b);
 }
 
 TEST(t_003_utf8_encoded_iterator, constructor2) {
-  const char r[5] = { 'O', 'l', (char)0xC3, (char)0x81, '!' };
+  const char r[] = "Ol\xC3\x81!";
   encoded_buffer<utf8> e(r, 5);
 }
 
 TEST(t_003_utf8_encoded_iterator, constructor3) {
-  const char r[5] = { 'O', 'l', (char)0xC3, (char)0x81, '!' };
+  const char r[] = "Ol\xC3\x81!";
   encoded_buffer<utf8> e1(r, 5);
   encoded_buffer<utf8> e2(e1);
 }
 
 TEST(t_003_utf8_encoded_iterator, iterator) {
-  const char r[5] = { 'O', 'l', (char)0xC3, (char)0x81, '!' };
+  const char r[] = "Ol\xC3\x81!";
   encoded_buffer<utf8> e(r, 5);
   utf8::iterator it = e.begin();
   ASSERT_EQ(*it, 'O');

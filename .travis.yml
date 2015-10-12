@@ -3,6 +3,8 @@ sudo: required
 compiler:
   - gcc
 script:
-  - sudo apt-get install gcc-snapshot
+  - sudo apt-get update
+  - sudo apt-get -y dist-upgrade
+  - sudo apt-get -y install gcc-snapshot
   - CXX=/usr/lib/gcc-snapshot/bin/g++ LDFLAGS='-Wl,-R/usr/lib/gcc-snapshot/lib' cmake .
   - make all test

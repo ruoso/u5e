@@ -1,0 +1,6 @@
+language: cpp
+compiler:
+  - gcc
+script:
+  - cmake
+  - make all test

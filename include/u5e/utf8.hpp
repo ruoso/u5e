@@ -1,8 +1,9 @@
 #ifndef INCLUDED_U5E_UTF8
 #define INCLUDED_U5E_UTF8
 
-#include <string.h>
-#include <u5e/buffer.hpp>
+#include <iterator>
+#include <cstring>
+#include <type_traits>
 #include <u5e/codepoint.hpp>
 
 namespace u5e {
@@ -12,21 +13,69 @@ namespace u5e {
    * Handles utf8 encoded data
    */
     
+  template <typename BUFFERTYPE>
   class utf8 {
   public:
-    typedef u5e::buffer<const char> enc_buffer_type;
-    static const enc_buffer_type::size_type min_codepoint_size = 1;
-    static const enc_buffer_type::size_type max_codepoint_size = 6;
-    static const enc_buffer_type::size_type max_bmp_codepoint_size = 3;
-    static const enc_buffer_type::size_type max_ascii_codepoint_size = 1;
+    static_assert(sizeof(typename BUFFERTYPE::value_type)==sizeof(char),
+                  "sizeof BUFFERTYPE::value_type incompatible with utf8");
+    static_assert(alignof(typename BUFFERTYPE::value_type)==alignof(char),
+                  "alignof BUFFERTYPE::value_type incompatible with utf8");
+    static_assert(std::is_integral<typename BUFFERTYPE::value_type>::value,
+                  "BUFFERTYPE::value_type is not an integral type");
+
+    // value_type is always codepoint
+    typedef codepoint value_type;
+    // pointer to encoded_buffer
+    typedef utf8<BUFFERTYPE>* pointer;
+    // const pointer to encoded_buffer
+    typedef const utf8<BUFFERTYPE>* const_pointer;
+    // reference to encoded_buffer
+    typedef utf8<BUFFERTYPE>& reference;
+    // size type is always size_t, regardless of encoding, in order to
+    // isolate the knowledge of the encoding from the user code
+    typedef std::size_t size_type;
+    // difference type is always ptrdiff_t, regardrless of encoding,
+    // in order to isolate the knowledge of the encoding from the user
+    // code
+    typedef std::ptrdiff_t difference_type;
+
+    static const typename BUFFERTYPE::size_type min_codepoint_size = 1;
+    static const typename BUFFERTYPE::size_type max_codepoint_size = 6;
+    static const typename BUFFERTYPE::size_type max_bmp_codepoint_size = 3;
+    static const typename BUFFERTYPE::size_type max_ascii_codepoint_size = 1;
 
     // TODO - XXX - Actually implement this
-    typedef enc_buffer_type::reverse_iterator reverse_iterator;
+    typedef typename BUFFERTYPE::reverse_iterator reverse_iterator;
 
+    // TODO - XXX - Actually implement this
+    typedef typename BUFFERTYPE::const_iterator const_iterator;
+
+    // TODO - XXX - Actually implement this
+    typedef typename BUFFERTYPE::const_reverse_iterator const_reverse_iterator;
+    
     // forward declare
     class iterator;
 
+    /**
+     * Constructors
+     */
+    utf8() = default;
+    utf8(const BUFFERTYPE& raw_buffer)
+      : raw_buffer(raw_buffer) { };
+    utf8<BUFFERTYPE>& operator= (const utf8<BUFFERTYPE> &other) = delete;
+
+    inline iterator begin() {
+      return iterator(raw_buffer.begin());
+    }
+    
+    inline iterator end() {
+      return iterator(raw_buffer.end());
+    }
+    
   private:
+    // raw buffer as specified by the storage type
+    BUFFERTYPE raw_buffer;
+
     // returns the size of the codepoint
     static inline int codepoint_size(const char first_octet) {
       int size = 1;
@@ -69,7 +118,7 @@ namespace u5e {
         return value;
       }
     }
-
+    
   public:
     class iterator {
     public:
@@ -80,12 +129,12 @@ namespace u5e {
       typedef std::forward_iterator_tag iterator_category;
         
     private:
-      enc_buffer_type::iterator raw_iterator_;
-        
+      typename BUFFERTYPE::iterator raw_iterator_;
+      
     public:
-      inline iterator(const enc_buffer_type::const_iterator& raw_iterator)
+      inline iterator(const typename BUFFERTYPE::iterator raw_iterator)
         : raw_iterator_(raw_iterator) { };
-
+      
       inline iterator(const iterator& tocopy)
         : raw_iterator_(tocopy.raw_iterator_) { };
 
@@ -103,11 +152,11 @@ namespace u5e {
         return *this;
       }
 
-      inline const codepoint operator*() const {
-        enc_buffer_type::const_iterator copy = raw_iterator_;
+      inline codepoint operator*() {
+        typename BUFFERTYPE::iterator copy = raw_iterator_;
         char octets[max_codepoint_size];
-        memset(octets, 0, max_codepoint_size);
-
+        std::memset(octets, 0, max_codepoint_size);
+        
         octets[0] = *copy++;
         difference_type size = codepoint_size(octets[0]);
         for (int i = 1; i < size; i++) {
@@ -120,14 +169,6 @@ namespace u5e {
       inline bool operator!=(const iterator& rhs) const { return raw_iterator_ != rhs.raw_iterator_; }
     };
       
-    static inline iterator begin(const enc_buffer_type& raw_buffer) {
-      return iterator(raw_buffer.begin());
-    }
-
-    static inline iterator end(const enc_buffer_type& raw_buffer) {
-      return iterator(raw_buffer.end());
-    }
-
   };
 }
 

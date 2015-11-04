@@ -8,6 +8,119 @@
 
 namespace u5e {
   /**
+   * u5e::utf8_utils
+   *
+   * Basic utility functions for manipulating utf8 data 
+   */
+  class utf8_utils {
+    // returns the size of the codepoint
+    static inline int codepoint_size(const char first_octet) {
+      int size = 1;
+      if ((first_octet & 0b11000000) == 0b11000000) {
+        size++;
+        if ((first_octet & 0b11100000) == 0b11100000) {
+          size++;
+          if ((first_octet & 0b11110000) == 0b11110000) {
+            size++;
+            if ((first_octet & 0b11111000) == 0b11111000) {
+              size++;
+              if ((first_octet & 0b11111100) == 0b11111100) {
+                size++;
+              }
+            }
+          }
+        }
+      }
+      return size;
+    }
+
+    // convert a char array into a single octet, takes the size
+    // instead of looking it up again, because traversing the memory
+    // already required knowing the size in the first place
+    static inline codepoint
+    octets_to_codepoint(char octets[max_codepoint_size], int size) {
+      constexpr char mask_first_octet[6] =
+        { 0b00011111, 0b00001111, 0b00000111, 0b00000011, 0b00000001 };
+      constexpr char mask_other_octets = 0b00111111;
+      if (size == 1) {
+        return octets[0];
+      } else {
+        int shift_first_octet = ((size - 1) * 6);
+        codepoint value =
+          (octets[0] & mask_first_octet[size - 2]) << shift_first_octet;
+        for (int i = 1; i < size; i++) {
+          int shift = ((size - 1) - i) * 6;
+          value = value | ((octets[i] & mask_other_octets) << shift);
+        }
+        return value;
+      }
+    }
+  };
+  
+  /**
+   * u5e::utf8_iterator
+   * 
+   * Iterates over codepoints on utf8 data
+   */
+  template <typename WRAPPEDITERATOR>
+  class utf8_iterator {
+    static_assert(sizeof(*WRAPPEDITERATOR)==sizeof(char),
+                  "sizeof *WRAPPEDITERATOR incompatible with utf8");
+    static_assert(alignof(*WRAPPEDITERATOR)==alignof(char),
+                  "alignof *WRAPPEDITERATOR incompatible with utf8");
+    static_assert(std::is_integral<*WRAPPEDITERATOR>::value,
+                  "*WRAPPEDITERATOR is not an integral type");
+    class iterator {
+    public:
+      typedef codepoint value_type;
+      typedef codepoint& reference;
+      typedef iterator pointer;
+      typedef int difference_type;
+      typedef std::forward_iterator_tag iterator_category;
+        
+    private:
+      typename WRAPPEDITERATOR raw_iterator_;
+      
+    public:
+      inline utf8_iterator(const WRAPPEDITERATOR raw_iterator)
+        : raw_iterator_(raw_iterator) { };
+      
+      inline utf8_iterator(const utf8_iterator& tocopy)
+        : raw_iterator_(tocopy.raw_iterator_) { };
+
+      inline utf8_iterator operator++(int junk) {
+        iterator copy(raw_iterator_);
+        char octet = *raw_iterator_;
+        int size = utf8_utils::codepoint_size(octet);
+        raw_iterator_ += size;
+        return copy;
+      }
+
+      inline utf8_iterator operator++() {
+        difference_type size = utf8_utils::codepoint_size(*raw_iterator_);
+        raw_iterator_ += size;
+        return *this;
+      }
+
+      inline codepoint operator*() {
+        typename WRAPPEDITERATOR copy = raw_iterator_;
+        char octets[max_codepoint_size];
+        std::memset(octets, 0, max_codepoint_size);
+        
+        octets[0] = *copy++;
+        difference_type size = utf8_utils::codepoint_size(octets[0]);
+        for (int i = 1; i < size; i++) {
+          octets[i] = *copy++;
+        }
+        return utf8_utils::octets_to_codepoint(octets, size);
+      }
+        
+      inline bool operator==(const utf8_iterator& rhs) const { return raw_iterator_ == rhs.raw_iterator_; }
+      inline bool operator!=(const utf8_iterator& rhs) const { return raw_iterator_ != rhs.raw_iterator_; }
+    };
+  };
+  
+  /**
    * u5e::utf8
    *
    * Handles utf8 encoded data
@@ -54,7 +167,7 @@ namespace u5e {
     typedef typename BUFFERTYPE::const_reverse_iterator const_reverse_iterator;
     
     // forward declare
-    class iterator;
+    typedef typename utf8_iterator<BUFFERTYPE::iterator> iterator;
 
     /**
      * Constructors
@@ -75,101 +188,6 @@ namespace u5e {
   private:
     // raw buffer as specified by the storage type
     BUFFERTYPE raw_buffer;
-
-    // returns the size of the codepoint
-    static inline int codepoint_size(const char first_octet) {
-      int size = 1;
-      if ((first_octet & 0b11000000) == 0b11000000) {
-        size++;
-        if ((first_octet & 0b11100000) == 0b11100000) {
-          size++;
-          if ((first_octet & 0b11110000) == 0b11110000) {
-            size++;
-            if ((first_octet & 0b11111000) == 0b11111000) {
-              size++;
-              if ((first_octet & 0b11111100) == 0b11111100) {
-                size++;
-              }
-            }
-          }
-        }
-      }
-      return size;
-    }
-
-    // convert a char array into a single octet, takes the size
-    // instead of looking it up again, because traversing the memory
-    // already required knowing the size in the first place
-    static inline codepoint
-    octets_to_codepoint(char octets[max_codepoint_size], int size) {
-      constexpr char mask_first_octet[6] =
-        { 0b00011111, 0b00001111, 0b00000111, 0b00000011, 0b00000001 };
-      constexpr char mask_other_octets = 0b00111111;
-      if (size == 1) {
-        return octets[0];
-      } else {
-        int shift_first_octet = ((size - 1) * 6);
-        codepoint value =
-          (octets[0] & mask_first_octet[size - 2]) << shift_first_octet;
-        for (int i = 1; i < size; i++) {
-          int shift = ((size - 1) - i) * 6;
-          value = value | ((octets[i] & mask_other_octets) << shift);
-        }
-        return value;
-      }
-    }
-    
-  public:
-    class iterator {
-    public:
-      typedef codepoint value_type;
-      typedef codepoint& reference;
-      typedef iterator pointer;
-      typedef int difference_type;
-      typedef std::forward_iterator_tag iterator_category;
-        
-    private:
-      typename BUFFERTYPE::iterator raw_iterator_;
-      
-    public:
-      inline iterator(const typename BUFFERTYPE::iterator raw_iterator)
-        : raw_iterator_(raw_iterator) { };
-      
-      inline iterator(const iterator& tocopy)
-        : raw_iterator_(tocopy.raw_iterator_) { };
-
-      inline iterator operator++(int junk) {
-        iterator copy(raw_iterator_);
-        char octet = *raw_iterator_;
-        int size = codepoint_size(octet);
-        raw_iterator_ += size;
-        return copy;
-      }
-
-      inline iterator operator++() {
-        difference_type size = codepoint_size(*raw_iterator_);
-        raw_iterator_ += size;
-        return *this;
-      }
-
-      inline codepoint operator*() {
-        typename BUFFERTYPE::iterator copy = raw_iterator_;
-        char octets[max_codepoint_size];
-        std::memset(octets, 0, max_codepoint_size);
-        
-        octets[0] = *copy++;
-        difference_type size = codepoint_size(octets[0]);
-        for (int i = 1; i < size; i++) {
-          octets[i] = *copy++;
-        }
-        return octets_to_codepoint(octets, size);
-      }
-        
-      inline bool operator==(const iterator& rhs) const { return raw_iterator_ == rhs.raw_iterator_; }
-      inline bool operator!=(const iterator& rhs) const { return raw_iterator_ != rhs.raw_iterator_; }
-    };
-      
-  };
 }
 
 #endif

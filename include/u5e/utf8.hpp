@@ -5,121 +5,10 @@
 #include <cstring>
 #include <type_traits>
 #include <u5e/codepoint.hpp>
+#include <u5e/encoding_assertion.hpp>
+#include <u5e/utf8_iterator.hpp>
 
 namespace u5e {
-  /**
-   * u5e::utf8_utils
-   *
-   * Basic utility functions for manipulating utf8 data 
-   */
-  class utf8_utils {
-    // returns the size of the codepoint
-    static inline int codepoint_size(const char first_octet) {
-      int size = 1;
-      if ((first_octet & 0b11000000) == 0b11000000) {
-        size++;
-        if ((first_octet & 0b11100000) == 0b11100000) {
-          size++;
-          if ((first_octet & 0b11110000) == 0b11110000) {
-            size++;
-            if ((first_octet & 0b11111000) == 0b11111000) {
-              size++;
-              if ((first_octet & 0b11111100) == 0b11111100) {
-                size++;
-              }
-            }
-          }
-        }
-      }
-      return size;
-    }
-
-    // convert a char array into a single octet, takes the size
-    // instead of looking it up again, because traversing the memory
-    // already required knowing the size in the first place
-    static inline codepoint
-    octets_to_codepoint(char octets[max_codepoint_size], int size) {
-      constexpr char mask_first_octet[6] =
-        { 0b00011111, 0b00001111, 0b00000111, 0b00000011, 0b00000001 };
-      constexpr char mask_other_octets = 0b00111111;
-      if (size == 1) {
-        return octets[0];
-      } else {
-        int shift_first_octet = ((size - 1) * 6);
-        codepoint value =
-          (octets[0] & mask_first_octet[size - 2]) << shift_first_octet;
-        for (int i = 1; i < size; i++) {
-          int shift = ((size - 1) - i) * 6;
-          value = value | ((octets[i] & mask_other_octets) << shift);
-        }
-        return value;
-      }
-    }
-  };
-  
-  /**
-   * u5e::utf8_iterator
-   * 
-   * Iterates over codepoints on utf8 data
-   */
-  template <typename WRAPPEDITERATOR>
-  class utf8_iterator {
-    static_assert(sizeof(*WRAPPEDITERATOR)==sizeof(char),
-                  "sizeof *WRAPPEDITERATOR incompatible with utf8");
-    static_assert(alignof(*WRAPPEDITERATOR)==alignof(char),
-                  "alignof *WRAPPEDITERATOR incompatible with utf8");
-    static_assert(std::is_integral<*WRAPPEDITERATOR>::value,
-                  "*WRAPPEDITERATOR is not an integral type");
-    class iterator {
-    public:
-      typedef codepoint value_type;
-      typedef codepoint& reference;
-      typedef iterator pointer;
-      typedef int difference_type;
-      typedef std::forward_iterator_tag iterator_category;
-        
-    private:
-      typename WRAPPEDITERATOR raw_iterator_;
-      
-    public:
-      inline utf8_iterator(const WRAPPEDITERATOR raw_iterator)
-        : raw_iterator_(raw_iterator) { };
-      
-      inline utf8_iterator(const utf8_iterator& tocopy)
-        : raw_iterator_(tocopy.raw_iterator_) { };
-
-      inline utf8_iterator operator++(int junk) {
-        iterator copy(raw_iterator_);
-        char octet = *raw_iterator_;
-        int size = utf8_utils::codepoint_size(octet);
-        raw_iterator_ += size;
-        return copy;
-      }
-
-      inline utf8_iterator operator++() {
-        difference_type size = utf8_utils::codepoint_size(*raw_iterator_);
-        raw_iterator_ += size;
-        return *this;
-      }
-
-      inline codepoint operator*() {
-        typename WRAPPEDITERATOR copy = raw_iterator_;
-        char octets[max_codepoint_size];
-        std::memset(octets, 0, max_codepoint_size);
-        
-        octets[0] = *copy++;
-        difference_type size = utf8_utils::codepoint_size(octets[0]);
-        for (int i = 1; i < size; i++) {
-          octets[i] = *copy++;
-        }
-        return utf8_utils::octets_to_codepoint(octets, size);
-      }
-        
-      inline bool operator==(const utf8_iterator& rhs) const { return raw_iterator_ == rhs.raw_iterator_; }
-      inline bool operator!=(const utf8_iterator& rhs) const { return raw_iterator_ != rhs.raw_iterator_; }
-    };
-  };
-  
   /**
    * u5e::utf8
    *
@@ -128,13 +17,10 @@ namespace u5e {
     
   template <typename BUFFERTYPE>
   class utf8 {
+    encoding_assertion<BUFFERTYPE,
+                       char,
+                       std::is_class<BUFFERTYPE>::value> _assertion;
   public:
-    static_assert(sizeof(typename BUFFERTYPE::value_type)==sizeof(char),
-                  "sizeof BUFFERTYPE::value_type incompatible with utf8");
-    static_assert(alignof(typename BUFFERTYPE::value_type)==alignof(char),
-                  "alignof BUFFERTYPE::value_type incompatible with utf8");
-    static_assert(std::is_integral<typename BUFFERTYPE::value_type>::value,
-                  "BUFFERTYPE::value_type is not an integral type");
 
     // value_type is always codepoint
     typedef codepoint value_type;
@@ -152,11 +38,6 @@ namespace u5e {
     // code
     typedef std::ptrdiff_t difference_type;
 
-    static const typename BUFFERTYPE::size_type min_codepoint_size = 1;
-    static const typename BUFFERTYPE::size_type max_codepoint_size = 6;
-    static const typename BUFFERTYPE::size_type max_bmp_codepoint_size = 3;
-    static const typename BUFFERTYPE::size_type max_ascii_codepoint_size = 1;
-
     // TODO - XXX - Actually implement this
     typedef typename BUFFERTYPE::reverse_iterator reverse_iterator;
 
@@ -167,7 +48,7 @@ namespace u5e {
     typedef typename BUFFERTYPE::const_reverse_iterator const_reverse_iterator;
     
     // forward declare
-    typedef typename utf8_iterator<BUFFERTYPE::iterator> iterator;
+    typedef utf8_iterator<typename BUFFERTYPE::iterator> iterator;
 
     /**
      * Constructors
@@ -188,6 +69,7 @@ namespace u5e {
   private:
     // raw buffer as specified by the storage type
     BUFFERTYPE raw_buffer;
+  };
 }
 
 #endif

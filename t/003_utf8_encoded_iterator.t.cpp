@@ -5,7 +5,7 @@
 
 using u5e::codepoint;
 using u5e::utf8;
-usnig u5e::utf8_iterator;
+using u5e::utf8_iterator;
 using std::experimental::string_view;
 using std::string;
 
@@ -62,9 +62,10 @@ TEST(t_003_utf8_encoded_iterator, iteratorb) {
   ASSERT_EQ(it, e.end());
 }
 
+
 TEST(t_003_utf8_encoded_iterator, iteratorc) {
   const char* foo = "Ol\xC3\x81!";
-  utf8_iterator<const char*> it(e.begin());
+  utf8_iterator<const char*> it(foo);
   ASSERT_EQ(*it, 'O');
   it++;
   ASSERT_EQ(*it, 'l');
@@ -73,5 +74,6 @@ TEST(t_003_utf8_encoded_iterator, iteratorc) {
   it++;
   ASSERT_EQ(*it, '!');
   it++;
-  ASSERT_EQ(it, e.end());
+  ASSERT_EQ(it, foo+5);
 }
+

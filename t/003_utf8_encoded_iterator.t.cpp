@@ -64,7 +64,7 @@ TEST(t_003_utf8_encoded_iterator, iteratorb) {
 
 TEST(t_003_utf8_encoded_iterator, iteratorc) {
   const char* foo = "Ol\xC3\x81!";
-  utf8_iterator<const char*> it = e.begin();
+  utf8_iterator<const char*> it(e.begin());
   ASSERT_EQ(*it, 'O');
   it++;
   ASSERT_EQ(*it, 'l');

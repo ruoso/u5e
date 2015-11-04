@@ -5,6 +5,7 @@
 
 using u5e::codepoint;
 using u5e::utf8;
+usnig u5e::utf8_iterator;
 using std::experimental::string_view;
 using std::string;
 

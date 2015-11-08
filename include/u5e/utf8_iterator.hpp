@@ -69,14 +69,12 @@ namespace u5e {
       if ((first_octet & 0b10000000) == 0) {
         return first_octet;
       } else {
-        constexpr char mask_first_octet[6] =
-          { 0b00011111, 0b00001111, 0b00000111, 0b00000011, 0b00000001 };
-        constexpr char mask_other_octets = 0b00111111;
-        difference_type size = codepoint_size(first_octet);
-        codepoint value = (first_octet & mask_first_octet[size - 2]);
         WRAPPEDITERATOR copy_ = raw_iterator_;
+        difference_type size = codepoint_size(first_octet);
+        unsigned char mask_first_octet = ~(0xFF<<(6-size));
+        codepoint value = (first_octet & mask_first_octet);
         while (--size) {
-          value = value<<6 | (*(++copy_) & mask_other_octets);
+          value = value<<6 | (*(++copy_) & 0b00111111);
         }
         return value;
       }

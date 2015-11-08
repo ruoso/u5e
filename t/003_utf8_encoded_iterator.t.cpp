@@ -62,19 +62,31 @@ TEST(t_003_utf8_encoded_iterator, iteratorb) {
   ASSERT_EQ(it, e.end());
 }
 
-
 TEST(t_003_utf8_encoded_iterator, iteratorc) {
   const char* foo = "Ol\xC3\x81!";
   utf8_iterator<const char*> it(foo);
   ASSERT_EQ(*it, 'O');
-  it++;
+  utf8_iterator<const char*> copy = ++it;
+  ASSERT_EQ(copy, it);
   ASSERT_EQ(*it, 'l');
-  it++;
+  copy = it++;
+  ASSERT_NE(copy, it);
   ASSERT_EQ(*it, 0xC1);
   it++;
   ASSERT_EQ(*it, '!');
   it++;
   ASSERT_EQ(it, foo+5);
+  copy = --it;
+  ASSERT_EQ(copy, it);
+  ASSERT_EQ(*it, '!');
+  copy = it--;
+  ASSERT_NE(copy, it);
+  ASSERT_EQ(*it, 0xC1);
+  it--;
+  ASSERT_EQ(*it, 'l');
+  it--;
+  ASSERT_EQ(*it, 'O');
+  ASSERT_EQ(it, foo);
 }
 
 TEST(t_003_utf8_encoded_iterator, iteratord) {

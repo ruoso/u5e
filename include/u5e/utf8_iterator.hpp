@@ -71,7 +71,7 @@ namespace u5e {
       } else {
         WRAPPEDITERATOR copy_ = raw_iterator_;
         difference_type size = codepoint_size(first_octet);
-        unsigned char mask_first_octet = ~(0xFF<<(6-size));
+        unsigned char mask_first_octet = ~(0xFF<<(7-size));
         codepoint value = (first_octet & mask_first_octet);
         while (--size) {
           value = value<<6 | (*(++copy_) & 0b00111111);

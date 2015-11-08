@@ -109,3 +109,15 @@ TEST(t_003_utf8_encoded_iterator, traits) {
   ASSERT_EQ(sizeof(std::iterator_traits<utf8_iterator<string_view::iterator>>::value_type),
             sizeof(codepoint));
 }
+
+TEST(t_003_utf8_encoded_iterator, decode) {
+  const unsigned char in1[] = { 0b11010000, 0b10100000 };
+  utf8_iterator<const unsigned char*> it1(in1);
+  ASSERT_EQ(*it1, 1056);
+  const unsigned char in2[] = { 0b11101000, 0b10100000, 0b10100000 };
+  utf8_iterator<const unsigned char*> it2(in2);
+  ASSERT_EQ(*it2, 34848);
+  const unsigned char in3[] = { 0b11110100, 0b10100000, 0b10100000, 0b10100000 };
+  utf8_iterator<const unsigned char*> it3(in3);
+  ASSERT_EQ(*it3, 1181728);
+}

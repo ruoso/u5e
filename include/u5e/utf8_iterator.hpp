@@ -2,6 +2,7 @@
 #define INCLUDED_U5E_UTF8_ITERATOR
 
 #include <iterator>
+#include <u5e/codepoint.hpp>
 #include <u5e/iterator_assertion.hpp>
 
 namespace u5e {
@@ -65,13 +66,13 @@ namespace u5e {
 
     inline codepoint operator*() {
       char first_octet = *raw_iterator_;
-      difference_type size = codepoint_size(first_octet);
-      if (size == 1) {
+      if ((first_octet & 0b10000000) == 0) {
         return first_octet;
       } else {
         constexpr char mask_first_octet[6] =
           { 0b00011111, 0b00001111, 0b00000111, 0b00000011, 0b00000001 };
         constexpr char mask_other_octets = 0b00111111;
+        difference_type size = codepoint_size(first_octet);
         codepoint value = (first_octet & mask_first_octet[size - 2]);
         WRAPPEDITERATOR copy_ = raw_iterator_;
         while (--size) {

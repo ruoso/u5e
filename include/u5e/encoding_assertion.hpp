@@ -1,31 +1,21 @@
 #ifndef INCLUDED_U5E_ENCODING_ASSERTION
 #define INCLUDED_U5E_ENCODING_ASSERTION
 
+#include <iterator>
+#include <u5e/iterator_assertion.hpp>
+
 namespace u5e {
-
-  // template for static asserts, no assertions by default
-  template <typename BUFFERTYPE, typename T, bool ISCLASS>
+  template <typename BUFFERTYPE, typename T>
   class encoding_assertion {
+    iterator_assertion<std::iterator_traits<typename BUFFERTYPE::iterator>, T>
+    _assertion1;
+    iterator_assertion<std::iterator_traits<typename BUFFERTYPE::const_iterator>, T>
+    _assertion2;
+    iterator_assertion<std::iterator_traits<typename BUFFERTYPE::reverse_iterator>, T>
+    _assertion3;
+    iterator_assertion<std::iterator_traits<typename BUFFERTYPE::const_reverse_iterator>, T>
+    _assertion4;
   };
-
-  template <typename BUFFERTYPE, typename T>
-  class encoding_assertion<BUFFERTYPE, T, true> {
-    typedef typename BUFFERTYPE::value_type vt;
-    static_assert(sizeof(vt)==sizeof(T),
-                  "sizeof BUFFERTYPE::value_type incompatible with utf8");
-    static_assert(alignof(vt)==alignof(T),
-                  "alignof BUFFERTYPE::value_type incompatible with utf8");
-    static_assert(std::is_integral<vt>::value,
-                  "BUFFERTYPE::value_type is not an integral type");
-  };
-
-  template <typename BUFFERTYPE, typename T>
-  class encoding_assertion<BUFFERTYPE, T, false> {
-    static_assert(std::is_class<BUFFERTYPE>::value,
-                  "BUFFERTYPE must be a class");
-  };
-
-
 };
 
 #endif

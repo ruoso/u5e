@@ -17,9 +17,7 @@ namespace u5e {
     
   template <typename BUFFERTYPE>
   class utf8 {
-    encoding_assertion<BUFFERTYPE,
-                       char,
-                       std::is_class<BUFFERTYPE>::value> _assertion;
+    encoding_assertion<BUFFERTYPE, char> _assertion;
   public:
 
     // value_type is always codepoint

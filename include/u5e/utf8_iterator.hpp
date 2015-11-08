@@ -12,12 +12,7 @@ namespace u5e {
    */
   template <typename WRAPPEDITERATOR>
   class utf8_iterator {
-     iterator_assertion<WRAPPEDITERATOR,
-                        char,
-                        std::is_class<WRAPPEDITERATOR>::value,
-                        std::is_pointer<WRAPPEDITERATOR>::value>
-     _assertions;
-
+    iterator_assertion<std::iterator_traits<WRAPPEDITERATOR>, char> _assertions;
   public:
     typedef codepoint value_type;
     typedef codepoint& reference;

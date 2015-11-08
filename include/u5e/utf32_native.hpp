@@ -16,9 +16,7 @@ namespace u5e {
    */
   template <typename BUFFERTYPE>
   class utf32_native {
-    encoding_assertion<BUFFERTYPE,
-                       int,
-                       std::is_class<BUFFERTYPE>::value> _assertion;
+    encoding_assertion<BUFFERTYPE, int> _assertion;
   public:
     // value_type is always codepoint
     typedef codepoint value_type;

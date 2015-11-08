@@ -77,3 +77,15 @@ TEST(t_003_utf8_encoded_iterator, iteratorc) {
   ASSERT_EQ(it, foo+5);
 }
 
+TEST(t_003_utf8_encoded_iterator, iteratord) {
+  const string foo("Ol\xC3\x81!");
+  utf8_iterator<string::const_iterator> it(foo.begin());
+  ASSERT_EQ(*it, 'O');
+}
+
+TEST(t_003_utf8_encoded_iterator, iteratore) {
+  utf8<const string> foo("Ol\xC3\x81!");
+  utf8<const string>::const_iterator it(foo.cbegin());
+  ASSERT_EQ(*it, 'O');
+}
+

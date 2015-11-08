@@ -38,15 +38,12 @@ namespace u5e {
 
     // TODO - XXX - Actually implement this
     typedef typename BUFFERTYPE::reverse_iterator reverse_iterator;
-
-    // TODO - XXX - Actually implement this
-    typedef typename BUFFERTYPE::const_iterator const_iterator;
-
     // TODO - XXX - Actually implement this
     typedef typename BUFFERTYPE::const_reverse_iterator const_reverse_iterator;
     
-    // forward declare
     typedef utf8_iterator<typename BUFFERTYPE::iterator> iterator;
+
+    typedef utf8_iterator<typename BUFFERTYPE::const_iterator> const_iterator;
 
     /**
      * Constructors
@@ -55,13 +52,21 @@ namespace u5e {
     utf8(const BUFFERTYPE& raw_buffer)
       : raw_buffer(raw_buffer) { };
     utf8<BUFFERTYPE>& operator= (const utf8<BUFFERTYPE> &other) = delete;
-
+    
     inline iterator begin() {
       return iterator(raw_buffer.begin());
     }
     
     inline iterator end() {
       return iterator(raw_buffer.end());
+    }
+
+    inline const_iterator cbegin() {
+      return const_iterator(raw_buffer.begin());
+    }
+    
+    inline const_iterator cend() {
+      return const_iterator(raw_buffer.end());
     }
     
   private:

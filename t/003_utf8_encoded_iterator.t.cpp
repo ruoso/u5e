@@ -89,3 +89,11 @@ TEST(t_003_utf8_encoded_iterator, iteratore) {
   ASSERT_EQ(*it, 'O');
 }
 
+TEST(t_003_utf8_encoded_iterator, traits) {
+  ASSERT_EQ(sizeof(std::iterator_traits<utf8_iterator<const char*>>::value_type),
+            sizeof(codepoint));
+  ASSERT_EQ(sizeof(std::iterator_traits<utf8_iterator<string::iterator>>::value_type),
+            sizeof(codepoint));
+  ASSERT_EQ(sizeof(std::iterator_traits<utf8_iterator<string_view::iterator>>::value_type),
+            sizeof(codepoint));
+}

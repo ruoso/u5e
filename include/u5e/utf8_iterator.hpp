@@ -188,16 +188,19 @@ namespace u5e {
         return ref.current_codepoint() == value;
       }
       proxyobject& operator=(const codepoint value) {
-        int size = std::ceil((32 - __builtin_clz(value))/6);
+        int size = std::ceil((float)(32 - __builtin_clz(value)) / (float)6);
         if (size <= 1) {
           *(ref.raw_iterator_) = (value & 0xFF);
         } else {
-          unsigned char first_octet = ~(0xFF<<(8-size));
-          first_octet |= (value>>((size-2)*6));
+          unsigned char first_octet = (0xFF<<(8-size));
+          first_octet |= ((value>>((size-1)*6)) & 0xFF);
           *(ref.raw_iterator_) = first_octet;
+          ref.raw_iterator_++;
           while (--size) {
             unsigned char octet = 0b10000000;
-            octet |= (value>>((size-2)*6));
+            octet |= ((value>>((size-1)*6)) & 0b00111111);
+            *(ref.raw_iterator_) = octet;
+            ref.raw_iterator_++;
           }
         }
         return *this;

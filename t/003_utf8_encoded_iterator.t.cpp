@@ -95,18 +95,15 @@ TEST(t_003_utf8_encoded_iterator, iteratord) {
   char foo[] = "Ol\xC3\x81!";
   utf8_iterator<char*> it(foo);
   ASSERT_EQ(*it, 'O');
-  utf8_iterator<char*> copy = ++it;
-  ASSERT_EQ(copy, it);
-  ASSERT_EQ(*it, 'l');
-  copy = it++;
-  ASSERT_NE(copy, it);
-  ASSERT_EQ(*it, 0xC1);
-  *it = 'A';
-  ASSERT_EQ(*it, 'A');
   it++;
+  ASSERT_EQ(*it, 'l');
+  *it = 0xC1;
+  ASSERT_EQ(*it, 0xC1);
+  it++;
+  ASSERT_EQ((char)foo[3], (char)0x81);
   *it = '!';
   it++;
-  ASSERT_EQ(strcmp(foo, "OlA!!"), 0);
+  ASSERT_EQ(strcmp(foo, "O\xC3\x81!!"), 0);
 }
 
 TEST(t_003_utf8_encoded_iterator, iteratore) {

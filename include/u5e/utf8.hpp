@@ -43,7 +43,7 @@ namespace u5e {
     
     typedef utf8_iterator<typename BUFFERTYPE::iterator> iterator;
 
-    typedef utf8_iterator<typename BUFFERTYPE::const_iterator> const_iterator;
+    typedef utf8_const_iterator<typename BUFFERTYPE::const_iterator> const_iterator;
 
     /**
      * Constructors

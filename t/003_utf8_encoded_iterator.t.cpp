@@ -1,3 +1,4 @@
+#include <string.h>
 #include <u5e/utf8.hpp>
 #include <u5e/codepoint.hpp>
 #include "gtest/gtest.h"
@@ -6,6 +7,7 @@
 using u5e::codepoint;
 using u5e::utf8;
 using u5e::utf8_iterator;
+using u5e::utf8_const_iterator;
 using std::experimental::string_view;
 using std::string;
 
@@ -34,7 +36,7 @@ TEST(t_003_utf8_encoded_iterator, constructor2b) {
 TEST(t_003_utf8_encoded_iterator, iteratora) {
   string_view str("Ol\xC3\x81!");
   utf8<string_view> e(str);
-  utf8<string_view>::iterator it = e.begin();
+  utf8<string_view>::const_iterator it = e.cbegin();
   ASSERT_EQ(*it, 'O');
   it++;
   ASSERT_EQ(*it, 'l');
@@ -43,14 +45,14 @@ TEST(t_003_utf8_encoded_iterator, iteratora) {
   it++;
   ASSERT_EQ(*it, '!');
   it++;
-  ASSERT_EQ(it, e.end());
+  ASSERT_EQ(it, e.cend());
 }
 
 
 TEST(t_003_utf8_encoded_iterator, iteratorb) {
   string str("Ol\xC3\x81!");
   utf8<string> e(str);
-  utf8<string>::iterator it = e.begin();
+  utf8<string>::const_iterator it = e.cbegin();
   ASSERT_EQ(*it, 'O');
   it++;
   ASSERT_EQ(*it, 'l');
@@ -59,14 +61,14 @@ TEST(t_003_utf8_encoded_iterator, iteratorb) {
   it++;
   ASSERT_EQ(*it, '!');
   it++;
-  ASSERT_EQ(it, e.end());
+  ASSERT_EQ(it, e.cend());
 }
 
 TEST(t_003_utf8_encoded_iterator, iteratorc) {
   const char* foo = "Ol\xC3\x81!";
-  utf8_iterator<const char*> it(foo);
+  utf8_const_iterator<const char*> it(foo);
   ASSERT_EQ(*it, 'O');
-  utf8_iterator<const char*> copy = ++it;
+  utf8_const_iterator<const char*> copy = ++it;
   ASSERT_EQ(copy, it);
   ASSERT_EQ(*it, 'l');
   copy = it++;
@@ -90,12 +92,30 @@ TEST(t_003_utf8_encoded_iterator, iteratorc) {
 }
 
 TEST(t_003_utf8_encoded_iterator, iteratord) {
-  const string foo("Ol\xC3\x81!");
-  utf8_iterator<string::const_iterator> it(foo.begin());
+  char foo[] = "Ol\xC3\x81!";
+  utf8_iterator<char*> it(foo);
   ASSERT_EQ(*it, 'O');
+  utf8_iterator<char*> copy = ++it;
+  ASSERT_EQ(copy, it);
+  ASSERT_EQ(*it, 'l');
+  copy = it++;
+  ASSERT_NE(copy, it);
+  ASSERT_EQ(*it, 0xC1);
+  *it = 'A';
+  ASSERT_EQ(*it, 'A');
+  it++;
+  *it = '!';
+  it++;
+  ASSERT_EQ(strcmp(foo, "OlA!!"), 0);
 }
 
 TEST(t_003_utf8_encoded_iterator, iteratore) {
+  const string foo("Ol\xC3\x81!");
+  utf8_const_iterator<string::const_iterator> it(foo.begin());
+  ASSERT_EQ(*it, 'O');
+}
+
+TEST(t_003_utf8_encoded_iterator, iteratorf) {
   utf8<const string> foo("Ol\xC3\x81!");
   utf8<const string>::const_iterator it(foo.cbegin());
   ASSERT_EQ(*it, 'O');
@@ -112,12 +132,12 @@ TEST(t_003_utf8_encoded_iterator, traits) {
 
 TEST(t_003_utf8_encoded_iterator, decode) {
   const unsigned char in1[] = { 0b11010000, 0b10100000 };
-  utf8_iterator<const unsigned char*> it1(in1);
+  utf8_const_iterator<const unsigned char*> it1(in1);
   ASSERT_EQ(*it1, 1056);
   const unsigned char in2[] = { 0b11101000, 0b10100000, 0b10100000 };
-  utf8_iterator<const unsigned char*> it2(in2);
+  utf8_const_iterator<const unsigned char*> it2(in2);
   ASSERT_EQ(*it2, 34848);
   const unsigned char in3[] = { 0b11110100, 0b10100000, 0b10100000, 0b10100000 };
-  utf8_iterator<const unsigned char*> it3(in3);
+  utf8_const_iterator<const unsigned char*> it3(in3);
   ASSERT_EQ(*it3, 1181728);
 }

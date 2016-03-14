@@ -2,13 +2,14 @@
 #define INCLUDED_U5E_ITERATOR_ASSERTION
 
 namespace u5e {
-  template <typename TRAIT, typename T>
+  template <typename WRAPPED, typename T>
   class iterator_assertion {
-    static_assert(sizeof(typename TRAIT::value_type)==sizeof(T),
+    typedef typename std::iterator_traits<WRAPPED>::value_type VT;
+    static_assert(sizeof(VT)==sizeof(T),
                   "sizeof value_type incompatible with encoding");
-    static_assert(alignof(typename TRAIT::value_type)==alignof(T),
+    static_assert(alignof(VT)==alignof(T),
                   "alignof value_type incompatible with encoding");
-    static_assert(std::is_integral<typename TRAIT::value_type>::value,
+    static_assert(std::is_integral<VT>::value,
                   "value_type is not an integral type");
   };
 };

@@ -7,15 +7,15 @@
 namespace u5e {
   template <typename BUFFERTYPE, typename T>
   class encoding_assertion {
-    iterator_assertion<std::iterator_traits<typename BUFFERTYPE::iterator>, T>
+    iterator_assertion<typename BUFFERTYPE::iterator, T>
     _assertion1;
-    iterator_assertion<std::iterator_traits<typename BUFFERTYPE::const_iterator>, T>
+    iterator_assertion<typename BUFFERTYPE::const_iterator, T>
     _assertion2;
-    iterator_assertion<std::iterator_traits<typename BUFFERTYPE::reverse_iterator>, T>
+    iterator_assertion<typename BUFFERTYPE::reverse_iterator, T>
     _assertion3;
-    iterator_assertion<std::iterator_traits<typename BUFFERTYPE::const_reverse_iterator>, T>
+    iterator_assertion<typename BUFFERTYPE::const_reverse_iterator, T>
     _assertion4;
   };
-};
+}
 
 #endif

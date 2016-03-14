@@ -19,7 +19,7 @@ namespace u5e {
   template <typename WRAPPEDITERATOR>
   class utf8_iterator_base {
   protected:
-    iterator_assertion<std::iterator_traits<WRAPPEDITERATOR>, char> _assertions;
+    iterator_assertion<WRAPPEDITERATOR, char> _assertions;
     WRAPPEDITERATOR raw_iterator_;
 
   public:

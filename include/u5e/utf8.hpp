@@ -62,11 +62,11 @@ namespace u5e {
     }
 
     inline const_iterator cbegin() {
-      return const_iterator(raw_buffer.begin());
+      return const_iterator(raw_buffer.cbegin());
     }
     
     inline const_iterator cend() {
-      return const_iterator(raw_buffer.end());
+      return const_iterator(raw_buffer.cend());
     }
     
   private:

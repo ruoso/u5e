@@ -75,7 +75,7 @@ namespace u5e {
         WRAPPEDITERATOR copy_ = raw_iterator_;
         difference_type size = codepoint_size(first_octet);
         unsigned char mask_first_octet = ~(0xFF<<(7-size));
-        codepoint value = (first_octet & mask_first_octet);
+        int value = (first_octet & mask_first_octet);
         while (--size) {
           value = value<<6 | (*(++copy_) & 0b00111111);
         }
@@ -175,32 +175,31 @@ namespace u5e {
       return this->raw_iterator_ != rhs.raw_iterator_;
     }
 
-    class proxyobject {
+    class proxyobject : public codepoint {
     private:
       utf8_iterator<WRAPPEDITERATOR>& ref;
     public:
       proxyobject(utf8_iterator<WRAPPEDITERATOR>& refin)
-        :ref(refin) { };
-      operator const int() const {
-        return ref.current_codepoint();
-      }
-      bool operator==(const codepoint value) const {
-        return ref.current_codepoint() == value;
-      }
-      proxyobject& operator=(const codepoint value) {
+        :ref(refin) {
+        utf8_iterator<WRAPPEDITERATOR> copy = refin;
+        value = copy.current_codepoint().value;
+      };
+      proxyobject& operator=(const codepoint c) {
+        int value = c.value; // operate on codepoint as integer
         int size = std::ceil((float)(32 - __builtin_clz(value)) / (float)6);
         if (size <= 1) {
           *(ref.raw_iterator_) = (value & 0xFF);
         } else {
+          utf8_iterator<WRAPPEDITERATOR> copy = ref;
           unsigned char first_octet = (0xFF<<(8-size));
           first_octet |= ((value>>((size-1)*6)) & 0xFF);
-          *(ref.raw_iterator_) = first_octet;
-          ref.raw_iterator_++;
+          *(copy.raw_iterator_) = first_octet;
+          copy.raw_iterator_++;
           while (--size) {
             unsigned char octet = 0b10000000;
             octet |= ((value>>((size-1)*6)) & 0b00111111);
-            *(ref.raw_iterator_) = octet;
-            ref.raw_iterator_++;
+            *(copy.raw_iterator_) = octet;
+            copy.raw_iterator_++;
           }
         }
         return *this;

@@ -7,11 +7,21 @@ namespace u5e {
   /**
    * u5e::codepoint
    *
-   * Since a codepoint is an important element in the unicode
-   * standard, we define a typedef specifically such that we can
-   * reference codepoint by its proper name in the entire API.
+   * codepoint is an explicity class in order to hijack overloads,
+   * such that we only build codepoints out of known encodings and we
+   * only write to encodings out of known codepoints.
    */
-  typedef int32_t codepoint;
+  class codepoint {
+  public:
+    int value;
+    constexpr codepoint() : value(0) { };
+    constexpr codepoint(int32_t v) : value(v) { };
+    constexpr codepoint(const codepoint&) = default;
+    constexpr codepoint(codepoint&&) = default;
+  };
+  constexpr bool operator==(const codepoint& a, const codepoint& b) { return a.value == b.value; };
+  constexpr bool operator==(const int a, const codepoint& b) { return a == b.value; };
+  constexpr bool operator==(const codepoint& a, const int b) { return a.value == b; };
 }
 
 #endif

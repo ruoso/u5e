@@ -1,8 +1,10 @@
-#include <string.h>
 #include <u5e/utf8.hpp>
+#include <u5e/utf8_iterator.hpp>
 #include <u5e/codepoint.hpp>
+
 #include "gtest/gtest.h"
 #include <experimental/string_view>
+#include <string.h>
 
 using u5e::codepoint;
 using u5e::utf8;
@@ -33,10 +35,13 @@ TEST(t_003_utf8_encoded_iterator, constructor2b) {
   utf8<string> e2(e1);
 }
 
+TEST(t_003_utf8_encoded_iterator, constructor2c) {
+  utf8<string> str("Ol\xC3\x81!");
+}
+
 TEST(t_003_utf8_encoded_iterator, iteratora) {
   string_view str("Ol\xC3\x81!");
-  utf8<string_view> e(str);
-  utf8<string_view>::const_iterator it = e.cbegin();
+  utf8<string_view>::const_iterator it = str.cbegin();
   ASSERT_EQ(*it, 'O');
   it++;
   ASSERT_EQ(*it, 'l');
@@ -45,14 +50,12 @@ TEST(t_003_utf8_encoded_iterator, iteratora) {
   it++;
   ASSERT_EQ(*it, '!');
   it++;
-  ASSERT_EQ(it, e.cend());
+  ASSERT_EQ(it, str.cend());
 }
-
 
 TEST(t_003_utf8_encoded_iterator, iteratorb) {
   string str("Ol\xC3\x81!");
-  utf8<string> e(str);
-  utf8<string>::const_iterator it = e.cbegin();
+  utf8<string>::const_iterator it = str.cbegin();
   ASSERT_EQ(*it, 'O');
   it++;
   ASSERT_EQ(*it, 'l');
@@ -61,7 +64,7 @@ TEST(t_003_utf8_encoded_iterator, iteratorb) {
   it++;
   ASSERT_EQ(*it, '!');
   it++;
-  ASSERT_EQ(it, e.cend());
+  ASSERT_EQ(it, str.cend());
 }
 
 TEST(t_003_utf8_encoded_iterator, iteratorc) {
@@ -108,7 +111,7 @@ TEST(t_003_utf8_encoded_iterator, iteratord) {
 
 TEST(t_003_utf8_encoded_iterator, iteratore) {
   const string foo("Ol\xC3\x81!");
-  utf8_const_iterator<string::const_iterator> it(foo.begin());
+  utf8_const_iterator<string::const_iterator> it(foo.cbegin());
   ASSERT_EQ(*it, 'O');
 }
 

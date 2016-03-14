@@ -55,7 +55,15 @@ namespace u5e {
     inline iterator end() {
       return iterator(raw_buffer.end());
     }
+
+    inline const_iterator cbegin() {
+      return const_iterator(raw_buffer.cbegin());
+    }
     
+    inline const_iterator cend() {
+      return const_iterator(raw_buffer.cend());
+    }
+
   private:
     // raw buffer as specified by the storage type
     BUFFERTYPE raw_buffer;

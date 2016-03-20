@@ -1,47 +1,46 @@
-#include <u5e/utf8.hpp>
-#include <u5e/utf8_iterator.hpp>
-#include <u5e/codepoint.hpp>
-
 #include "gtest/gtest.h"
 #include <experimental/string_view>
 #include <string.h>
+#include <u5e/utf8_string.hpp>
+#include <u5e/utf8_string_view.hpp>
 
+using std::string;
+using std::experimental::string_view;
 using u5e::codepoint;
-using u5e::utf8;
+using u5e::utf8_string;
+using u5e::utf8_string_view;
 using u5e::utf8_iterator;
 using u5e::utf8_const_iterator;
-using std::experimental::string_view;
-using std::string;
 
 TEST(t_003_utf8_encoded_iterator, constructor1a) {
   string_view str("Ol\xC3\x81!");
-  utf8<string_view> e(str);
+  utf8_string_view e(str);
 }
 
 TEST(t_003_utf8_encoded_iterator, constructor1b) {
   string str("Ol\xC3\x81!");
-  utf8<string> e(str);
+  utf8_string e(str);
 }
 
 TEST(t_003_utf8_encoded_iterator, constructor2a) {
   string_view str("Ol\xC3\x81!");
-  utf8<string_view> e1(str);
-  utf8<string_view> e2(e1);
+  utf8_string_view e1(str);
+  utf8_string_view e2(e1);
 }
 
 TEST(t_003_utf8_encoded_iterator, constructor2b) {
   string str("Ol\xC3\x81!");
-  utf8<string> e1(str);
-  utf8<string> e2(e1);
+  utf8_string e1(str);
+  utf8_string e2(e1);
 }
 
 TEST(t_003_utf8_encoded_iterator, constructor2c) {
-  utf8<string> str("Ol\xC3\x81!");
+  utf8_string str("Ol\xC3\x81!");
 }
 
 TEST(t_003_utf8_encoded_iterator, iteratora) {
   string_view str("Ol\xC3\x81!");
-  utf8<string_view>::const_iterator it = str.cbegin();
+  utf8_string_view::const_iterator it = str.cbegin();
   ASSERT_EQ(*it, 'O');
   it++;
   ASSERT_EQ(*it, 'l');
@@ -55,7 +54,7 @@ TEST(t_003_utf8_encoded_iterator, iteratora) {
 
 TEST(t_003_utf8_encoded_iterator, iteratorb) {
   string str("Ol\xC3\x81!");
-  utf8<string>::const_iterator it = str.cbegin();
+  utf8_string::const_iterator it = str.cbegin();
   ASSERT_EQ(*it, 'O');
   it++;
   ASSERT_EQ(*it, 'l');
@@ -117,8 +116,8 @@ TEST(t_003_utf8_encoded_iterator, iteratore) {
 }
 
 TEST(t_003_utf8_encoded_iterator, iteratorf) {
-  utf8<const string> foo("Ol\xC3\x81!");
-  utf8<const string>::const_iterator it(foo.cbegin());
+  utf8_string foo("Ol\xC3\x81!");
+  utf8_string::const_iterator it(foo.cbegin());
   ASSERT_EQ(*it, 'O');
 }
 

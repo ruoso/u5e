@@ -1,7 +1,7 @@
 #ifndef INCLUDED_U5E_CODEPOINT_HPP
 #define INCLUDED_U5E_CODEPOINT_HPP
 
-#include <inttypes.h>
+#include <u5e/codepoint_traits.hpp>
 
 namespace u5e {
   /**
@@ -13,15 +13,15 @@ namespace u5e {
    */
   class codepoint {
   public:
-    int value;
+    codepoint_traits::int_type value;
     constexpr codepoint() : value(0) { };
     constexpr codepoint(int32_t v) : value(v) { };
     constexpr codepoint(const codepoint&) = default;
     constexpr codepoint(codepoint&&) = default;
   };
   constexpr bool operator==(const codepoint& a, const codepoint& b) { return a.value == b.value; };
-  constexpr bool operator==(const int a, const codepoint& b) { return a == b.value; };
-  constexpr bool operator==(const codepoint& a, const int b) { return a.value == b; };
+  constexpr bool operator==(const codepoint_traits::int_type a, const codepoint& b) { return a == b.value; };
+  constexpr bool operator==(const codepoint& a, const codepoint_traits::int_type b) { return a.value == b; };
 }
 
 #endif

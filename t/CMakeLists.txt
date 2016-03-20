@@ -2,6 +2,7 @@ foreach(TEST
     001_version
     002_utf32_encoded_iterator
     003_utf8_encoded_iterator
+    004_encoded_stream
     )
   add_executable(${TEST}.t ${TEST}.t.cpp)
   target_compile_options(${TEST}.t PUBLIC -std=c++1y)

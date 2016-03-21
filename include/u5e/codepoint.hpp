@@ -14,10 +14,10 @@ namespace u5e {
   class codepoint {
   public:
     codepoint_traits::int_type value;
-    constexpr codepoint() : value(0) { };
-    constexpr codepoint(int32_t v) : value(v) { };
-    constexpr codepoint(const codepoint&) = default;
-    constexpr codepoint(codepoint&&) = default;
+    codepoint() : value(0) { };
+    codepoint(int32_t v) : value(v) { };
+    codepoint(const codepoint& x) = default;
+    codepoint& operator=(const codepoint& x) = default;
   };
   constexpr bool operator==(const codepoint& a, const codepoint& b) { return a.value == b.value; };
   constexpr bool operator==(const codepoint_traits::int_type a, const codepoint& b) { return a == b.value; };

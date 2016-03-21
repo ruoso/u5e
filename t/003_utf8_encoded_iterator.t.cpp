@@ -1,6 +1,8 @@
 #include "gtest/gtest.h"
 #include <experimental/string_view>
 #include <string.h>
+
+#include <u5e/utf8_iterator.hpp>
 #include <u5e/utf8_string.hpp>
 #include <u5e/utf8_string_view.hpp>
 

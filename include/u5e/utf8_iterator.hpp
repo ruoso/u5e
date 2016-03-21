@@ -3,6 +3,7 @@
 
 #include <cmath>
 #include <iterator>
+#include <u5e/utf8_utils.hpp>
 #include <u5e/codepoint.hpp>
 #include <u5e/iterator_assertion.hpp>
 
@@ -32,7 +33,7 @@ namespace u5e {
       : raw_iterator_(raw_iterator) { };
 
     inline void forward_one_codepoint() {
-      difference_type size = codepoint_size(*raw_iterator_);
+      difference_type size = utf8_utils::codepoint_size(*raw_iterator_);
       raw_iterator_ += size;
     }
     
@@ -57,12 +58,6 @@ namespace u5e {
       }
     }
 
-    static inline int codepoint_size(const char first_octet) {
-      // count leading zeros on bitwise negated first octet.  for
-      // single-octet codepoints, this would return 0, so we do
-      // std::max for 1 for those cases.
-      return std::max(__builtin_clz(~(first_octet << 24)),1);
-    }
     
     const codepoint current_codepoint() {
       char first_octet = *raw_iterator_;
@@ -73,7 +68,7 @@ namespace u5e {
           first_octet = *raw_iterator_;
         }
         WRAPPEDITERATOR copy_ = raw_iterator_;
-        difference_type size = codepoint_size(first_octet);
+        difference_type size = utf8_utils::codepoint_size(first_octet);
         unsigned char mask_first_octet = ~(0xFF<<(7-size));
         int value = (first_octet & mask_first_octet);
         while (--size) {

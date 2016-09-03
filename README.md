@@ -52,12 +52,12 @@ derived from the misconceptions on how to iterate over text and how to
 count and measure it. This libray defines and uses the following
 units:
 
-1. encoded size: This measure the size of the text in its in-memory
+1. native size: This measure the size of the text in its in-memory
    representation. It is not necessarily a number of bytes, but it's
    rather a variable size depending on the encoding and on the
    architecture where the code is running: for instance, UTF8 always
    uses octets as the encoding unit, however UTF32 may either use a 32
-   bit int, if the endianess is the same, o it may still be forced to
+   bit int, if the endianess is the same, or it may still be forced to
    use octets if it's the wrong endianess. The size in bytes is an
    implementation detail that is architecture-specific and can be
    measured using operators like sizeof().

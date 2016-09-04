@@ -4,12 +4,6 @@
 
 ### Basic template classes
 
-#### u5e::basic_encodedstreambuf 
-
-Represents a streambuf in a particular encoding. It allows consistently reading and writing codepoints with a coherent API while preserving type-safety over the access to an underlying streambuf.
-
-The undelying streambuf operates in the "native size", while the basic_encodedstreambuf introduces the "size in codepoints", which is consistent independent of which encoding is used.
-
 #### u5e::basic_encodedstring_view
 
 Represents a string_view in a particular encoding, it offers iterator access that operates consistently by traversing and writing codepoints.
@@ -24,7 +18,7 @@ The underlying string-like object operates in the "native size"
 
 ### Pre-provided instantiations
 
-#### u5e::utf8_string, u5e::utf8_stringbuf, u5e::utf8_string_view
+#### u5e::utf8_string, u5e::utf8_string_view
 
 UTF8-specific instantiations of the basic template classes.
 

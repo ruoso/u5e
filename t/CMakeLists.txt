@@ -2,7 +2,6 @@ foreach(TEST
     001_version
     002_utf32_encoded_iterator
     003_utf8_encoded_iterator
-    004_encoded_stream
     005_grapheme_cluster
     )
   add_executable(${TEST}.t ${TEST}.t.cpp)

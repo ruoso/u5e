@@ -58,3 +58,8 @@ Static assertions for consistency regarding underlying storage and the encoding 
 
 The basic_grapheme class represents the view over an underlying basic_encodedstring_view class. It exists just for the purposes of creating a richer type definition for the purposes of overriding. It references the begin and end of a grapheme cluster within an underlying type.
 
+### Pre-provided instantiations
+
+#### u5e::utf8_string_grapheme, u5e::utf8_string_view_grapheme
+
+Basic utf8 instantiations over utf8_string and utf8_string_view.

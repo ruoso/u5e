@@ -18,6 +18,7 @@ namespace u5e {
     codepoint(int32_t v) : value(v) { };
     codepoint(const codepoint& x) = default;
     codepoint& operator=(const codepoint& x) = default;
+    codepoint& operator=(int c) { value = c; };
     operator int() const { return value; };
   };
   constexpr bool operator==(const codepoint& a, const codepoint& b) { return a.value == b.value; };

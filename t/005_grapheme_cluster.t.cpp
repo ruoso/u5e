@@ -40,7 +40,7 @@ TEST(t_005_utf8_string_grapheme, constructor_1) {
   ASSERT_TRUE(gi == g_end);
 }
 
-TEST(t_005_utf8_string_view_grapheme, constructor_1) {
+TEST(t_005_utf8_string_view_grapheme, constructor_2) {
   // this is a decomposed grapheme
   utf8_string_view str("Ola\xCC\x81!");
   utf8_string_view::const_iterator i = str.cbegin();

@@ -48,5 +48,13 @@ Describes the codepoint as an independent type
 
 #### u5e::encoding_assertion
 
-Static assertions for consistency regarding underlying storage and the
-encoding in question.
+Static assertions for consistency regarding underlying storage and the encoding in question.
+
+## Grapheme Support
+
+### Basic Template Classes
+
+#### u5e::basic_grapheme
+
+The basic_grapheme class represents the view over an underlying basic_encodedstring_view class. It exists just for the purposes of creating a richer type definition for the purposes of overriding. It references the begin and end of a grapheme cluster within an underlying type.
+

@@ -103,7 +103,7 @@ TEST(t_003_utf8_encoded_iterator, iteratord) {
   ASSERT_EQ('l', *it);
   it++;
   *it = 0xC1;
-  ASSERT_EQ(0xC1, (*it).value);
+  ASSERT_EQ(0xC1, *it);
   it++;
   ASSERT_EQ((char)foo[3], (char)0x81);
   *it = '!';

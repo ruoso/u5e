@@ -34,7 +34,7 @@ TEST(t_005_utf8_string_grapheme, constructor_1) {
   ASSERT_EQ('a', c);
   gi++;
   c = *gi;
-  ASSERT_EQ(769, c.value);
+  ASSERT_EQ(769, c);
   gi++;
   ASSERT_TRUE(gi == cluster.codepoint_end());
   ASSERT_TRUE(gi == g_end);
@@ -59,7 +59,7 @@ TEST(t_005_utf8_string_view_grapheme, constructor_1) {
   ASSERT_EQ('a', c);
   gi++;
   c = *gi;
-  ASSERT_EQ(769, c.value);
+  ASSERT_EQ(769, c);
   gi++;
   ASSERT_TRUE(gi == cluster.codepoint_end());
   ASSERT_TRUE(gi == g_end);

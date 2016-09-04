@@ -85,6 +85,14 @@ units:
    in the unicode database that specifies if a given character is a
    sentence separator or not.
 
+## Handling of text requires intermediate buffers
+
+There is no sane way to handle text directly on streams, see [Streams versus Iterators](StreamVsIterators.md) for a longer discussion.
+
+## Number and Date format is outside of the scope
+
+The coupling of number and date format to streams is a major source of ambiguity in the standard library, see [Streams versus Format](StreamVsFormat.md) for a longer discussion.
+
 # The different aspects of Text
 
 In order to allow maximum reusability of the code, each aspect of the

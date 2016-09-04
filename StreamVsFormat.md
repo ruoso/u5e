@@ -8,7 +8,7 @@ When working in an internationalized application, it is crucial that the moments
 
 ## Streams can't quite deal with text anyway.
 
-See [Streams vs Iterators](StramVsIterators.md) for a long explanation on why streams are the wrong tools to deal with text.
+See [Streams vs Iterators](StreamVsIterators.md) for a long explanation on why streams are the wrong tools to deal with text.
 
 ## Number and Date format must be decoupled from the stream
 

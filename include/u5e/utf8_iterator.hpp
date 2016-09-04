@@ -34,7 +34,7 @@ namespace u5e {
 
     inline void forward_one_codepoint() {
       difference_type size = utf8_utils::codepoint_size(*raw_iterator_);
-      raw_iterator_ += size;
+      std::advance(raw_iterator_, size);
     }
     
     inline bool rewind_to_start_of_codepoint(const char current_octet) {

@@ -33,6 +33,8 @@ namespace u5e {
     /**
      * Simple constructor
      */
+    basic_grapheme() {};
+    
     basic_grapheme(const_codepoint_iterator b,
 			   const_codepoint_iterator e)
       :d_begin(b), d_end(e) {};

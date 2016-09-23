@@ -3,6 +3,7 @@ foreach(TEST
     002_utf32_encoded_iterator
     003_utf8_encoded_iterator
     005_grapheme_cluster
+    006_grapheme_iterator
     )
   add_executable(${TEST}.t ${TEST}.t.cpp)
   target_compile_options(${TEST}.t PUBLIC -std=c++1y)

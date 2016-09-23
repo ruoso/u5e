@@ -6,7 +6,7 @@
 namespace u5e {
   namespace props {
     class grapheme_cluster_break {
-      enum value {
+      enum prop_value_type {
 	OTHER,
 	PREPEND,
 	CR,
@@ -14,7 +14,7 @@ namespace u5e {
 	CONTROL,
 	EXTEND,
 	REGIONAL_INDICATOR,
-	SPACING_MARK,
+	SPACINGMARK,
 	L,
 	V,
 	T,
@@ -26,13 +26,19 @@ namespace u5e {
 	GLUE_AFTER_ZWJ,
 	E_BASE_GAZ,
       };
-      static constexpr value resolve(codepoint c) {
-	static constexpr ranges = {
-	  // this file is generated from the unicode database
-	  // grapheme_cluster_base is small enough that it makes sense
-	  // to just load it
-          #include "grapheme_cluster_break_data.hpp"
-	};
+      typedef struct range_data_st {
+	codepoint range_start;
+	codepoint range_end;
+	prop_value_type value;
+      } range_data;
+      static constexpr range_data ranges[] = {
+	// this file is generated from the unicode database
+	// grapheme_cluster_break is small enough that it makes sense
+	// to just load it
+        #include "grapheme_cluster_break_data.hpp"
+      };
+      static constexpr prop_value_type resolve(codepoint c) {
+	// 
       };
     };
   };

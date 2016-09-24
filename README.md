@@ -35,6 +35,9 @@ This library will not support converting to and from legacy encodings
 as well as operating on them. You are expected to perform the
 convertions at the borders of your application.
 
+Note that since the encoding is pluggable, it would be possible for a
+third-party to contribute support for native encodings.
+
 ## A note on dynamic encodings
 
 While it is technically possible to operate on text with a dynamically
@@ -68,6 +71,9 @@ endianess at the border of your application. I cannot see a rason to
 support any other encoding as the basis for operating on the text, any
 other encoding may be considered a serialization format to be
 converted to and from in the borders of your application.
+
+Note that since the encoding is pluggable, it would be possible for a
+third-party to contribute support for dynamic encodings.
 
 ## A note on endianess
 

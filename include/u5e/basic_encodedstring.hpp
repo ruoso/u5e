@@ -33,7 +33,6 @@ namespace u5e {
      */
     typedef u5e::codepoint_traits                       traits_type;
     typedef u5e::codepoint                              value_type;
-    typedef typename UnderlyingString::allocator_type   allocator_type;
     typedef u5e::codepoint_traits::pos_type             size_type;
     typedef u5e::codepoint_traits::off_type             difference_type;
     typedef value_type&                                 reference;

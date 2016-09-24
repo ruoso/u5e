@@ -31,15 +31,6 @@ APIs or explicit conversions.
 
 # Some important conversations
 
-## A note on legacy encodings
-
-This library will not support converting to and from legacy encodings
-as well as operating on them. You are expected to perform the
-convertions at the borders of your application.
-
-Note that since the encoding is pluggable, it would be possible for a
-third-party to contribute support for native encodings.
-
 ## A note on dynamic encodings
 
 While it is technically possible to operate on text with a dynamically
@@ -91,6 +82,38 @@ either be the BE or the LE variants depending on the machine that runs
 it. Whenever you are using the UTF16NE and UTF32NE types, you are
 expected to appropriately convert the incoming texts to the correct
 native encoding on the borders of your application.
+
+## A note on legacy encodings
+
+This library will not support converting to and from legacy encodings
+as well as operating on them. You are expected to perform the
+convertions at the borders of your application.
+
+Note that since the encoding is pluggable, it would be possible for a
+third-party to contribute support for native encodings.
+
+## A note on bound checks
+
+UTF8 and UTF16 introduce a new possible type of overflow and
+underflow. If you are trying to iterate forward, the first octet in
+UTF8 -- or the first 16bit in UTF16 -- may tell you to look for more
+characters than what fits in the rest of the buffer. Likewise, if
+you're iterating backwards, the first octet of your utf8 text -- or
+16bits in utf16 -- may tell you that you need to look further back,
+underflowing the buffer.
+
+There are two possible ways to handle this, the first is to make the
+bounds check pervasively in the code. This means that the entire API
+needs to be more complicated because every operation now needs to know
+where the string ends, not to mention that the additional checks will
+have a compounding runtime cost.
+
+The alternative, which is what this library implements, is to validate
+the strings in the borders of your application, whenever you receive a
+text from the outside, you need to check for correctness on the start
+and end of your text.
+
+This library will offer a utility function to verify the correctness of the string, and optionally forcing the replacement of the invalid utf8 and utf16 sequences by replacement characters.
 
 # This library will cover
 

@@ -69,6 +69,21 @@ support any other encoding as the basis for operating on the text, any
 other encoding may be considered a serialization format to be
 converted to and from in the borders of your application.
 
+## A note on endianess
+
+The unicode standard defines UTF16BE and UTF16LE, as well as UTF32BE
+and UTF32LE. The bare "UTF16" and "UTF32" encodings are actually
+runtime-defined according to Byte-Order-Marker (BOM), the default, in
+the absense of a BOM is Big-Endian, accorting to the standard -- utf8
+is always little endian, and BOM characters in utf8 are not relevant.
+
+This library introduces the terms UTF16NE and UTF32NE. Those are not
+encodings, but rather architecture-specific runtime types that will
+either be the BE or the LE variants depending on the machine that runs
+it. Whenever you are using the UTF16NE and UTF32NE types, you are
+expected to appropriately convert the incoming texts to the correct
+native encoding on the borders of your application.
+
 # This library will cover
 
 These are the problems that this library intends to solve:

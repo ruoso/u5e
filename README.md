@@ -29,6 +29,46 @@ this is an unecessary constraint, and one of the points of this
 library is to make the encoding pluggable without requiring different
 APIs or explicit conversions.
 
+## A note on legacy encodings
+
+This library will not support converting to and from legacy encodings
+as well as operating on them. You are expected to perform the
+convertions at the borders of your application.
+
+## A note on dynamic encodings
+
+While it is technically possible to operate on text with a dynamically
+assigned encoding, I honestly believe the use case for that is more
+academic than anything else.
+
+Your application should have one internal encoding and all text should
+be converted on the borders of the application to whatever makes the
+most sense for your application.
+
+For instance, if you're dealing with mostly 7-bit ASCII text with the
+ocasional exception (such as most latin languages), UTF8 is definitely
+the most efficient usage of memory, and will promote the best cache
+locality.
+
+If, on the other hand, the application is expected to deal with mostly
+non-latin text, UTF16 is believed to result in the smallest memory
+usage.
+
+But if you don't quite care about memory usage and you have a stronger
+requirement for being able to do more efficient random access on the
+text, UTF32 with native endianess will make the most sense.
+
+It is, of course, technically feasible to have encodings that make
+decisions at run time, but the cost of that runtime decision will be
+paid over and over in the life-cycle of that object.
+
+For that reason, it is much more intelligent to convert the text to
+one of UTF8, UTF16 with native endianess or UTF32 with native
+endianess at the border of your application. I cannot see a rason to
+support any other encoding as the basis for operating on the text, any
+other encoding may be considered a serialization format to be
+converted to and from in the borders of your application.
+
 # This library will cover
 
 These are the problems that this library intends to solve:

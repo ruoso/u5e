@@ -21,7 +21,8 @@ namespace u5e {
    *   string type. The idea is that the C++ string libraries operate
    *   on unencoded memory, while the u5e types offer a layer on top
    *   of that for the purposes of implementing unicode in a type-safe
-   *   way.
+   *   way. Note that this applies to any 'string-like' object, such
+   *   as string or string_view.
    */
   template <typename Encoding,
             typename UnderlyingString>

@@ -29,6 +29,8 @@ this is an unecessary constraint, and one of the points of this
 library is to make the encoding pluggable without requiring different
 APIs or explicit conversions.
 
+# Some important conversations
+
 ## A note on legacy encodings
 
 This library will not support converting to and from legacy encodings

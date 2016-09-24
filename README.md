@@ -29,6 +29,39 @@ this is an unecessary constraint, and one of the points of this
 library is to make the encoding pluggable without requiring different
 APIs or explicit conversions.
 
+# This library will cover
+
+These are the problems that this library intends to solve:
+
+ * Iterating and truncating on correct boundaries for:
+   * codepoints
+   * graphemes
+   * words
+   * sentences
+ * Normalization
+   * All standard normalization forms
+   * "Normalization Form Grapheme" (as used by the Perl 6 Rakudo project)
+ * Explicitly Localized and Explicitly Non-localized support for:
+   * Comparison
+   * Sorting
+   * Case Folding
+   * Search Folding (folded to 'base character')
+   * Tokenizing
+
+# This library will not cover
+
+These are the problems that are explicitly outside of the scope of
+this library. They can, and most likely should, be solved in libraries
+built on top of u5e.
+
+ * Rendering
+ * Font sizes
+ * Word wrapping
+ * Text presentation order (LTR vs RTL)
+ * Number and Date formatting and parsing
+ * Regular Expressions
+ * Streaming, specifically partial reads and writes
+
 # What are the guiding principles?
 
 ## Reuse as much of the STL as possible

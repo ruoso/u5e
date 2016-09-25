@@ -85,7 +85,7 @@ TEST(t_006_utf8_string_grapheme_iterator, utf32ne) {
   // this is a decomposed grapheme
   utf32ne_string str({ 'O', 'l', 'a', 769, '!' });
 
-  // now we get a grapheme iterator from the utf8 iterator
+  // now we get a grapheme iterator from the utf32ne iterator
   utf32ne_string_grapheme_iterator gi(str.cbegin(), str.cend());
 
   // the current grapheme

@@ -113,7 +113,9 @@ the strings in the borders of your application, whenever you receive a
 text from the outside, you need to check for correctness on the start
 and end of your text.
 
-This library will offer a utility function to verify the correctness of the string, and optionally forcing the replacement of the invalid utf8 and utf16 sequences by replacement characters.
+This library will offer a utility function to verify the correctness
+of the string, and optionally forcing the replacement of the invalid
+utf8 and utf16 sequences by replacement characters.
 
 # This library will cover
 

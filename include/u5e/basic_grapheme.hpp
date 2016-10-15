@@ -7,13 +7,16 @@ namespace u5e {
    *
    * Represents a single grapheme cluster. It works by holding start
    * and end values for an underlying encodedstring_view-like object.
+   *
+   * \tparam UnderlyingEncodedStringView a basic_encodedstring
+   *    instantiation.
    */
   template <typename UnderlyingEncodedStringView>
   class basic_grapheme {
   public:
     /**
-     * codepoint_iterator allows you to traverse the codepoints inside
-     * this grapheme.
+     * const_codepoint_iterator allows you to traverse the codepoints
+     * inside this grapheme.
      */
     typedef typename UnderlyingEncodedStringView::const_iterator
     const_codepoint_iterator;
@@ -31,12 +34,16 @@ namespace u5e {
 
   public:
     /**
-     * Simple constructor
+     * Default constructor is only valid if the underlying type allows it
      */
     basic_grapheme() {};
-    
+
+    /**
+     * Construct it with the iterators representing the begin and the
+     * end of the grapheme.
+     */
     basic_grapheme(const_codepoint_iterator b,
-			   const_codepoint_iterator e)
+		   const_codepoint_iterator e)
       :d_begin(b), d_end(e) {};
 
     /**

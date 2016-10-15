@@ -5,6 +5,10 @@
 #include <u5e/iterator_assertion.hpp>
 
 namespace u5e {
+  /**
+   * Assertion that the encoding can be used with the specific
+   * underlying string type.
+   */
   template <typename BUFFERTYPE, typename T>
   class encoding_assertion {
     iterator_assertion<typename BUFFERTYPE::iterator, T>

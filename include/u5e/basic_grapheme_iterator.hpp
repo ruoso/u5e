@@ -1,5 +1,5 @@
-#ifndef INCLUDED_U5E_GRAPHEME_ITERATOR
-#define INCLUDED_U5E_GRAPHEME_ITERATOR
+#ifndef INCLUDED_U5E_BASIC_GRAPHEME_ITERATOR
+#define INCLUDED_U5E_BASIC_GRAPHEME_ITERATOR
 
 #include <u5e/basic_grapheme.hpp>
 #include <u5e/props/grapheme_cluster_break.hpp>
@@ -7,13 +7,19 @@
 namespace u5e {
 
   /**
-   * u5e::grapheme_iterator
+   * u5e::basic_grapheme_iterator
    *
    * This class offer an iterator that describes full graphemes.
+   *
+   * \tparam UnderlyingEncodedStringView the underlying encoded string
+   * type with an underlying native string-like type.
    */
   template <typename UnderlyingEncodedStringView>
-  class grapheme_iterator {
+  class basic_grapheme_iterator {
   public:
+    /**
+     * 
+     */
     typedef typename UnderlyingEncodedStringView::const_iterator
     const_codepoint_iterator;
 
@@ -117,27 +123,27 @@ namespace u5e {
     }
     
   public:
-    grapheme_iterator(const_codepoint_iterator b,
-		      const_codepoint_iterator e)
+    basic_grapheme_iterator(const_codepoint_iterator b,
+			    const_codepoint_iterator e)
       :begin_(b), end_(e), where_(b), end_of_grapheme_(b) {
       find_end_of_grapheme();
     };
 
-    grapheme_iterator(const_codepoint_iterator b,
-		      const_codepoint_iterator e,
-		      const_codepoint_iterator w)
+    basic_grapheme_iterator(const_codepoint_iterator b,
+			    const_codepoint_iterator e,
+			    const_codepoint_iterator w)
       :begin_(b), end_(e), where_(w), end_of_grapheme_(w) {
       find_end_of_grapheme();
     };
 
-    grapheme_iterator(const_codepoint_iterator b,
-		      const_codepoint_iterator e,
-		      const_codepoint_iterator w,
-		      const_codepoint_iterator we)
+    basic_grapheme_iterator(const_codepoint_iterator b,
+			    const_codepoint_iterator e,
+			    const_codepoint_iterator w,
+			    const_codepoint_iterator we)
       :begin_(b), end_(e), where_(w), end_of_grapheme_(we) {
     };
 
-    grapheme_iterator(const grapheme_iterator& copy)
+    basic_grapheme_iterator(const basic_grapheme_iterator& copy)
       :begin_(copy.begin_), end_(copy.end_),
        where_(copy.where_), end_of_grapheme_(copy.end_of_grapheme_) {}
     
@@ -145,14 +151,14 @@ namespace u5e {
       return grapheme(where_, end_of_grapheme_);
     }
 
-    grapheme_iterator operator++() {
+    basic_grapheme_iterator operator++() {
       where_ = end_of_grapheme_;
       find_end_of_grapheme();
       return *this;
     }
 
-    grapheme_iterator operator++(int i) {
-      grapheme_iterator copy(*this);
+    basic_grapheme_iterator operator++(int i) {
+      basic_grapheme_iterator copy(*this);
       ++(*this);
       return copy;
     }

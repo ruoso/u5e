@@ -3,10 +3,10 @@
 
 namespace u5e {
   /**
-   * u5e::basic_grapheme
+   * \brief Represents a single grapheme cluster
    *
-   * Represents a single grapheme cluster. It works by holding start
-   * and end values for an underlying encodedstring_view-like object.
+   * It works by holding start and end values for an underlying
+   * encodedstring_view-like object.
    *
    * \tparam UnderlyingEncodedStringView a basic_encodedstring
    *    instantiation.

@@ -1,6 +1,8 @@
 #ifndef INCLUDED_U5E_ITERATOR_ASSERTION
 #define INCLUDED_U5E_ITERATOR_ASSERTION
 
+#include <iterator>
+
 namespace u5e {
   /**
    * asserts that the iterator is consistently defined

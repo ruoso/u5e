@@ -7,6 +7,8 @@
 
 namespace u5e {
   /**
+   * \class u5e::utf8_string
+   *
    * utf8_string is an encoded string over std::string
    */
   typedef basic_encodedstring<utf8, std::string> utf8_string;

@@ -10,7 +10,7 @@ int main(int argc, char **argv) {
     string_view p(argv[i], strlen(argv[i]));
     u5e::utf8_string_view::const_iterator it = p.begin();
     while (it != p.end()) {
-      printf(" U+%06llx ", *it++);
+      printf(" U+%06llx ", (long long unsigned int)*it++);
     }
     printf("\n");
   }

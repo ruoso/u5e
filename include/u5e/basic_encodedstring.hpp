@@ -1,6 +1,7 @@
 #ifndef INCLUDED_U5E_BASIC_ENCODEDSTRING
 #define INCLUDED_U5E_BASIC_ENCODEDSTRING
 
+#include <iterator>
 #include <u5e/codepoint.hpp>
 #include <u5e/codepoint_traits.hpp>
 

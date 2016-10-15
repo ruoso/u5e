@@ -41,7 +41,7 @@ namespace u5e {
     /**
      * Assignment operator from an int.
      */
-    constexpr codepoint& operator=(int c) { value = c; };
+    constexpr codepoint& operator=(int c) { value = c; return *this; };
 
     /**
      * Override int operator to return the codepoint value.

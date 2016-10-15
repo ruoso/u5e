@@ -2,6 +2,9 @@
 #define INCLUDED_U5E_ITERATOR_ASSERTION
 
 namespace u5e {
+  /**
+   * asserts that the iterator is consistently defined
+   */
   template <typename WRAPPED, typename T>
   class iterator_assertion {
     typedef typename std::iterator_traits<WRAPPED>::value_type VT;

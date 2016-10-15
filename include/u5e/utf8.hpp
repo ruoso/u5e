@@ -6,7 +6,6 @@
 #include <type_traits>
 #include <u5e/codepoint.hpp>
 #include <u5e/encoding_assertion.hpp>
-#include <u5e/utf8_utils.hpp>
 #include <u5e/utf8_iterator.hpp>
 
 
@@ -14,9 +13,9 @@ namespace u5e {
   /**
    * u5e::utf8
    *
-   * Handles utf8 encoded data
+   * Encoding type for UTF8 text. Unlike UTF16 and UTF32, UTF8 is
+   * endian independent.
    */
-    
   class utf8 {
   public:
     template <typename UnderlyingString>

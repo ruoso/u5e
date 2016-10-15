@@ -5,6 +5,10 @@
 #include <u5e/basic_grapheme_iterator.hpp>
 
 namespace u5e {
+  /**
+   * utf32ne_string_grapheme_iterator is a grapheme iterator over the
+   * utf32ne_string type.
+   */
   typedef basic_grapheme_iterator<utf32ne_string>
   utf32ne_string_grapheme_iterator;
 };

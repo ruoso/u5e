@@ -5,6 +5,9 @@
 #include <u5e/utf32ne_string_view.hpp>
 
 namespace u5e {
+  /**
+   * utf32ne_string_view_grapheme is a grapheme over a utf32ne_string_view
+   */
   typedef basic_grapheme<utf32ne_string_view> utf32ne_string_view_grapheme;
 };
 

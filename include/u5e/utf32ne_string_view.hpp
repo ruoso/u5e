@@ -6,6 +6,9 @@
 #include <u5e/utf32ne.hpp>
 
 namespace u5e {
+  /**
+   * utf32ne_string_view is a encoded string over a basic_string_view<int>
+   */
   typedef basic_encodedstring<u5e::utf32ne,
 			      std::experimental::basic_string_view<int>>
   utf32ne_string_view;

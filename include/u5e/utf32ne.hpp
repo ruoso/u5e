@@ -9,10 +9,13 @@ namespace u5e {
   /**
    * u5e::utf32ne
    *
-   * The native utf32 encoding is built with the native 32 bit
-   * integer type. It is specially more useful for cases where
-   * you need to do extensive manipulation on text, since it
-   * allows you to have constant random access time.
+   * utf32ne is not an encoding. It is a type that should be used to
+   * interface with either UTF32BE or with UTF32LE depending on what
+   * the native endianess is.
+   *
+   * Because utf32 with the native endianess can be used natively,
+   * there's no special logic and everything is delegated to the
+   * underlying types.
    */
   class utf32ne {
   public:

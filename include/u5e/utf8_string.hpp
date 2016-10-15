@@ -6,6 +6,9 @@
 #include <u5e/utf8.hpp>
 
 namespace u5e {
+  /**
+   * utf8_string is an encoded string over std::string
+   */
   typedef basic_encodedstring<utf8, std::string> utf8_string;
 };
 

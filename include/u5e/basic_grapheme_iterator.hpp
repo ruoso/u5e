@@ -18,7 +18,7 @@ namespace u5e {
   class basic_grapheme_iterator {
   public:
     /**
-     * 
+     * The type of the underlying encoded iterator
      */
     typedef typename UnderlyingEncodedStringView::const_iterator
     const_codepoint_iterator;
@@ -29,15 +29,30 @@ namespace u5e {
     typedef basic_grapheme<UnderlyingEncodedStringView> grapheme;
     
   protected:
-    // we need begin_ and end_ for bounds check
+    //@{
+    /**
+     * The begin and end iterators for the whole text are necessary for
+     * bounds check, since the size of graphemes cannot be predicted.
+     */
     const_codepoint_iterator begin_;
     const_codepoint_iterator end_;
-    // where we actually are...
+    //@}
+    //@{
+    /**
+     * This par of iterators point to where we are now and where the end
+     * of the current grapheme is.
+     */
     const_codepoint_iterator where_;
     const_codepoint_iterator end_of_grapheme_;
+    //@}
 
   private:
     typedef props::grapheme_cluster_break::prop_value_type g_c_b_vt;
+
+    /**
+     * Use the data from the unicode database to find the end of the
+     * current grapheme.
+     */
     void find_end_of_grapheme() {
       // GB2
       if (end_of_grapheme_ == end_)
@@ -123,12 +138,18 @@ namespace u5e {
     }
     
   public:
+    /**
+     * \brief start at the beginning of the text
+     */
     basic_grapheme_iterator(const_codepoint_iterator b,
 			    const_codepoint_iterator e)
       :begin_(b), end_(e), where_(b), end_of_grapheme_(b) {
       find_end_of_grapheme();
     };
 
+    /**
+     * \brief start at a specific point
+     */
     basic_grapheme_iterator(const_codepoint_iterator b,
 			    const_codepoint_iterator e,
 			    const_codepoint_iterator w)
@@ -136,6 +157,9 @@ namespace u5e {
       find_end_of_grapheme();
     };
 
+    /**
+     * \brief start at a specific point, precalculated end of grapheme
+     */
     basic_grapheme_iterator(const_codepoint_iterator b,
 			    const_codepoint_iterator e,
 			    const_codepoint_iterator w,
@@ -143,14 +167,24 @@ namespace u5e {
       :begin_(b), end_(e), where_(w), end_of_grapheme_(we) {
     };
 
+    /**
+     * \brief copy constructor
+     */
     basic_grapheme_iterator(const basic_grapheme_iterator& copy)
       :begin_(copy.begin_), end_(copy.end_),
        where_(copy.where_), end_of_grapheme_(copy.end_of_grapheme_) {}
     
+    /**
+     * dereference to a grapheme object
+     */
     grapheme operator*() {
       return grapheme(where_, end_of_grapheme_);
     }
 
+    //@{
+    /**
+     * advance one grapheme
+     */
     basic_grapheme_iterator operator++() {
       where_ = end_of_grapheme_;
       find_end_of_grapheme();
@@ -162,7 +196,11 @@ namespace u5e {
       ++(*this);
       return copy;
     }
+    //@}
 
+    /**
+     * delegate the comparison to the underlying iterator
+     */
     bool operator==(const_codepoint_iterator other) {
       return where_ == other;
     }

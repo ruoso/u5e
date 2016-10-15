@@ -5,6 +5,10 @@
 #include <u5e/basic_grapheme_iterator.hpp>
 
 namespace u5e {
+  /**
+   * utf8_string_grapheme_iterator is a grapheme iterator over a
+   * utf8_string.
+   */
   typedef basic_grapheme_iterator<utf8_string>
   utf8_string_grapheme_iterator;
 };

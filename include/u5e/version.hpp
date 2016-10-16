@@ -1,6 +1,9 @@
 #ifndef U5E_VERSION
 #define U5E_VERSION
 
+/**
+ * \brief main u5e namespace
+ */
 namespace u5e {
   /**
    * \brief introspection over the vesion of the library

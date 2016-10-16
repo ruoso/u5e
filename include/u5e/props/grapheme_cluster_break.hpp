@@ -5,6 +5,9 @@
 #include <u5e/codepoint.hpp>
 
 namespace u5e {
+  /**
+   * \brief codepoint property handling
+   */
   namespace props {
     /**
      * \brief Grapheme Cluster Break property for a codepoint

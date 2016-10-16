@@ -7,23 +7,34 @@ namespace u5e {
    * both at compile time and at runtime.
    */
   namespace version {
-    //@{
     /**
-     * Compile-time version definition
+     * \brief namespace with compile-time-constant version declaration
      */
-    static const int major = 0;
-    static const int minor = 0;
-    static const int patch = 0;
-    //@}
-
-    //@{
+    namespace compile_time {
+      //@{
+      /**
+       * Compile-time version definition
+       */
+      constexpr int major = 0;
+      constexpr int minor = 0;
+      constexpr int patch = 0;
+      //@}
+    }
     /**
-     * Run-time introspection
+     * \brief introspection for run-time version declaration
+     * To test which version of the library are you linking against
      */
-    extern int lib_major;
-    extern int lib_minor;
-    extern int lib_patch;
-    //@}
+    class run_time {
+    public:
+      //@{
+      /**
+       * \brief Run-time introspection for library version
+       */
+      static const int major;
+      static const int minor;
+      static const int patch;
+      //@}
+    };
   }
 }
 

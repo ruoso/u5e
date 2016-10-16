@@ -1,9 +1,7 @@
 #include <u5e/version.hpp>
 
 namespace u5e {
-  namespace version {
-    int lib_major = 0;
-    int lib_minor = 0;
-    int lib_patch = 0;
-  }
+  const int version::run_time::major = 0;
+  const int version::run_time::minor = 0;
+  const int version::run_time::patch = 0;
 }

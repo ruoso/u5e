@@ -7,7 +7,7 @@
 
 namespace u5e {
   /**
-   * u5e::utf32ne
+   * \brief Architecture-specific type to interface UTF32BE or UTF32LE
    *
    * utf32ne is not an encoding. It is a type that should be used to
    * interface with either UTF32BE or with UTF32LE depending on what
@@ -19,11 +19,16 @@ namespace u5e {
    */
   class utf32ne {
   public:
+    //@{
+    /**
+     * Delegate to the underlying iterator
+     */
     template <typename UnderlyingString>
     using iterator = typename UnderlyingString::iterator;
 
     template <typename UnderlyingString>
     using const_iterator = typename UnderlyingString::const_iterator;
+    //@}
   };
 }
 

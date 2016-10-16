@@ -5,11 +5,11 @@
 
 namespace u5e {
   /**
-   * u5e::codepoint
+   * \brief Native representation of a codepoint
    *
-   * codepoint is an explicity class in order to hijack overloads,
-   * such that we only build codepoints out of known encodings and we
-   * only write to encodings out of known codepoints.
+   * Explicity class in order to hijack overloads, such that we only
+   * build codepoints out of known encodings and we only write to
+   * encodings out of known codepoints.
    */
   class codepoint {
   public:
@@ -56,8 +56,8 @@ namespace u5e {
 
   //@{
   /**
-   * Compare an into to a codepoint and, by comparing the codepoint's
-   * value with the integer.
+   * Compare an int to a codepoint by comparing the codepoint's value
+   * with the integer.
    */
   constexpr bool operator==(const codepoint_traits::int_type a, const codepoint& b) { return a == b.value; };
   constexpr bool operator==(const codepoint& a, const codepoint_traits::int_type b) { return a.value == b; };

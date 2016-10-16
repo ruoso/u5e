@@ -6,7 +6,8 @@
 
 namespace u5e {
   /**
-   * utf8_string_grapheme is a grapheme over a utf8_string
+   * \class u5e::utf8_string_grapheme
+   * \brief A basic_grapheme of utf8_string
    */
   typedef basic_grapheme<utf8_string> utf8_string_grapheme;
 };

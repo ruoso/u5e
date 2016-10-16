@@ -6,8 +6,14 @@
 
 namespace u5e {
   namespace props {
+    /**
+     * \brief Grapheme Cluster Break property for a codepoint
+     */
     class grapheme_cluster_break {
     public:
+      /**
+       * Possible values for the property as specified by the standard
+       */
       enum prop_value_type {
 	OTHER,
 	PREPEND,
@@ -28,6 +34,11 @@ namespace u5e {
 	GLUE_AFTER_ZWJ,
 	E_BASE_GAZ,
       };
+
+      /**
+       * Return the value of the property for the given codepoint by
+       * looking at the database.
+       */
       static prop_value_type resolve(codepoint c);
     };
   };

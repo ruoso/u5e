@@ -7,9 +7,7 @@
 namespace u5e {
 
   /**
-   * u5e::basic_grapheme_iterator
-   *
-   * This class offer an iterator that describes full graphemes.
+   * \brief Iterator that describes full graphemes.
    *
    * \tparam UnderlyingEncodedStringView the underlying encoded string
    * type with an underlying native string-like type.

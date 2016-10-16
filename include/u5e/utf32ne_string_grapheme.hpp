@@ -6,7 +6,9 @@
 
 namespace u5e {
   /**
-   * utf32ne_string_grapheme is a grapheme from a utf32ne_string
+   * \class u5e::utf32ne_string_grapheme
+   *
+   * \brief A basic_grapheme of utf32ne_string
    */
   typedef basic_grapheme<utf32ne_string> utf32ne_string_grapheme;
 };

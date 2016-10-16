@@ -7,7 +7,9 @@
 
 namespace u5e {
   /**
-   * utf32ne_string is an encoded string over std::basic_string<int>
+   * \class u5e::utf32ne_string
+   *
+   * \brief A basic_encodedstring of utf32ne and std::basic_string<int>
    */
   typedef basic_encodedstring<utf32ne,
                               std::basic_string<int>>

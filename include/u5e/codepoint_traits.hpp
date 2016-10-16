@@ -5,7 +5,7 @@
 
 namespace u5e {
   /**
-   * u5e::codepoint_traits
+   * \brief Type information for codepoint
    *
    * This class exists only to provide an interface similar to that of
    * the stream and string types. But it is not truly parameterizable,
@@ -13,9 +13,14 @@ namespace u5e {
    */
   class codepoint_traits {
   public:
+    //@{
+    /**
+     * Basic meta-description of a codepoint
+     */
     typedef int32_t    int_type;
     typedef uint32_t   pos_type;
     typedef int32_t    off_type;
+    //@}
   };
 }
 

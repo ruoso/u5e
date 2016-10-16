@@ -6,8 +6,9 @@
 
 namespace u5e {
   /**
-   * utf32ne_string_grapheme_iterator is a grapheme iterator over the
-   * utf32ne_string type.
+   * \class u5e::utf32ne_string_grapheme_iterator
+   *
+   * \brief A basic_grapheme_iterator of utf32ne_string
    */
   typedef basic_grapheme_iterator<utf32ne_string>
   utf32ne_string_grapheme_iterator;

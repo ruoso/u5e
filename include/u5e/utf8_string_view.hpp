@@ -8,9 +8,11 @@
 
 namespace u5e {
   /**
-   * utf8_string_view is a encoded string over a string_view.
+   * \class u5e::utf8_string_view
+   * \brief A basic_encodedstring of utf8 and string_view.
    */
-  typedef basic_encodedstring<utf8, std::experimental::string_view> utf8_string_view;
+  typedef basic_encodedstring<utf8, std::experimental::string_view>
+  utf8_string_view;
 };
 
 #endif

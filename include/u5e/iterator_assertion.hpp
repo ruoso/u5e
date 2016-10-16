@@ -5,7 +5,7 @@
 
 namespace u5e {
   /**
-   * asserts that the iterator is consistently defined
+   * \brief Asserts the iterator is consistently defined
    */
   template <typename WRAPPED, typename T>
   class iterator_assertion {

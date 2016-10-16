@@ -6,7 +6,9 @@
 
 namespace u5e {
   /**
-   * Assertion that the encoding can be used with the specific
+   * \brief Assert the encoding matches the underlying type
+   *
+   * Tests that the encoding can be used with the specific
    * underlying string type.
    */
   template <typename BUFFERTYPE, typename T>

@@ -8,10 +8,7 @@
 
 namespace u5e {
   /**
-   * u5e::utf8_iterator_base
-   * 
-   * Defines the basic inner workings of both the const and the non
-   * const iterators.
+   * \brief Defines the basic inner workings of utf8 iterator
    *
    * \tparam WRAPPEDITERATOR The underlying type to be iterated over.
    */
@@ -44,6 +41,9 @@ namespace u5e {
     inline utf8_iterator_base(const WRAPPEDITERATOR raw_iterator)
       : raw_iterator_(raw_iterator) { };
 
+    /**
+     * Find the codepoint size given the first utf8 octet
+     */
     inline int codepoint_size(const char first_octet) {
       // count leading zeros on bitwise negated first octet.  for
       // single-octet codepoints, this would return 0, so we do
@@ -112,22 +112,34 @@ namespace u5e {
   };
 
   /**
-   * utf8_const_iterator
-   *
-   * Offer a read-only iterator for utf8 encoded strings.
+   * \brief const iterator for utf8 encoded strings.
+   * \tparam WRAPPEDITERATOR The underlying type to be iterated over.
    */
   template <typename WRAPPEDITERATOR>
   class utf8_const_iterator
     : public utf8_iterator_base<WRAPPEDITERATOR> {
   public:
+    /**
+     * Offers itself as the pointer type
+     */
     typedef utf8_const_iterator pointer;
 
+    /**
+     * Create from the underlying iterator type
+     */
     inline utf8_const_iterator(const WRAPPEDITERATOR raw_iterator)
       : utf8_iterator_base<WRAPPEDITERATOR>(raw_iterator) { };
-    
+
+    /**
+     * Copy constructor
+     */
     inline utf8_const_iterator(const utf8_const_iterator& tocopy)
       : utf8_iterator_base<WRAPPEDITERATOR>(tocopy.raw_iterator_) { };
 
+    //@{
+    /**
+     * Advance the iterator
+     */
     inline utf8_const_iterator& operator++() {
       this->forward_one_codepoint();
       return *this;
@@ -138,7 +150,12 @@ namespace u5e {
       ++(*this);
       return copy;
     }
-    
+    //@}
+
+    //@{
+    /**
+     * Rewinds the iterator
+     */
     inline utf8_const_iterator& operator--() {
       this->rewind_one_codepoint();
       return *this;
@@ -149,7 +166,12 @@ namespace u5e {
       --(*this);
       return copy;
     }
+    //@}
 
+    //@{
+    /**
+     * Compare with another iterator
+     */
     inline bool operator==(const utf8_const_iterator& rhs) const {
       return this->raw_iterator_ == rhs.raw_iterator_;
     }
@@ -157,7 +179,11 @@ namespace u5e {
     inline bool operator!=(const utf8_const_iterator& rhs) const {
       return this->raw_iterator_ != rhs.raw_iterator_;
     }
+    //@}
 
+    /**
+     * Dereference the current codepoint out of the iterator
+     */
     inline const codepoint operator*() {
       return this->current_codepoint();
     }
@@ -165,25 +191,39 @@ namespace u5e {
   };
 
   /**
-   * utf8_iterator is a mutable iterator.
+   * \brief mutable utf8 iterator
    *
    * Note that if you set a value in the middle of a text, you will
    * likely make the string invalid. Most of the time you should only
    * consider appending to an iterator, never writing in the middle of
    * the text.
+   * \tparam WRAPPEDITERATOR The underlying type to be iterated over.
    */
   template <typename WRAPPEDITERATOR>
   class utf8_iterator
     : public utf8_iterator_base<WRAPPEDITERATOR> {
   public:
+    /**
+     * Offer itself as the pointer type
+     */
     typedef utf8_iterator pointer;
 
+    /**
+     * Construct fro the underlying iterator
+     */
     inline utf8_iterator(const WRAPPEDITERATOR raw_iterator)
       : utf8_iterator_base<WRAPPEDITERATOR>(raw_iterator) {};
-    
+
+    /**
+     * Copy constructor
+     */
     inline utf8_iterator(const utf8_iterator& tocopy)
       : utf8_iterator_base<WRAPPEDITERATOR>(tocopy.raw_iterator_) {};
 
+    //@{
+    /**
+     * Advance the iterator
+     */
     inline utf8_iterator& operator++() {
       this->forward_one_codepoint();
       return *this;
@@ -194,7 +234,12 @@ namespace u5e {
       ++(*this);
       return copy;
     }
-    
+    //@}
+
+    //@{
+    /**
+     * Rewind the iterator
+     */
     inline utf8_iterator& operator--() {
       this->rewind_one_codepoint();
       return *this;
@@ -205,7 +250,12 @@ namespace u5e {
       --(*this);
       return copy;
     }
+    //@}
 
+    //@{
+    /**
+     * Compare the iterator with another iterator
+     */
     inline bool operator==(const utf8_iterator& rhs) const {
       return this->raw_iterator_ == rhs.raw_iterator_;
     }
@@ -213,16 +263,39 @@ namespace u5e {
     inline bool operator!=(const utf8_iterator& rhs) const {
       return this->raw_iterator_ != rhs.raw_iterator_;
     }
+    //@}
 
+    /**
+     * \brief offers write access to the iterator at a given position
+     *
+     * This is necessary because operator= can only be done after
+     * operator* is executed, this wouldn't be necessary if there was
+     * a dedicated operator for 'assign to the dereference'.
+     */
     class proxyobject : public codepoint {
     private:
+      /**
+       * A proxy object refers to an iterator state
+       */
       utf8_iterator<WRAPPEDITERATOR>& ref;
     public:
+      
+      /**
+       * Create from the iterator
+       */
       proxyobject(utf8_iterator<WRAPPEDITERATOR>& refin)
         :ref(refin) {
         utf8_iterator<WRAPPEDITERATOR> copy = refin;
         value = copy.current_codepoint().value;
       };
+
+      /**
+       * Assign a codepoint to this position, writing as many octets
+       * as necessary. Note that if you do this in the middle of a
+       * string, there is a likely chance that you will render the
+       * remainder of the string invalid. So it's really only a good
+       * idea to do this as an "append" operation.
+       */
       proxyobject& operator=(const codepoint c) {
         int value = c.value; // operate on codepoint as integer
         int size = std::ceil((float)(32 - __builtin_clz(value)) / (float)6);
@@ -245,14 +318,15 @@ namespace u5e {
       }
     };
 
-    // non const version returns a proxy object
+    /**
+     * mutable utf8 iterator returns a proxy object in order to allow
+     * assignment to happen.
+     */
     inline proxyobject operator*() {
       return proxyobject(*this);
     }
-
+   
   };
- 
-
 };
 
 #endif

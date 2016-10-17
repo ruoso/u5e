@@ -7,6 +7,12 @@
 namespace u5e {
   /**
    * \class u5e::utf32ne_string_view_grapheme_iterator
+   * \brief Typedef: basic_grapheme_iterator of utf32ne_string_view
+   *
+   * Although this is a typedef, it shows up in doxygen as a class for
+   * better discoverability.
+   *
+   * \typedef u5e::utf32ne_string_view_grapheme_iterator
    * \brief A basic_grapheme_iterator of utf32ne_string_view
    */
   typedef basic_grapheme_iterator<utf32ne_string_view>

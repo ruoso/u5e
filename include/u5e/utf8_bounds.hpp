@@ -1,7 +1,7 @@
 #ifndef INCLUDED_U5E_UTF8_BOUNDS
 #define INCLUDED_U5E_UTF8_BOUNDS
 
-#include <algorithm>
+#include <u5e/iterator_assertion.hpp>
 
 namespace u5e {
   /**

@@ -8,6 +8,12 @@
 namespace u5e {
   /**
    * \class u5e::utf32ne_string_view
+   * \brief Typedef: basic_encodedstring of utf32ne and basic_string_view<int>
+   *
+   * Although this is a typedef, it shows up in doxygen as a class for
+   * better discoverability.
+   *
+   * \typedef u5e::utf32ne_string_view
    * \brief A basic_encodedstring of utf32ne and basic_string_view<int>
    */
   typedef basic_encodedstring<u5e::utf32ne,

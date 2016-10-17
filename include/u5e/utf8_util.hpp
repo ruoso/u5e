@@ -31,6 +31,17 @@ namespace u5e {
 	return false;
       }
     }
+
+    /**
+     * Check whether or not this is a first octet in a sequence
+     */
+    inline static bool is_codepoint_start(const char octet) {
+      if ((octet & 0b11000000) == 0b11000000) {
+	return true;
+      } else {
+	return false;
+      }
+    }
     
     /**
      * Find the codepoint size given the first utf8 octet
@@ -42,6 +53,13 @@ namespace u5e {
       return std::max(__builtin_clz(~(first_octet << 24)),1);
     }
 
+    /**
+     * How many octets will this codepoint take
+     */
+    inline static int encoded_size(int value) {
+      return std::ceil((float)(32 - __builtin_clz(value)) / (float)6);
+    }
+    
   };
 }
 

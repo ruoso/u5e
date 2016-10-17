@@ -57,14 +57,12 @@ namespace u5e {
     inline bool rewind_to_start_of_codepoint(const char current_octet) {
       // when we do '*it = codepoint', we will leave the iterator
       // halfway into the next character
-      if (__builtin_clz(~((current_octet)<<24)) == 1) {
-        while (utf8_util::is_codepoint_continuation(*raw_iterator_)) {
-	  raw_iterator_--;
-	}
-        return true;
-      } else {
-        return false;
+      bool ret = false;
+      while (utf8_util::is_codepoint_continuation(*raw_iterator_)) {
+	raw_iterator_--;
+	ret = true;
       }
+      return ret;
     }
 
     /**
@@ -290,7 +288,7 @@ namespace u5e {
        */
       proxyobject& operator=(const codepoint c) {
         int value = c.value; // operate on codepoint as integer
-        int size = std::ceil((float)(32 - __builtin_clz(value)) / (float)6);
+        int size = utf8_util::encoded_size(value);
         if (size <= 1) {
           *(ref.raw_iterator_) = (value & 0xFF);
         } else {

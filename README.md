@@ -1,6 +1,6 @@
 # u5e
 
-Unicode Text C++ library
+Unicode Text C++ library -- fork me on github: https://github.com/ruoso/u5e
 
 # What is this library?
 

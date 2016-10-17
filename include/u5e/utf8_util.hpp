@@ -1,6 +1,7 @@
 #ifndef INCLUDED_U5E_UTF8_UTIL
 #define INCLUDED_U5E_UTF8_UTIL
 
+#include <cmath>
 #include <algorithm>
 
 namespace u5e {

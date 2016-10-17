@@ -5,6 +5,7 @@
 #include <iterator>
 #include <u5e/codepoint.hpp>
 #include <u5e/iterator_assertion.hpp>
+#include <u5e/utf8_util.hpp>
 
 namespace u5e {
   /**
@@ -42,20 +43,10 @@ namespace u5e {
       : raw_iterator_(raw_iterator) { };
 
     /**
-     * Find the codepoint size given the first utf8 octet
-     */
-    inline int codepoint_size(const char first_octet) {
-      // count leading zeros on bitwise negated first octet.  for
-      // single-octet codepoints, this would return 0, so we do
-      // std::max for 1 for those cases.
-      return std::max(__builtin_clz(~(first_octet << 24)),1);
-    }
-
-    /**
      * Advance the iterator to the next codepoint
      */
     inline void forward_one_codepoint() {
-      difference_type size = codepoint_size(*raw_iterator_);
+      difference_type size = utf8_util::codepoint_size(*raw_iterator_);
       std::advance(raw_iterator_, size);
     }
     
@@ -67,9 +58,9 @@ namespace u5e {
       // when we do '*it = codepoint', we will leave the iterator
       // halfway into the next character
       if (__builtin_clz(~((current_octet)<<24)) == 1) {
-        while ((*(raw_iterator_) & 0b11000000) == 0b10000000) {
-          raw_iterator_--;
-        }
+        while (utf8_util::is_codepoint_continuation(*raw_iterator_)) {
+	  raw_iterator_--;
+	}
         return true;
       } else {
         return false;
@@ -82,7 +73,7 @@ namespace u5e {
     inline void rewind_one_codepoint() {
       rewind_to_start_of_codepoint(*raw_iterator_);
       raw_iterator_--;
-      while ((*(raw_iterator_) & 0b11000000) == 0b10000000) {
+      while (utf8_util::is_codepoint_continuation(*raw_iterator_)) {
         raw_iterator_--;
       }
     }
@@ -92,14 +83,15 @@ namespace u5e {
      */
     const codepoint current_codepoint() {
       char first_octet = *raw_iterator_;
-      if ((first_octet & 0b10000000) == 0) {
+      if (utf8_util::is_7bit_character(first_octet)) {
         return first_octet;
       } else {
         if (rewind_to_start_of_codepoint(first_octet)) {
           first_octet = *raw_iterator_;
         }
         WRAPPEDITERATOR copy_ = raw_iterator_;
-        difference_type size = codepoint_size(first_octet);
+        difference_type size =
+	  utf8_util::codepoint_size(first_octet);
         unsigned char mask_first_octet = ~(0xFF<<(7-size));
         int value = (first_octet & mask_first_octet);
         while (--size) {

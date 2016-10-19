@@ -8,6 +8,8 @@ This library provides support for Unicode Text, as specified by the
 Unicode Standard.
 
 Usage example:
+* [How to iterate over utf8 text](simple_iteration.html).
+* [Demonstration of using utf8_iterator over const char*](smallest_code.html).
 * [How to truncate on correct codepoint boundaries](truncate_on_codepoint.html).
 
 # Why?

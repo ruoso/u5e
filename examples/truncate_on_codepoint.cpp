@@ -30,7 +30,7 @@ int main(int argc, char** argv) {
   // not a conversion operator, it just makes sure the append happens
   // while respecting the codepoint boundaries in the utf8 text.
   utf8_string output("");
-  output.append<string>(str.cbegin(), stri);
+  output.append(str.cbegin(), stri);
 
   std::cout << output.underlying_string << std::endl;
 }

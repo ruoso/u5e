@@ -122,11 +122,12 @@ namespace u5e {
     }
     //@}
 
+    //@{
     /**
      * Append from input iterators.
      *
      * Note that this is only possible from iterators of the same
-     * encoding.
+     * encoding. This will not perform any conversion.
      */
     template <typename StorageType>
     inline basic_encodedstring& append
@@ -140,6 +141,18 @@ namespace u5e {
 	 );
       return *this;
     }
+
+    inline basic_encodedstring& append
+    (const_iterator first,const_iterator last
+     ) {
+      underlying_string.append
+	(Encoding::template underlying_const_iterator<UnderlyingString>(first),
+	 Encoding::template underlying_const_iterator<UnderlyingString>(last)
+	 );
+      return *this;
+    }
+    //@}
+
   };
     
 }

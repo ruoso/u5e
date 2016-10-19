@@ -58,7 +58,7 @@ namespace u5e {
      * How many octets will this codepoint take
      */
     inline static int encoded_size(int value) {
-      return std::ceil((float)(32 - __builtin_clz(value)) / (float)6);
+      return std::ceil((float)(32 - __builtin_clz(value) - 1) / (float)6);
     }
     
   };

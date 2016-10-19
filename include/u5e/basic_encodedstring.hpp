@@ -99,8 +99,8 @@ namespace u5e {
     /**
      * Assignment operator, assigns the underlying type.
      */
-    basic_encodedstring<Encoding, UnderlyingString>&
-    operator= (const basic_encodedstring<Encoding, UnderlyingString> &other) {
+    basic_encodedstring&
+    operator= (const basic_encodedstring &other) {
       underlying_string = other;
     }
 
@@ -121,7 +121,25 @@ namespace u5e {
       return const_iterator(underlying_string.cend());
     }
     //@}
-    
+
+    /**
+     * Append from input iterators.
+     *
+     * Note that this is only possible from iterators of the same
+     * encoding.
+     */
+    template <typename StorageType>
+    inline basic_encodedstring& append
+    (
+     typename basic_encodedstring<Encoding, StorageType>::const_iterator first,
+     typename basic_encodedstring<Encoding, StorageType>::const_iterator last
+     ) {
+      underlying_string.append
+	(Encoding::template underlying_const_iterator<StorageType>(first),
+	 Encoding::template underlying_const_iterator<StorageType>(last)
+	 );
+      return *this;
+    }
   };
     
 }

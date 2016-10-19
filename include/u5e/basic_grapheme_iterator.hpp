@@ -202,8 +202,21 @@ namespace u5e {
     bool operator==(const_codepoint_iterator other) {
       return where_ == other;
     }
-};
 
+    /**
+     * delegate the comparison to the underlying iterator
+     */
+    bool operator==(basic_grapheme_iterator other) {
+      return where_ == other.where_;
+    }
+
+    /**
+     * delegate the comparison to the underlying iterator
+     */
+    bool operator!=(basic_grapheme_iterator other) {
+      return where_ != other.where_;
+    }
+  };
 };
 
 #endif

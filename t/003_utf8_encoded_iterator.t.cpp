@@ -143,3 +143,11 @@ TEST(t_003_utf8_encoded_iterator, decode) {
   utf8_const_iterator<const unsigned char*> it3(in3);
   ASSERT_EQ(*it3, 1181728);
 }
+
+TEST(t_003_utf8_encoded_iterator, output_iterator) {
+  utf8_string output("");
+  utf8_string input("Ol\xC3\x81!");
+  std::copy(input.cbegin(),input.cend(), output.begin());
+  ASSERT_STREQ(input.underlying_string.c_str(),
+	       output.underlying_string.c_str());
+}

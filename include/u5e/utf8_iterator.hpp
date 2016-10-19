@@ -15,7 +15,7 @@ namespace u5e {
    */
   template <typename WRAPPEDITERATOR>
   class utf8_iterator_base {
-  protected:
+  public:
     /**
      * The WRAPPEDITERATOR must match the attributes of char
      */
@@ -25,7 +25,6 @@ namespace u5e {
      */
     WRAPPEDITERATOR raw_iterator_;
 
-  public:
     //@{
     /**
      * Basic iterator typedefs
@@ -40,7 +39,8 @@ namespace u5e {
      * Create a iterator from the underlying iterator
      */
     inline utf8_iterator_base(const WRAPPEDITERATOR raw_iterator)
-      : raw_iterator_(raw_iterator) { };
+      : raw_iterator_(raw_iterator) {
+    };
 
     /**
      * Advance the iterator to the next codepoint
@@ -163,11 +163,24 @@ namespace u5e {
      * Compare with another iterator
      */
     inline bool operator==(const utf8_const_iterator& rhs) const {
-      return this->raw_iterator_ == rhs.raw_iterator_;
+      char c;
+      utf8_const_iterator copy(*this);
+      c = *(copy.raw_iterator_);
+      copy.rewind_to_start_of_codepoint(c);
+      c = *(copy.raw_iterator_);
+      int size = utf8_util::codepoint_size(c);
+      while (size) {
+	if (copy.raw_iterator_ == rhs.raw_iterator_) {
+	  return true;
+	}
+	++(copy.raw_iterator_);
+	--size;
+      }
+      return false;
     }
     
     inline bool operator!=(const utf8_const_iterator& rhs) const {
-      return this->raw_iterator_ != rhs.raw_iterator_;
+      return !(*this == rhs);
     }
     //@}
 
@@ -247,11 +260,24 @@ namespace u5e {
      * Compare the iterator with another iterator
      */
     inline bool operator==(const utf8_iterator& rhs) const {
-      return this->raw_iterator_ == rhs.raw_iterator_;
+      char c;
+      utf8_iterator copy(*this);
+      c = *(copy.raw_iterator_);
+      copy.rewind_to_start_of_codepoint(c);
+      c = *(copy.raw_iterator_);
+      int size = utf8_util::codepoint_size(c);
+      while (size) {
+	if (copy.raw_iterator_ == rhs.raw_iterator_) {
+	  return true;
+	}
+	++(copy.raw_iterator_);
+	--size;
+      }
+      return false;
     }
     
     inline bool operator!=(const utf8_iterator& rhs) const {
-      return this->raw_iterator_ != rhs.raw_iterator_;
+      return !(*this == rhs);
     }
     //@}
 
@@ -292,16 +318,14 @@ namespace u5e {
         if (size <= 1) {
           *(ref.raw_iterator_) = (value & 0xFF);
         } else {
-          utf8_iterator<WRAPPEDITERATOR> copy = ref;
           unsigned char first_octet = (0xFF<<(8-size));
           first_octet |= ((value>>((size-1)*6)) & 0xFF);
-          *(copy.raw_iterator_) = first_octet;
-          copy.raw_iterator_++;
+          *(ref.raw_iterator_) = first_octet;
           while (--size) {
             unsigned char octet = 0b10000000;
             octet |= ((value>>((size-1)*6)) & 0b00111111);
-            *(copy.raw_iterator_) = octet;
-            copy.raw_iterator_++;
+	    ref.raw_iterator_++;
+	    *(ref.raw_iterator_) = octet;
           }
         }
         return *this;

@@ -33,6 +33,16 @@ namespace u5e {
     using const_iterator =
       utf8_const_iterator<typename UnderlyingString::const_iterator>;
 
+    /**
+     * Get access to the underlying const_iterator with the native data.
+     */
+    template <typename UnderlyingString>
+    static typename UnderlyingString::const_iterator
+    underlying_const_iterator
+    (utf8_const_iterator<typename UnderlyingString::const_iterator> it) {
+      it.rewind_to_start_of_codepoint(*(it.raw_iterator_));
+      return it.raw_iterator_;
+    }
   };
 }
 

@@ -26,16 +26,19 @@ using u5e::utf8_string_grapheme_iterator;
  */// Example on how to truncate on correct codepoint boundaries
 int main(int argc, char** argv) {
   // the original string
-  utf8_string u8str("Ola\xCC\x81!");
+  string str("Ola\xCC\x81!");
 
   // we find the point on the native string where we want to truncate.
   // Count 4 in octets leaves us in the middle of a codepoint
-  std::string::const_iterator stri = u8str.underlying_string.cbegin();
+  string::const_iterator stri = str.cbegin();
   std::advance(stri, 4);
   
   // now we produce the output string truncated at where we want.
+  // note that this assumes that the text was already in utf8. this is
+  // not a conversion operator, it just makes sure the append happens
+  // while respecting the codepoint boundaries in the utf8 text.
   utf8_string output("");
-  output.append<string>(u8str.cbegin(), stri);
+  output.append<string>(str.cbegin(), stri);
 
   std::cout << output.underlying_string << std::endl;
 }

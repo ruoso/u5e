@@ -7,6 +7,9 @@ Unicode Text C++ library -- fork me on github: https://github.com/ruoso/u5e
 This library provides support for Unicode Text, as specified by the
 Unicode Standard.
 
+Usage example:
+* [How to truncate on correct codepoint boundaries](truncate_on_codepoint.html).
+
 # Why?
 
 Properly supporting international text is one of these problems that

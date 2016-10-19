@@ -1,18 +1,4 @@
 
-#include <algorithm>
-#include <iostream>
-#include <string>
-#include <u5e/utf8_bounds.hpp>
-#include <u5e/utf8_string.hpp>
-#include <u5e/utf8_string_grapheme.hpp>
-#include <u5e/utf8_string_grapheme_iterator.hpp>
-
-using std::string;
-using u5e::utf8_bounds;
-using u5e::utf8_string;
-using u5e::utf8_string_grapheme;
-using u5e::utf8_string_grapheme_iterator;
-
 /**
  * \page truncate_on_codepoint Example: Truncate a string on codepoint boundary
  *
@@ -24,6 +10,12 @@ using u5e::utf8_string_grapheme_iterator;
  *
  * \code
  */// Example on how to truncate on correct codepoint boundaries
+#include <algorithm>
+#include <iostream>
+#include <string>
+#include <u5e/utf8_string.hpp>
+using std::string;
+using u5e::utf8_string;
 int main(int argc, char** argv) {
   // the original string
   string str("Ola\xCC\x81!");

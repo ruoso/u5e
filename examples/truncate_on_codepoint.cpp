@@ -32,7 +32,7 @@ int main(int argc, char** argv) {
   utf8_string output("");
   output.append(str.cbegin(), stri);
 
-  std::cout << output.underlying_string << std::endl;
+  std::cout << output.native_string << std::endl;
 }
 /**
  * \endcode

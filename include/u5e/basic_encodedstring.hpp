@@ -12,7 +12,7 @@ namespace u5e {
    *
    * u5e::basic_encodedstring implements encoding support on top of a
    * string-like object, it is implemented by simply wrapping the
-   * underlying string type in order to provide a customized iterator
+   * native string type in order to provide a customized iterator
    * that offers codepoint-by-codepoint access instead of iterating
    * over the native type.
    *
@@ -21,23 +21,23 @@ namespace u5e {
    *   representation of text, for that reason, the encoding is a part
    *   of the type.
    *
-   * \tparam UnderlyingString In order to re-use the string support,
+   * \tparam NativeString In order to re-use the string support,
    *   this will always be implemented as a wrapper around an
-   *   underlying string-like type. The idea is that the C++ string
+   *   native string-like type. The idea is that the C++ string
    *   libraries operate on unencoded memory, while the u5e types
    *   offer a layer on top of that for the purposes of implementing
    *   unicode in a type-safe way. Note that this applies to any
    *   'string-like' object, such as string or string_view.
    */
   template <typename Encoding,
-            typename UnderlyingString>
+            typename NativeString>
   class basic_encodedstring {
   public:
     //@{
     /**
      * Offer an interface such that the size of the thing you're
-     * iterating over is a codepoint, regardless of the underlying
-     * native type.
+     * iterating over is a codepoint, regardless of the native
+     * type.
      */
     typedef u5e::codepoint_traits                       traits_type;
     typedef u5e::codepoint                              value_type;
@@ -45,23 +45,23 @@ namespace u5e {
     typedef u5e::codepoint_traits::off_type             difference_type;
     typedef value_type&                                 reference;
     typedef const value_type&                           const_reference;
-    typedef typename UnderlyingString::pointer          pointer;
-    typedef typename UnderlyingString::const_pointer    const_pointer;
+    typedef typename NativeString::pointer          pointer;
+    typedef typename NativeString::const_pointer    const_pointer;
     //@}
 
     //@{
     /**
      * The Encoding template argument must provide iterator and
      * const_iterator member types. Those should iterate over
-     * codepoints, regardless of the encoding and the underlying type.
+     * codepoints, regardless of the encoding and the native type.
      *
      * The iterator and const_iterator member types must be themselves
-     * templates that take the UnderlyingString type as a template
+     * templates that take the NativeString type as a template
      * argument.
      */
-    typedef typename Encoding::template iterator<UnderlyingString>
+    typedef typename Encoding::template iterator<NativeString>
                                                         iterator;
-    typedef typename Encoding::template const_iterator<UnderlyingString>
+    typedef typename Encoding::template const_iterator<NativeString>
                                                         const_iterator;
     //@}
 
@@ -74,34 +74,34 @@ namespace u5e {
     //@}
     
     /**
-     * \brief Raw buffer as specified by the underlying type.
+     * \brief Raw buffer as specified by the native type.
      *
      * This means that this class is exactly as expensive as whichever
-     * underlying type is being used, it also means this class delegates
-     * all memory management to that underlying type.
+     * native type is being used, it also means this class delegates
+     * all memory management to that native type.
      *
      * This member is public because you should be able to completely
-     * manage the underlying object if you need to.
+     * manage the native object if you need to.
      */
-    UnderlyingString underlying_string;
+    NativeString native_string;
 
     /**
-     * Default constructor, delegated to the underlying type.
+     * Default constructor, delegated to the native type.
      */
     basic_encodedstring() = default;
 
     /**
-     * Implicit conversion from the underlying type.
+     * Implicit conversion from the native type.
      */
-    basic_encodedstring(const UnderlyingString& s)
-      : underlying_string(s) { };
+    basic_encodedstring(const NativeString& s)
+      : native_string(s) { };
 
     /**
-     * Assignment operator, assigns the underlying type.
+     * Assignment operator, assigns the native type.
      */
     basic_encodedstring&
     operator= (const basic_encodedstring &other) {
-      underlying_string = other;
+      native_string = other;
     }
 
     //@{
@@ -109,16 +109,16 @@ namespace u5e {
      * Get begin and end iterators.
      */
     inline iterator begin() {
-      return iterator(underlying_string.begin());
+      return iterator(native_string.begin());
     }
     inline iterator end() {
-      return iterator(underlying_string.end());
+      return iterator(native_string.end());
     }
     inline const_iterator cbegin() {
-      return const_iterator(underlying_string.cbegin());
+      return const_iterator(native_string.cbegin());
     }    
     inline const_iterator cend() {
-      return const_iterator(underlying_string.cend());
+      return const_iterator(native_string.cend());
     }
     //@}
 
@@ -135,9 +135,9 @@ namespace u5e {
      typename basic_encodedstring<Encoding, StorageType>::const_iterator first,
      typename basic_encodedstring<Encoding, StorageType>::const_iterator last
      ) {
-      underlying_string.append
-	(Encoding::template underlying_const_iterator<StorageType>(first),
-	 Encoding::template underlying_const_iterator<StorageType>(last)
+      native_string.append
+	(Encoding::template native_const_iterator<StorageType>(first),
+	 Encoding::template native_const_iterator<StorageType>(last)
 	 );
       return *this;
     }
@@ -145,9 +145,9 @@ namespace u5e {
     inline basic_encodedstring& append
     (const_iterator first,const_iterator last
      ) {
-      underlying_string.append
-	(Encoding::template underlying_const_iterator<UnderlyingString>(first),
-	 Encoding::template underlying_const_iterator<UnderlyingString>(last)
+      native_string.append
+	(Encoding::template native_const_iterator<NativeString>(first),
+	 Encoding::template native_const_iterator<NativeString>(last)
 	 );
       return *this;
     }

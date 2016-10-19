@@ -23,11 +23,11 @@ namespace u5e {
     /**
      * Delegate to the underlying iterator
      */
-    template <typename UnderlyingString>
-    using iterator = typename UnderlyingString::iterator;
+    template <typename NativeString>
+    using iterator = typename NativeString::iterator;
 
-    template <typename UnderlyingString>
-    using const_iterator = typename UnderlyingString::const_iterator;
+    template <typename NativeString>
+    using const_iterator = typename NativeString::const_iterator;
     //@}
   };
 }

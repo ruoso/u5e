@@ -148,6 +148,6 @@ TEST(t_003_utf8_encoded_iterator, output_iterator) {
   utf8_string output("");
   utf8_string input("Ol\xC3\x81!");
   std::copy(input.cbegin(),input.cend(), output.begin());
-  ASSERT_STREQ(input.underlying_string.c_str(),
-	       output.underlying_string.c_str());
+  ASSERT_STREQ(input.native_string.c_str(),
+	       output.native_string.c_str());
 }

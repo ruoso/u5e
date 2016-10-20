@@ -15,21 +15,21 @@ namespace u5e {
    * cheap safety check to make sure you will not have any under or
    * overflow when processing this text.
    *
-   * \tparam WRAPPEDITERATOR The underlying type to be iterated over.
+   * \tparam NativeIterator The native type to be iterated over.
    */
-  template <typename WRAPPEDITERATOR>
+  template <typename NativeIterator>
   class utf8_bounds {
   public:
     /**
-     * The WRAPPEDITERATOR must match the attributes of char
+     * The NativeIterator must match the attributes of char
      */
-    iterator_assertion<WRAPPEDITERATOR, char> _assertions;
+    iterator_assertion<NativeIterator, char> _assertions;
 
     /**
      * Check the bounds of the utf8 text, returns true if the text has
      * correct bounds.
      */
-    static bool check(WRAPPEDITERATOR begin, WRAPPEDITERATOR end) {
+    static bool check(NativeIterator begin, NativeIterator end) {
       if (utf8_util::is_codepoint_continuation(*begin)) {
 	return false;
       } else {
@@ -54,7 +54,7 @@ namespace u5e {
      * Enforce the bounds of the utf8 text, replace any bad character
      * in the bounds by '?. Returns false if any substitution was made.
      */
-    static bool enforce(WRAPPEDITERATOR begin, WRAPPEDITERATOR end) {
+    static bool enforce(NativeIterator begin, NativeIterator end) {
       bool ret = true;
       while (utf8_util::is_codepoint_continuation(*begin)) {
 	*begin = '?';

@@ -6,10 +6,10 @@
 
 namespace u5e {
   /**
-   * \brief Assert the encoding matches the underlying type
+   * \brief Assert the encoding matches the native type
    *
    * Tests that the encoding can be used with the specific
-   * underlying string type.
+   * native string type.
    */
   template <typename BUFFERTYPE, typename T>
   class encoding_assertion {

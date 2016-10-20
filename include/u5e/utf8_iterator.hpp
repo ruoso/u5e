@@ -11,19 +11,19 @@ namespace u5e {
   /**
    * \brief Defines the basic inner workings of utf8 iterator
    *
-   * \tparam WRAPPEDITERATOR The underlying type to be iterated over.
+   * \tparam NativeIterator The underlying type to be iterated over.
    */
-  template <typename WRAPPEDITERATOR>
+  template <typename NativeIterator>
   class utf8_iterator_base {
   public:
     /**
-     * The WRAPPEDITERATOR must match the attributes of char
+     * The NativeIterator must match the attributes of char
      */
-    iterator_assertion<WRAPPEDITERATOR, char> _assertions;
+    iterator_assertion<NativeIterator, char> _assertions;
     /**
-     * This class composes over the WRAPPEDITERATOR
+     * This class composes over the NativeIterator
      */
-    WRAPPEDITERATOR raw_iterator_;
+    NativeIterator raw_iterator_;
 
     //@{
     /**
@@ -38,7 +38,7 @@ namespace u5e {
     /**
      * Create a iterator from the underlying iterator
      */
-    inline utf8_iterator_base(const WRAPPEDITERATOR raw_iterator)
+    inline utf8_iterator_base(const NativeIterator raw_iterator)
       : raw_iterator_(raw_iterator) {
     };
 
@@ -87,7 +87,7 @@ namespace u5e {
         if (rewind_to_start_of_codepoint(first_octet)) {
           first_octet = *raw_iterator_;
         }
-        WRAPPEDITERATOR copy_ = raw_iterator_;
+        NativeIterator copy_ = raw_iterator_;
         difference_type size =
 	  utf8_util::codepoint_size(first_octet);
         unsigned char mask_first_octet = ~(0xFF<<(7-size));
@@ -103,11 +103,11 @@ namespace u5e {
 
   /**
    * \brief const iterator for utf8 encoded strings.
-   * \tparam WRAPPEDITERATOR The underlying type to be iterated over.
+   * \tparam NativeIterator The underlying type to be iterated over.
    */
-  template <typename WRAPPEDITERATOR>
+  template <typename NativeIterator>
   class utf8_const_iterator
-    : public utf8_iterator_base<WRAPPEDITERATOR> {
+    : public utf8_iterator_base<NativeIterator> {
   public:
     /**
      * Offers itself as the pointer type
@@ -117,14 +117,14 @@ namespace u5e {
     /**
      * Create from the underlying iterator type
      */
-    inline utf8_const_iterator(const WRAPPEDITERATOR raw_iterator)
-      : utf8_iterator_base<WRAPPEDITERATOR>(raw_iterator) { };
+    inline utf8_const_iterator(const NativeIterator raw_iterator)
+      : utf8_iterator_base<NativeIterator>(raw_iterator) { };
 
     /**
      * Copy constructor
      */
     inline utf8_const_iterator(const utf8_const_iterator& tocopy)
-      : utf8_iterator_base<WRAPPEDITERATOR>(tocopy.raw_iterator_) { };
+      : utf8_iterator_base<NativeIterator>(tocopy.raw_iterator_) { };
 
     //@{
     /**
@@ -200,11 +200,11 @@ namespace u5e {
    * likely make the string invalid. Most of the time you should only
    * consider appending to an iterator, never writing in the middle of
    * the text.
-   * \tparam WRAPPEDITERATOR The underlying type to be iterated over.
+   * \tparam NativeIterator The underlying type to be iterated over.
    */
-  template <typename WRAPPEDITERATOR>
+  template <typename NativeIterator>
   class utf8_iterator
-    : public utf8_iterator_base<WRAPPEDITERATOR> {
+    : public utf8_iterator_base<NativeIterator> {
   public:
     /**
      * Offer itself as the pointer type
@@ -214,14 +214,14 @@ namespace u5e {
     /**
      * Construct fro the underlying iterator
      */
-    inline utf8_iterator(const WRAPPEDITERATOR raw_iterator)
-      : utf8_iterator_base<WRAPPEDITERATOR>(raw_iterator) {};
+    inline utf8_iterator(const NativeIterator raw_iterator)
+      : utf8_iterator_base<NativeIterator>(raw_iterator) {};
 
     /**
      * Copy constructor
      */
     inline utf8_iterator(const utf8_iterator& tocopy)
-      : utf8_iterator_base<WRAPPEDITERATOR>(tocopy.raw_iterator_) {};
+      : utf8_iterator_base<NativeIterator>(tocopy.raw_iterator_) {};
 
     //@{
     /**
@@ -293,15 +293,15 @@ namespace u5e {
       /**
        * A proxy object refers to an iterator state
        */
-      utf8_iterator<WRAPPEDITERATOR>& ref;
+      utf8_iterator<NativeIterator>& ref;
     public:
       
       /**
        * Create from the iterator
        */
-      proxyobject(utf8_iterator<WRAPPEDITERATOR>& refin)
+      proxyobject(utf8_iterator<NativeIterator>& refin)
         :ref(refin) {
-        utf8_iterator<WRAPPEDITERATOR> copy = refin;
+        utf8_iterator<NativeIterator> copy = refin;
         value = copy.current_codepoint().value;
       };
 

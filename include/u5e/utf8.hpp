@@ -18,27 +18,27 @@ namespace u5e {
   public:
 
     /**
-     * Delegated to utf8_iterator of the underlying type.
-     * \tparam NativeString the underlying string type with utf8 data
+     * Delegated to utf8_iterator of the native type.
+     * \tparam NativeString the native string type with utf8 data
      */
     template <typename NativeString>
     using iterator =
       utf8_iterator<typename NativeString::iterator>;
 
     /**
-     * Delegated to utf8_const_iterator of the underlying type
-     * \tparam NativeString the underlying string type with utf8 data
+     * Delegated to utf8_const_iterator of the native type
+     * \tparam NativeString the native string type with utf8 data
      */
     template <typename NativeString>
     using const_iterator =
       utf8_const_iterator<typename NativeString::const_iterator>;
 
     /**
-     * Get access to the underlying const_iterator with the native data.
+     * Get access to the native const_iterator with the native data.
      */
     template <typename NativeString>
     static typename NativeString::const_iterator
-    underlying_const_iterator
+    native_const_iterator
     (utf8_const_iterator<typename NativeString::const_iterator> it) {
       it.rewind_to_start_of_codepoint(*(it.raw_iterator_));
       return it.raw_iterator_;

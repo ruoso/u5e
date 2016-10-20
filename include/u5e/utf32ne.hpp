@@ -15,7 +15,7 @@ namespace u5e {
    *
    * Because utf32 with the native endianess can be used natively,
    * there's no special logic and everything is delegated to the
-   * underlying types.
+   * native types.
    */
   class utf32ne {
   public:
@@ -28,6 +28,13 @@ namespace u5e {
 
     template <typename NativeString>
     using const_iterator = typename NativeString::const_iterator;
+
+    template <typename NativeString>
+    static typename NativeString::const_iterator
+    native_const_iterator(typename NativeString::const_iterator it) {
+      return it;
+    }
+
     //@}
   };
 }

@@ -16,9 +16,9 @@ namespace u5e {
      */
     inline static bool is_7bit_character(const char octet) {
       if (octet & 0b10000000) {
-	return false;
+        return false;
       } else {
-	return true;
+        return true;
       }
     }
     
@@ -27,9 +27,9 @@ namespace u5e {
      */
     inline static bool is_codepoint_continuation(const char octet) {
       if ((octet & 0b11000000) == 0b10000000) {
-	return true;
+        return true;
       } else {
-	return false;
+        return false;
       }
     }
 
@@ -38,9 +38,9 @@ namespace u5e {
      */
     inline static bool is_codepoint_start(const char octet) {
       if ((octet & 0b11000000) == 0b11000000) {
-	return true;
+        return true;
       } else {
-	return false;
+        return false;
       }
     }
     

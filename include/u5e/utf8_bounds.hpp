@@ -31,22 +31,22 @@ namespace u5e {
      */
     static bool check(NativeIterator begin, NativeIterator end) {
       if (utf8_util::is_codepoint_continuation(*begin)) {
-	return false;
+        return false;
       } else {
-	int max_walkback = 6; // mathematically, it's impossible for
-			      // something more than 6 elements away
-			      // from the end to generate a overflow.
-	int walkback = 0;
-	while (walkback < max_walkback && end != begin) {
-	  char octet = *end;
-	  if (utf8_util::is_codepoint_start(octet)) {
-	    if (utf8_util::codepoint_size(octet) > walkback) {
-	      return false;
-	    }
-	  }
-	  --end; walkback++;
-	}
-	return true;
+        int max_walkback = 6; // mathematically, it's impossible for
+                              // something more than 6 elements away
+                              // from the end to generate a overflow.
+        int walkback = 0;
+        while (walkback < max_walkback && end != begin) {
+          char octet = *end;
+          if (utf8_util::is_codepoint_start(octet)) {
+            if (utf8_util::codepoint_size(octet) > walkback) {
+              return false;
+            }
+          }
+          --end; walkback++;
+        }
+        return true;
       }
     }
 
@@ -57,23 +57,23 @@ namespace u5e {
     static bool enforce(NativeIterator begin, NativeIterator end) {
       bool ret = true;
       while (utf8_util::is_codepoint_continuation(*begin)) {
-	*begin = '?';
-	++begin;
-	ret = false;
+        *begin = '?';
+        ++begin;
+        ret = false;
       }
       int max_walkback = 6; // mathematically, it's impossible for
-			    // something more than 6 elements away
-			    // from the end to generate a overflow.
+                            // something more than 6 elements away
+                            // from the end to generate a overflow.
       int walkback = 0;
       while (walkback < max_walkback && end != begin) {
-	char octet = *end;
-	if (utf8_util::is_codepoint_start(octet)) {
-	  if (utf8_util::codepoint_size(octet) > walkback) {
-	    *end = '?';
-	    ret = false;
-	  }
-	}
-	--end; walkback++;
+        char octet = *end;
+        if (utf8_util::is_codepoint_start(octet)) {
+          if (utf8_util::codepoint_size(octet) > walkback) {
+            *end = '?';
+            ret = false;
+          }
+        }
+        --end; walkback++;
       }
       return ret;
     }

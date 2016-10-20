@@ -61,9 +61,9 @@ namespace u5e {
      * argument.
      */
     typedef typename Encoding::template iterator<NativeString>
-                                                        iterator;
+    iterator;
     typedef typename Encoding::template const_iterator<NativeString>
-                                                        const_iterator;
+    const_iterator;
     //@}
 
     //@{
@@ -137,9 +137,9 @@ namespace u5e {
      typename basic_encodedstring<Encoding, StorageType>::const_iterator last
      ) {
       native_string.append
-	(Encoding::template native_const_iterator<StorageType>(first),
-	 Encoding::template native_const_iterator<StorageType>(last)
-	 );
+        (Encoding::template native_const_iterator<StorageType>(first),
+         Encoding::template native_const_iterator<StorageType>(last)
+         );
       return *this;
     }
 
@@ -155,7 +155,7 @@ namespace u5e {
      basic_grapheme_iterator<basic_encodedstring<Encoding, StorageType>>& last)
     {
       native_string.append((*first).codepoint_begin(),
-			   (*last).codepoint_begin());
+                           (*last).codepoint_begin());
       return *this;
     }
     

@@ -54,71 +54,71 @@ namespace u5e {
       g_c_b_vt vb = props::grapheme_cluster_break::resolve(b);
 
       if (va == g_c_b_vt::CR &&
-	  vb == g_c_b_vt::LF) {
-	// GB3
-	return false;
+          vb == g_c_b_vt::LF) {
+        // GB3
+        return false;
       } else if (va == g_c_b_vt::CR ||
-		 va == g_c_b_vt::LF ||
-		 va == g_c_b_vt::CONTROL) {
-	// GB4
-	return true;
+                 va == g_c_b_vt::LF ||
+                 va == g_c_b_vt::CONTROL) {
+        // GB4
+        return true;
       } else if (vb == g_c_b_vt::CR ||
-		 vb == g_c_b_vt::LF ||
-		 vb == g_c_b_vt::CONTROL) {
-	// GB5
-	return true;
+                 vb == g_c_b_vt::LF ||
+                 vb == g_c_b_vt::CONTROL) {
+        // GB5
+        return true;
       } else if (va == g_c_b_vt::L &&
-		 (vb == g_c_b_vt::L ||
-		  vb == g_c_b_vt::V ||
-		  vb == g_c_b_vt::LV ||
-		  vb == g_c_b_vt::LVT)) {
-	// GB6
-	return false;
+                 (vb == g_c_b_vt::L ||
+                  vb == g_c_b_vt::V ||
+                  vb == g_c_b_vt::LV ||
+                  vb == g_c_b_vt::LVT)) {
+        // GB6
+        return false;
       } else if ((va == g_c_b_vt::LV ||
-		  va == g_c_b_vt::V) &&
-		 (vb == g_c_b_vt::V ||
-		  vb == g_c_b_vt::T)) {
-	// GB7
-	return false;
+                  va == g_c_b_vt::V) &&
+                 (vb == g_c_b_vt::V ||
+                  vb == g_c_b_vt::T)) {
+        // GB7
+        return false;
       } else if ((va == g_c_b_vt::LVT ||
-		  va == g_c_b_vt::T) &&
-		 vb == g_c_b_vt::T) {
-	// GB8
-	return false;
+                  va == g_c_b_vt::T) &&
+                 vb == g_c_b_vt::T) {
+        // GB8
+        return false;
       } else if (vb == g_c_b_vt::EXTEND ||
-		 vb == g_c_b_vt::ZWJ) {
-	// GB9
-	return false;
+                 vb == g_c_b_vt::ZWJ) {
+        // GB9
+        return false;
       } else if (vb == g_c_b_vt::SPACINGMARK) {
-	// GB9a
-	return false;
+        // GB9a
+        return false;
       } else if (va == g_c_b_vt::PREPEND) {
-	// GB9b
-	return false;
+        // GB9b
+        return false;
       } else if ( ( (va == g_c_b_vt::E_BASE ||
-		     va == g_c_b_vt::E_BASE_GAZ) &&
-		    vb == g_c_b_vt::E_MODIFIER) ||
-		  ( va == g_c_b_vt::EXTEND &&
-		    vb == g_c_b_vt::E_MODIFIER )) {
-	// GB10 -- that is the interpretation I can make
-	// of the combination of the fact that you should be able
-	// to compare only two adjancent characters and the text of
-	// the standard.
-	return false;
+                     va == g_c_b_vt::E_BASE_GAZ) &&
+                    vb == g_c_b_vt::E_MODIFIER) ||
+                  ( va == g_c_b_vt::EXTEND &&
+                    vb == g_c_b_vt::E_MODIFIER )) {
+        // GB10 -- that is the interpretation I can make
+        // of the combination of the fact that you should be able
+        // to compare only two adjancent characters and the text of
+        // the standard.
+        return false;
       } else if (va == g_c_b_vt::ZWJ &&
-		 (vb == g_c_b_vt::GLUE_AFTER_ZWJ ||
-		  vb == g_c_b_vt::E_BASE_GAZ)) {
-	// GB11
-	return false;
+                 (vb == g_c_b_vt::GLUE_AFTER_ZWJ ||
+                  vb == g_c_b_vt::E_BASE_GAZ)) {
+        // GB11
+        return false;
       } else if (va == g_c_b_vt::REGIONAL_INDICATOR &&
-		 vb == g_c_b_vt::REGIONAL_INDICATOR) {
-	// GB12, GB13
-	// again, I take the liberty to assume the earlier part of the text
-	// that says you only need to look at two adjacent characters
-	return false;
+                 vb == g_c_b_vt::REGIONAL_INDICATOR) {
+        // GB12, GB13
+        // again, I take the liberty to assume the earlier part of the text
+        // that says you only need to look at two adjacent characters
+        return false;
       } else {
-	// GB999
-	return true;
+        // GB999
+        return true;
       }
     }
     
@@ -130,7 +130,7 @@ namespace u5e {
     void find_end_of_grapheme() {
       // GB2
       if (end_of_grapheme_ == end_)
-	return;
+        return;
       // advance end_of_grapheme_ until it's no longer in the same grapheme
 
       // GB1
@@ -139,24 +139,24 @@ namespace u5e {
       end_of_grapheme_++;
 
       while (1) {
-	// GB2
-	if (end_of_grapheme_ == end_)
-	  return;
-	codepoint b = *end_of_grapheme_;
+        // GB2
+        if (end_of_grapheme_ == end_)
+          return;
+        codepoint b = *end_of_grapheme_;
 
-	if (is_grapheme_boundary(a, b)) {
-	  return;
-	}
+        if (is_grapheme_boundary(a, b)) {
+          return;
+        }
 
-	a = b;
-	end_of_grapheme_++;
+        a = b;
+        end_of_grapheme_++;
       }
     }
 
     void find_start_of_grapheme() {
       // GB2
       if (where_ == begin_)
-	return;
+        return;
       // rewind where_ until it's no longer in the same grapheme
 
       // GB1
@@ -166,16 +166,16 @@ namespace u5e {
       codepoint a = *copy;
 
       while (1) {
-	if (where_ == begin_)
-	  return;
-	codepoint b = *where_;
+        if (where_ == begin_)
+          return;
+        codepoint b = *where_;
 
-	if (is_grapheme_boundary(a, b)) {
-	  return;
-	}
+        if (is_grapheme_boundary(a, b)) {
+          return;
+        }
 
-	a = b;
-	--where_;
+        a = b;
+        --where_;
       }
     }
     //@}
@@ -184,7 +184,7 @@ namespace u5e {
      * \brief start at the beginning of the text
      */
     basic_grapheme_iterator(const_codepoint_iterator b,
-			    const_codepoint_iterator e)
+                            const_codepoint_iterator e)
       :begin_(b), end_(e), where_(b), end_of_grapheme_(b) {
       find_end_of_grapheme();
     };
@@ -194,8 +194,8 @@ namespace u5e {
      * find the start and the end of the grapheme
      */
     basic_grapheme_iterator(const_codepoint_iterator b,
-			    const_codepoint_iterator e,
-			    const_codepoint_iterator w)
+                            const_codepoint_iterator e,
+                            const_codepoint_iterator w)
       :begin_(b), end_(e), where_(w), end_of_grapheme_(w) {
       find_start_of_grapheme();
       find_end_of_grapheme();
@@ -206,9 +206,9 @@ namespace u5e {
      * start and end of grapheme
      */
     basic_grapheme_iterator(const_codepoint_iterator b,
-			    const_codepoint_iterator e,
-			    const_codepoint_iterator w,
-			    const_codepoint_iterator we)
+                            const_codepoint_iterator e,
+                            const_codepoint_iterator w,
+                            const_codepoint_iterator we)
       :begin_(b), end_(e), where_(w), end_of_grapheme_(we) {
     };
 
@@ -248,15 +248,15 @@ namespace u5e {
      */
     bool operator==(const_codepoint_iterator other) {
       if (where_ == other) {
-	return true;
+        return true;
       } else {
-	for (const_codepoint_iterator copy = where_;
-	     copy != end_of_grapheme_; copy++) {
-	  if (copy == other) {
-	    return true;
-	  }
-	}
-	return false;
+        for (const_codepoint_iterator copy = where_;
+             copy != end_of_grapheme_; copy++) {
+          if (copy == other) {
+            return true;
+          }
+        }
+        return false;
       }
     }
 
@@ -265,10 +265,10 @@ namespace u5e {
      */
     bool operator==(basic_grapheme_iterator other) {
       for (const_codepoint_iterator copy = where_;
-	   copy != end_of_grapheme_; copy++) {
-	if (other == copy) {
-	  return true;
-	}
+           copy != end_of_grapheme_; copy++) {
+        if (other == copy) {
+          return true;
+        }
       }
       return false;
     }

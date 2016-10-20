@@ -59,8 +59,8 @@ namespace u5e {
       // halfway into the next character
       bool ret = false;
       while (utf8_util::is_codepoint_continuation(*raw_iterator_)) {
-	raw_iterator_--;
-	ret = true;
+        raw_iterator_--;
+        ret = true;
       }
       return ret;
     }
@@ -89,7 +89,7 @@ namespace u5e {
         }
         NativeIterator copy_ = raw_iterator_;
         difference_type size =
-	  utf8_util::codepoint_size(first_octet);
+          utf8_util::codepoint_size(first_octet);
         unsigned char mask_first_octet = ~(0xFF<<(7-size));
         int value = (first_octet & mask_first_octet);
         while (--size) {
@@ -170,11 +170,11 @@ namespace u5e {
       c = *(copy.raw_iterator_);
       int size = utf8_util::codepoint_size(c);
       while (size) {
-	if (copy.raw_iterator_ == rhs.raw_iterator_) {
-	  return true;
-	}
-	++(copy.raw_iterator_);
-	--size;
+        if (copy.raw_iterator_ == rhs.raw_iterator_) {
+          return true;
+        }
+        ++(copy.raw_iterator_);
+        --size;
       }
       return false;
     }
@@ -267,11 +267,11 @@ namespace u5e {
       c = *(copy.raw_iterator_);
       int size = utf8_util::codepoint_size(c);
       while (size) {
-	if (copy.raw_iterator_ == rhs.raw_iterator_) {
-	  return true;
-	}
-	++(copy.raw_iterator_);
-	--size;
+        if (copy.raw_iterator_ == rhs.raw_iterator_) {
+          return true;
+        }
+        ++(copy.raw_iterator_);
+        --size;
       }
       return false;
     }
@@ -324,8 +324,8 @@ namespace u5e {
           while (--size) {
             unsigned char octet = 0b10000000;
             octet |= ((value>>((size-1)*6)) & 0b00111111);
-	    ref.raw_iterator_++;
-	    *(ref.raw_iterator_) = octet;
+            ref.raw_iterator_++;
+            *(ref.raw_iterator_) = octet;
           }
         }
         return *this;

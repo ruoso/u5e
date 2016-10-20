@@ -43,7 +43,7 @@ namespace u5e {
      * end of the grapheme.
      */
     basic_grapheme(const_codepoint_iterator b,
-		   const_codepoint_iterator e)
+                   const_codepoint_iterator e)
       :d_begin(b), d_end(e) {};
 
     /**

@@ -17,8 +17,8 @@ namespace u5e {
    * \brief A basic_encodedstring of utf32ne and basic_string_view<int>
    */
   typedef basic_encodedstring<u5e::utf32ne,
-			      std::experimental::basic_string_view<int>>
-  utf32ne_string_view;
+                              std::experimental::basic_string_view<int>>
+    utf32ne_string_view;
 };
 
 #endif

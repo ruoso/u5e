@@ -247,21 +247,45 @@ namespace u5e {
      * delegate the comparison to the underlying iterator
      */
     bool operator==(const_codepoint_iterator other) {
-      return where_ == other;
+      if (where_ == other) {
+	return true;
+      } else {
+	for (const_codepoint_iterator copy = where_;
+	     copy != end_of_grapheme_; copy++) {
+	  if (copy == other) {
+	    return true;
+	  }
+	}
+	return false;
+      }
     }
 
     /**
      * delegate the comparison to the underlying iterator
      */
     bool operator==(basic_grapheme_iterator other) {
-      return where_ == other.where_;
+      for (const_codepoint_iterator copy = where_;
+	   copy != end_of_grapheme_; copy++) {
+	if (other == copy) {
+	  return true;
+	}
+      }
+      return false;
     }
 
     /**
      * delegate the comparison to the underlying iterator
      */
     bool operator!=(basic_grapheme_iterator other) {
-      return where_ != other.where_;
+      return !(*this == other);
+    }
+
+    /**
+     * delegate the comparison to the underlying iterator
+     */
+    bool operator!=(const_codepoint_iterator other)
+    {
+      return !(*this == other);
     }
   };
 };

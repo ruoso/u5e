@@ -7,11 +7,22 @@ Unicode Text C++ library -- fork me on github: https://github.com/ruoso/u5e
 This library provides support for Unicode Text, as specified by the
 Unicode Standard.
 
-Usage example:
-* [How to iterate over utf8 text](simple_iteration.html).
-* [Demonstration of using utf8_iterator over const char*](smallest_code.html).
-* [How to truncate on correct codepoint boundaries](truncate_on_codepoint.html).
-* [How to truncate on correct grapheme boundaries](truncate_on_grapheme.html).
+These are the problems that this library intends to solve (links for examples):
+
+ * Iterating and truncating on correct boundaries for:
+   * codepoints [iterate](simple_iteration.html) [over const char*](smallest_code.html) [truncate](truncate_on_codepoint.html).
+   * graphemes [truncate](truncate_on_grapheme.html).
+   * words
+   * sentences
+ * Normalization
+   * All standard normalization forms
+   * "Normalization Form Grapheme" (as used by the Perl 6 Rakudo project)
+ * Explicitly Localized and Explicitly Non-localized support for:
+   * Comparison
+   * Sorting
+   * Case Folding
+   * Search Folding (folded to 'base character')
+   * Tokenizing
 
 # Why?
 
@@ -122,25 +133,6 @@ and end of your text.
 This library will offer a utility function to verify the correctness
 of the string, and optionally forcing the replacement of the invalid
 utf8 and utf16 sequences by replacement characters.
-
-# This library will cover
-
-These are the problems that this library intends to solve:
-
- * Iterating and truncating on correct boundaries for:
-   * codepoints
-   * graphemes
-   * words
-   * sentences
- * Normalization
-   * All standard normalization forms
-   * "Normalization Form Grapheme" (as used by the Perl 6 Rakudo project)
- * Explicitly Localized and Explicitly Non-localized support for:
-   * Comparison
-   * Sorting
-   * Case Folding
-   * Search Folding (folded to 'base character')
-   * Tokenizing
 
 # This library will not cover
 

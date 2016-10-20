@@ -150,20 +150,6 @@ built on top of u5e.
 
 # What are the guiding principles?
 
-## Reuse as much of the STL as possible
-
-Whenever possible, this library will provide a simple wrapping layer
-that defines the unicode support on top of existing STL
-types. Specifically, this library will not implement anything related
-to specific IO layers or to memory allocation.
-
-## Use Concepts for defining behavior
-
-Different aspects of how a class works will be composed using traits
-and concepts. Even though concepts is not yet a supported language
-feature, we will document the expected API of the concept. It's part
-of the contract to obey the expected concept.
-
 ## No "natural" unit
 
 There is no default unit. Most of the confusion around unicode is

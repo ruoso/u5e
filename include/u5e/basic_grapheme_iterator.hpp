@@ -26,7 +26,6 @@ namespace u5e {
      */
     typedef basic_grapheme<UnderlyingEncodedStringView> grapheme;
     
-  protected:
     //@{
     /**
      * The begin and end iterators for the whole text are necessary for
@@ -44,12 +43,89 @@ namespace u5e {
     const_codepoint_iterator end_of_grapheme_;
     //@}
 
-  private:
     typedef props::grapheme_cluster_break::prop_value_type g_c_b_vt;
 
     /**
-     * Use the data from the unicode database to find the end of the
-     * current grapheme.
+     * The unicode standard documents that a grapheme boundary can be
+     * determined by looking just at two adjecent codepoints.
+     */
+    bool is_grapheme_boundary(codepoint a, codepoint b) {
+      g_c_b_vt va = props::grapheme_cluster_break::resolve(a);
+      g_c_b_vt vb = props::grapheme_cluster_break::resolve(b);
+
+      if (va == g_c_b_vt::CR &&
+	  vb == g_c_b_vt::LF) {
+	// GB3
+	return false;
+      } else if (va == g_c_b_vt::CR ||
+		 va == g_c_b_vt::LF ||
+		 va == g_c_b_vt::CONTROL) {
+	// GB4
+	return true;
+      } else if (vb == g_c_b_vt::CR ||
+		 vb == g_c_b_vt::LF ||
+		 vb == g_c_b_vt::CONTROL) {
+	// GB5
+	return true;
+      } else if (va == g_c_b_vt::L &&
+		 (vb == g_c_b_vt::L ||
+		  vb == g_c_b_vt::V ||
+		  vb == g_c_b_vt::LV ||
+		  vb == g_c_b_vt::LVT)) {
+	// GB6
+	return false;
+      } else if ((va == g_c_b_vt::LV ||
+		  va == g_c_b_vt::V) &&
+		 (vb == g_c_b_vt::V ||
+		  vb == g_c_b_vt::T)) {
+	// GB7
+	return false;
+      } else if ((va == g_c_b_vt::LVT ||
+		  va == g_c_b_vt::T) &&
+		 vb == g_c_b_vt::T) {
+	// GB8
+	return false;
+      } else if (vb == g_c_b_vt::EXTEND ||
+		 vb == g_c_b_vt::ZWJ) {
+	// GB9
+	return false;
+      } else if (vb == g_c_b_vt::SPACINGMARK) {
+	// GB9a
+	return false;
+      } else if (va == g_c_b_vt::PREPEND) {
+	// GB9b
+	return false;
+      } else if ( ( (va == g_c_b_vt::E_BASE ||
+		     va == g_c_b_vt::E_BASE_GAZ) &&
+		    vb == g_c_b_vt::E_MODIFIER) ||
+		  ( va == g_c_b_vt::EXTEND &&
+		    vb == g_c_b_vt::E_MODIFIER )) {
+	// GB10 -- that is the interpretation I can make
+	// of the combination of the fact that you should be able
+	// to compare only two adjancent characters and the text of
+	// the standard.
+	return false;
+      } else if (va == g_c_b_vt::ZWJ &&
+		 (vb == g_c_b_vt::GLUE_AFTER_ZWJ ||
+		  vb == g_c_b_vt::E_BASE_GAZ)) {
+	// GB11
+	return false;
+      } else if (va == g_c_b_vt::REGIONAL_INDICATOR &&
+		 vb == g_c_b_vt::REGIONAL_INDICATOR) {
+	// GB12, GB13
+	// again, I take the liberty to assume the earlier part of the text
+	// that says you only need to look at two adjacent characters
+	return false;
+      } else {
+	// GB999
+	return true;
+      }
+    }
+    
+    //@{
+    /**
+     * Use the data from the unicode database to find the start and
+     * end of the current grapheme.
      */
     void find_end_of_grapheme() {
       // GB2
@@ -62,80 +138,48 @@ namespace u5e {
       codepoint a = *end_of_grapheme_;
       end_of_grapheme_++;
 
-      // TODO: actually implement the grapheme cluster support
       while (1) {
 	// GB2
 	if (end_of_grapheme_ == end_)
 	  return;
 	codepoint b = *end_of_grapheme_;
 
-	g_c_b_vt va = props::grapheme_cluster_break::resolve(a);
-	g_c_b_vt vb = props::grapheme_cluster_break::resolve(b);
-
-	if (va == g_c_b_vt::CR &&
-	    vb == g_c_b_vt::LF) {
-	  // GB3
-	} else if (va == g_c_b_vt::CR ||
-		   va == g_c_b_vt::LF ||
-		   va == g_c_b_vt::CONTROL) {
-	  // GB4
-	  return;
-	} else if (vb == g_c_b_vt::CR ||
-		   vb == g_c_b_vt::LF ||
-		   vb == g_c_b_vt::CONTROL) {
-	  // GB5
-	  return;
-	} else if (va == g_c_b_vt::L &&
-		   (vb == g_c_b_vt::L ||
-		    vb == g_c_b_vt::V ||
-		    vb == g_c_b_vt::LV ||
-		    vb == g_c_b_vt::LVT)) {
-	  // GB6
-	} else if ((va == g_c_b_vt::LV ||
-		    va == g_c_b_vt::V) &&
-		   (vb == g_c_b_vt::V ||
-		    vb == g_c_b_vt::T)) {
-	  // GB7
-	} else if ((va == g_c_b_vt::LVT ||
-		    va == g_c_b_vt::T) &&
-		   vb == g_c_b_vt::T) {
-	  // GB8
-	} else if (vb == g_c_b_vt::EXTEND ||
-		   vb == g_c_b_vt::ZWJ) {
-	  // GB9
-	} else if (vb == g_c_b_vt::SPACINGMARK) {
-	  // GB9a
-	} else if (va == g_c_b_vt::PREPEND) {
-	  // GB9b
-	} else if ( ( (va == g_c_b_vt::E_BASE ||
-		       va == g_c_b_vt::E_BASE_GAZ) &&
-		      vb == g_c_b_vt::E_MODIFIER) ||
-		    ( va == g_c_b_vt::EXTEND &&
-		      vb == g_c_b_vt::E_MODIFIER )) {
-	  // GB10 -- that is the interpretation I can make
-	  // of the combination of the fact that you should be able
-	  // to compare only two adjancent characters and the text of
-	  // the standard.
-	} else if (va == g_c_b_vt::ZWJ &&
-		   (vb == g_c_b_vt::GLUE_AFTER_ZWJ ||
-		    vb == g_c_b_vt::E_BASE_GAZ)) {
-	  // GB11
-	} else if (va == g_c_b_vt::REGIONAL_INDICATOR &&
-		   vb == g_c_b_vt::REGIONAL_INDICATOR) {
-	  // GB12, GB13
-	  // again, I take the liberty to assume the earlier part of the text
-	  // that says you only need to look at two adjacent characters
-	} else {
-	  // GB999
+	if (is_grapheme_boundary(a, b)) {
 	  return;
 	}
-	
+
 	a = b;
 	end_of_grapheme_++;
       }
     }
-    
-  public:
+
+    void find_start_of_grapheme() {
+      // GB2
+      if (where_ == begin_)
+	return;
+      // rewind where_ until it's no longer in the same grapheme
+
+      // GB1
+      // this always start as copy = where_
+      const_codepoint_iterator copy = where_;
+      --copy;
+      codepoint a = *copy;
+
+      while (1) {
+	if (where_ == begin_)
+	  return;
+	codepoint b = *where_;
+
+	if (is_grapheme_boundary(a, b)) {
+	  return;
+	}
+
+	a = b;
+	--where_;
+      }
+    }
+    //@}
+
     /**
      * \brief start at the beginning of the text
      */
@@ -147,16 +191,19 @@ namespace u5e {
 
     /**
      * \brief start at a specific point
+     * find the start and the end of the grapheme
      */
     basic_grapheme_iterator(const_codepoint_iterator b,
 			    const_codepoint_iterator e,
 			    const_codepoint_iterator w)
       :begin_(b), end_(e), where_(w), end_of_grapheme_(w) {
+      find_start_of_grapheme();
       find_end_of_grapheme();
     };
 
     /**
-     * \brief start at a specific point, precalculated end of grapheme
+     * \brief start at a specific point - precalculated
+     * start and end of grapheme
      */
     basic_grapheme_iterator(const_codepoint_iterator b,
 			    const_codepoint_iterator e,

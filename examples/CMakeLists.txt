@@ -3,6 +3,7 @@ foreach(EXAMPLE
     simple_iteration
     smallest_code
     truncate_on_codepoint
+    truncate_on_grapheme
     )
   add_executable(${EXAMPLE} ${EXAMPLE}.cpp)
   target_compile_options(${EXAMPLE} PUBLIC -std=c++1y)

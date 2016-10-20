@@ -6,6 +6,7 @@
 #include <u5e/codepoint_traits.hpp>
 
 namespace u5e {
+  template <typename T> class basic_grapheme_iterator;
 
   /**
    * \brief basic encoding support over string-like objects.
@@ -145,12 +146,25 @@ namespace u5e {
     inline basic_encodedstring& append
     (const_iterator first,const_iterator last
      ) {
-      native_string.append
-	(Encoding::template native_const_iterator<NativeString>(first),
-	 Encoding::template native_const_iterator<NativeString>(last)
-	 );
+      return append<NativeString>(first,last);
+    }
+
+    template <typename StorageType>
+    inline basic_encodedstring& append
+    (basic_grapheme_iterator<basic_encodedstring<Encoding, StorageType>>& first,
+     basic_grapheme_iterator<basic_encodedstring<Encoding, StorageType>>& last)
+    {
+      native_string.append((*first).codepoint_begin(),
+			   (*last).codepoint_begin());
       return *this;
     }
+    
+    inline basic_encodedstring& append
+    (basic_grapheme_iterator<basic_encodedstring>& first,
+     basic_grapheme_iterator<basic_encodedstring>& last) {
+      return append<NativeString>(first, last);
+    }
+    
     //@}
 
   };

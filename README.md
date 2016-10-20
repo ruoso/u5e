@@ -10,7 +10,7 @@ Unicode Standard.
 These are the problems that this library intends to solve (links for examples):
 
  * Iterating and truncating on correct boundaries for:
-   * codepoints [iterate](simple_iteration.html) [over const char*](smallest_code.html) [truncate](truncate_on_codepoint.html).
+   * codepoints [iterate](simple_iteration.html), [over const char*](smallest_code.html), [truncate](truncate_on_codepoint.html).
    * graphemes [truncate](truncate_on_grapheme.html).
    * words
    * sentences

@@ -42,7 +42,7 @@ namespace u5e {
    */
   template <typename InputIteratorType, typename OutputType,
             typename Functor >
-  int
+  inline int
   filter(InputIteratorType input_from, InputIteratorType input_to,
          OutputType& output, Functor operation) {
     int counter = 0;

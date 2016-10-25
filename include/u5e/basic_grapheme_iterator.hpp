@@ -25,6 +25,7 @@ namespace u5e {
      * the specific grapheme type for this encoded string view
      */
     typedef basic_grapheme<UnderlyingEncodedStringView> grapheme;
+    typedef grapheme value_type;
     
     //@{
     /**
@@ -264,13 +265,18 @@ namespace u5e {
      * delegate the comparison to the underlying iterator
      */
     bool operator==(basic_grapheme_iterator other) {
-      for (const_codepoint_iterator copy = where_;
-           copy != end_of_grapheme_; copy++) {
-        if (other == copy) {
-          return true;
+      if (where_ == end_ &&
+          other == end_) {
+        return true;
+      } else {
+        for (const_codepoint_iterator copy = where_;
+             copy != end_of_grapheme_; copy++) {
+          if (other == copy) {
+            return true;
+          }
         }
+        return false;
       }
-      return false;
     }
 
     /**

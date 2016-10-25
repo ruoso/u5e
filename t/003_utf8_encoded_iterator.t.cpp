@@ -1,6 +1,7 @@
 #include "gtest/gtest.h"
 #include <experimental/string_view>
 #include <string.h>
+#include <iterator>
 
 #include <u5e/utf8_iterator.hpp>
 #include <u5e/utf8_string.hpp>
@@ -145,7 +146,7 @@ TEST(t_003_utf8_encoded_iterator, decode) {
 }
 
 TEST(t_003_utf8_encoded_iterator, output_iterator) {
-  utf8_string output("");
+  utf8_string output("     ");
   utf8_string input("Ol\xC3\x81!");
   std::copy(input.cbegin(),input.cend(), output.begin());
   ASSERT_STREQ(input.native_string.c_str(),

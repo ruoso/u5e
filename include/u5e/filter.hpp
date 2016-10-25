@@ -32,7 +32,13 @@ namespace u5e {
    *
    * \tparam InputIteratorType the type of the input iterator
    * \tparam OutputType the type of the output iterator
-   * \tparam Functor the callback function called for each element
+   * \tparam Functor the callback function type called for each element
+   *
+   * \param input_from starting position for the input iterator
+   * \param input_to end position for the input iterator
+   * \param output output container sent to the operator function
+   * \param operation function that takes the element, the output
+   * container and returns the number of outputted elements
    */
   template <typename InputIteratorType, typename OutputType,
             typename Functor >

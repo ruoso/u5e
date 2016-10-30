@@ -6,6 +6,7 @@ foreach(TEST
     006_grapheme_iterator
     007_utf8_bounds
     008_filter
+    009_canonical_decomposition_mapping
     )
   add_executable(${TEST}.t ${TEST}.t.cpp)
   target_compile_options(${TEST}.t PUBLIC -std=c++1y)

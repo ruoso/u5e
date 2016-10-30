@@ -4,6 +4,7 @@ project(u5e)
 add_library(u5e
   src/u5e/version.cpp
   src/u5e/props/grapheme_cluster_break.cpp
+  src/u5e/props/canonical_decomposition_mapping.cpp
   )
 target_include_directories(u5e PUBLIC include/)
 target_compile_options(u5e PUBLIC -std=c++1y -Wall -Werror)

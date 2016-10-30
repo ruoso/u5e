@@ -125,6 +125,25 @@ namespace u5e {
 
     //@{
     /**
+     * Get begin and end grapheme iterators.
+     * Graphemes are always built from the const iterators, since graphemes
+     * are always immutable.
+     */
+    inline basic_grapheme_iterator<basic_encodedstring> grapheme_begin() {
+      basic_grapheme_iterator<basic_encodedstring> i(codepoint_cbegin(),
+                                                     codepoint_cend());
+      return i;
+    }
+    inline basic_grapheme_iterator<basic_encodedstring> grapheme_end() {
+      basic_grapheme_iterator<basic_encodedstring> i(codepoint_cbegin(),
+                                                     codepoint_cend(),
+                                                     codepoint_cend());
+      return i;
+    }
+    //@}
+
+    //@{
+    /**
      * Append from input iterators.
      *
      * Note that this is only possible from iterators of the same

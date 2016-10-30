@@ -24,7 +24,7 @@ TEST(t_006_utf8_string_grapheme_iterator, utf8) {
   utf8_string str("Ola\xCC\x81!");
 
   // now we get a grapheme iterator from the utf8 iterator
-  utf8_string_grapheme_iterator gi(str.cbegin(), str.cend());
+  utf8_string_grapheme_iterator gi(str.grapheme_begin());
 
   // the current grapheme
   utf8_string_grapheme g(*gi);
@@ -86,7 +86,7 @@ TEST(t_006_utf8_string_grapheme_iterator, utf32ne) {
   utf32ne_string str({ 'O', 'l', 'a', 769, '!' });
 
   // now we get a grapheme iterator from the utf32ne iterator
-  utf32ne_string_grapheme_iterator gi(str.cbegin(), str.cend());
+  utf32ne_string_grapheme_iterator gi(str.grapheme_begin());
 
   // the current grapheme
   utf32ne_string_grapheme g(*gi);

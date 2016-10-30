@@ -23,17 +23,13 @@ int main(int argc, char **argv) {
   // for each argument
   for (int i = 1; i < argc; i++) {
 
-    // get a string_view
-    string_view p(argv[i], strlen(argv[i]));
-
-    // get a utf8 iterator from the string view
-    utf8_string_view::const_iterator u8b(p.begin());
-    utf8_string_view::const_iterator u8e(p.end());
+    // get a utf8_string_view
+    utf8_string_view p(argv[i]);
 
     // get the grapheme iterator from that
     // Iterate grapheme by grapheme
-    for (utf8_string_view_grapheme_iterator gi(u8b, u8e);
-         gi != u8e; gi++) {
+    for (utf8_string_view_grapheme_iterator gi = p.grapheme_begin();
+         gi != p.grapheme_end(); gi++) {
       utf8_string_view_grapheme g = *gi;
       printf("[");
 

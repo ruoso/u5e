@@ -23,13 +23,11 @@ static int first_codepoint_in_grapheme(u5e::utf8_string_grapheme g,
 TEST(t_008_filter, basic) { 
   u5e::utf8_string str("Ola\xCC\x81!");
 
-  // now we get a grapheme iterator from the utf8 iterator
-  u5e::utf8_string_grapheme_iterator gi(str.cbegin(), str.cend());
-  u5e::utf8_string_grapheme_iterator ge(str.cbegin(), str.cend(), str.cend());
-
   u5e::utf8_string output;
-  
-  int count = u5e::filter(gi, ge, output, first_codepoint_in_grapheme);
+
+  int count = u5e::filter(str.grapheme_begin(),
+                          str.grapheme_end(),
+                          output, first_codepoint_in_grapheme);
   ASSERT_EQ(count, 4);
   ASSERT_STREQ(output.native_string.c_str(), "Ola!");
 };

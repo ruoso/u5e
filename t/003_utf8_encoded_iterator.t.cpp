@@ -120,7 +120,7 @@ TEST(t_003_utf8_encoded_iterator, iteratore) {
 
 TEST(t_003_utf8_encoded_iterator, iteratorf) {
   utf8_string foo("Ol\xC3\x81!");
-  utf8_string::const_iterator it(foo.cbegin());
+  utf8_string::const_iterator it(foo.codepoint_cbegin());
   ASSERT_EQ(*it, 'O');
 }
 
@@ -148,7 +148,8 @@ TEST(t_003_utf8_encoded_iterator, decode) {
 TEST(t_003_utf8_encoded_iterator, output_iterator) {
   utf8_string output("     ");
   utf8_string input("Ol\xC3\x81!");
-  std::copy(input.cbegin(),input.cend(), output.begin());
+  std::copy(input.codepoint_cbegin(),input.codepoint_cend(),
+            output.codepoint_begin());
   ASSERT_STREQ(input.native_string.c_str(),
 	       output.native_string.c_str());
 }

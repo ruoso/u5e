@@ -77,7 +77,7 @@ TEST(t_006_utf8_string_grapheme_iterator, utf8) {
 
   // advance
   gi++;
-  ASSERT_TRUE(gi == str.cend());
+  ASSERT_TRUE(gi == str.codepoint_cend());
 
 };
 
@@ -139,6 +139,6 @@ TEST(t_006_utf8_string_grapheme_iterator, utf32ne) {
 
   // advance
   gi++;
-  ASSERT_TRUE(gi == str.cend());
+  ASSERT_TRUE(gi == str.codepoint_cend());
 
 };

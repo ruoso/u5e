@@ -40,7 +40,7 @@ TEST(t_002_utf32_encoded_iterator, iteratora) {
   const int r[5] = { 'H', 'e', 'l' ,'l', 'o' };
   basic_string_view<int> b(r, 5);
   utf32ne_string_view e(b);
-  utf32ne_string_view::iterator it = e.begin();
+  utf32ne_string_view::iterator it = e.codepoint_begin();
   ASSERT_EQ(*it, 'H');
   it++;
   ASSERT_EQ(*it, 'e');
@@ -51,14 +51,14 @@ TEST(t_002_utf32_encoded_iterator, iteratora) {
   it++;
   ASSERT_EQ(*it, 'o');
   it++;
-  ASSERT_EQ(it, e.end());
+  ASSERT_EQ(it, e.codepoint_end());
 }
 
 TEST(t_002_utf32_encoded_iterator, iteratorb) {
   const int r[5] = { 'H', 'e', 'l' ,'l', 'o' };
   basic_string<int> b(r, 5);
   utf32ne_string e(b);
-  utf32ne_string::iterator it = e.begin();
+  utf32ne_string::iterator it = e.codepoint_begin();
   ASSERT_EQ(*it, 'H');
   it++;
   ASSERT_EQ(*it, 'e');
@@ -69,5 +69,5 @@ TEST(t_002_utf32_encoded_iterator, iteratorb) {
   it++;
   ASSERT_EQ(*it, 'o');
   it++;
-  ASSERT_EQ(it, e.end());
+  ASSERT_EQ(it, e.codepoint_end());
 }

@@ -107,18 +107,36 @@ namespace u5e {
 
     //@{
     /**
-     * Get begin and end iterators.
+     * Get begin and end native iterators.
      */
-    inline iterator begin() {
+    inline typename NativeString::iterator native_begin() {
+      return native_string.begin();
+    }
+    inline typename NativeString::iterator native_end() {
+      return native_string.end();
+    }
+    inline typename NativeString::const_iterator native_cbegin() {
+      return native_string.cbegin();
+    }
+    inline typename NativeString::const_iterator native_cend() {
+      return native_string.cend();
+    }
+    //@}
+
+    //@{
+    /**
+     * Get begin and end codepoint iterators.
+     */
+    inline iterator codepoint_begin() {
       return iterator(native_string.begin());
     }
-    inline iterator end() {
+    inline iterator codepoint_end() {
       return iterator(native_string.end());
     }
-    inline const_iterator cbegin() {
+    inline const_iterator codepoint_cbegin() {
       return const_iterator(native_string.cbegin());
     }    
-    inline const_iterator cend() {
+    inline const_iterator codepoint_cend() {
       return const_iterator(native_string.cend());
     }
     //@}

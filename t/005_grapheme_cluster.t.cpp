@@ -18,7 +18,7 @@ using u5e::utf8_string_view_grapheme;
 TEST(t_005_utf8_string_grapheme, constructor_1) {
   // this is a decomposed grapheme
   utf8_string str("Ola\xCC\x81!");
-  utf8_string::const_iterator i = str.cbegin();
+  utf8_string::const_iterator i = str.codepoint_cbegin();
   // "O", "l",
   i++; i++;
   utf8_string::const_iterator g_start = i;
@@ -43,7 +43,7 @@ TEST(t_005_utf8_string_grapheme, constructor_1) {
 TEST(t_005_utf8_string_view_grapheme, constructor_2) {
   // this is a decomposed grapheme
   utf8_string_view str("Ola\xCC\x81!");
-  utf8_string_view::const_iterator i = str.cbegin();
+  utf8_string_view::const_iterator i = str.codepoint_cbegin();
   // "O", "l",
   i++; i++;
   utf8_string_view::const_iterator g_start = i;

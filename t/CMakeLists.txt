@@ -9,6 +9,8 @@ foreach(TEST
     009_canonical_decomposition_mapping
     010_canonical_decomposition
     011_canonical_combining_class
+    012_normalization_form_d_utf32ne
+    013_normalization_form_d_utf8
     )
   add_executable(${TEST}.t ${TEST}.t.cpp)
   target_compile_options(${TEST}.t PUBLIC -std=c++1y)

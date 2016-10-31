@@ -43,6 +43,23 @@ namespace u5e {
       it.rewind_to_start_of_codepoint(*(it.raw_iterator_));
       return it.raw_iterator_;
     }
+
+    template <typename InputNativeIterator, typename OutputNativeString>
+    static void append_from_utf32ne
+    (InputNativeIterator first, InputNativeIterator last,
+     OutputNativeString& output) {
+      while (first != last) {
+        codepoint c = *first;
+        char buf[6] = {}; // utf8 codepoint is never bigger than 6 chars
+        utf8_iterator<char*> o_begin(buf);
+        utf8_iterator<char*> o_i = o_begin;
+        *o_i = c;
+        o_i++;
+        output.append(o_begin, o_i);
+        first++;
+      }
+    }
+
   };
 }
 

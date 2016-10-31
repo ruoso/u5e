@@ -4,6 +4,8 @@
 #include <iterator>
 #include <u5e/codepoint.hpp>
 #include <u5e/codepoint_traits.hpp>
+#include <u5e/basic_grapheme_iterator.hpp>
+#include <u5e/utf32ne.hpp>
 
 namespace u5e {
   template <typename T> class basic_grapheme_iterator;
@@ -201,7 +203,19 @@ namespace u5e {
      basic_grapheme_iterator<basic_encodedstring>& last) {
       return append<NativeString>(first, last);
     }
-    
+
+    template <typename StorageType>
+    inline basic_encodedstring& append_from_utf32ne
+    (
+     typename basic_encodedstring<utf32ne, StorageType>::const_iterator first,
+     typename basic_encodedstring<utf32ne, StorageType>::const_iterator last
+     ) {
+      Encoding::append_from_utf32ne
+        (utf32ne::template native_const_iterator<StorageType>(first),
+         utf32ne::template native_const_iterator<StorageType>(last),
+         native_string);
+      return *this;
+    }
     //@}
 
   };

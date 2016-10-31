@@ -35,6 +35,13 @@ namespace u5e {
       return it;
     }
 
+    template <typename InputNativeIterator, typename OutputNativeString>
+    static void append_from_utf32ne
+    (InputNativeIterator first, InputNativeIterator last,
+     OutputNativeString& output) {
+      output.append(first, last);
+    }
+
     //@}
   };
 }

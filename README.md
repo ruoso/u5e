@@ -10,12 +10,12 @@ Unicode Standard.
 These are the problems that this library intends to solve (links for examples):
 
  * Iterating and truncating on correct boundaries for:
-   * codepoints [iterate](simple_iteration.html), [over const char*](smallest_code.html), [truncate](truncate_on_codepoint.html).
-   * graphemes [iterate](grapheme_iteration.html), [truncate](truncate_on_grapheme.html).
+   * codepoints - [iterate](simple_iteration.html), [over const char*](smallest_code.html), [truncate](truncate_on_codepoint.html).
+   * graphemes - [iterate](grapheme_iteration.html), [truncate](truncate_on_grapheme.html).
    * words
    * sentences
  * Normalization
-   * Normalization Form D [in utf8](normalization_form_d.html)
+   * Normalization Form D - [in utf8](normalization_form_d.html), [in utf32](normalization_form_d_utf32.html)
    * Other standard normalization forms
    * "Normalization Form Grapheme" (as used by the Perl 6 Rakudo project)
  * Explicitly Localized and Explicitly Non-localized support for:

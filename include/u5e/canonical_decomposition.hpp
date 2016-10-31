@@ -27,7 +27,7 @@ namespace u5e {
    *
    */
   template <typename OutputStringType>
-  static int canonical_decomposition(const codepoint input,
+  inline int canonical_decomposition(const codepoint input,
                                      OutputStringType& output) {
     int const * mapping =
       props::canonical_decomposition_mapping::resolve(input);

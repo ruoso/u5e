@@ -54,9 +54,9 @@ namespace u5e {
         utf8_iterator<char*> o_begin(buf);
         utf8_iterator<char*> o_i = o_begin;
         *o_i = c;
-        o_i++;
-        output.append(o_begin, o_i);
-        first++;
+        ++o_i;
+        output.append(o_begin.raw_iterator_, o_i.raw_iterator_);
+        ++first;
       }
     }
 

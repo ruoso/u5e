@@ -43,14 +43,6 @@ namespace u5e {
     };
 
     /**
-     * Advance the iterator to the next codepoint
-     */
-    inline void forward_one_codepoint() {
-      difference_type size = utf8_util::codepoint_size(*raw_iterator_);
-      std::advance(raw_iterator_, size);
-    }
-    
-    /**
      * When doing a reverse itetor, you need to be able to find
      * where the current codepoint started.
      */
@@ -63,6 +55,15 @@ namespace u5e {
         ret = true;
       }
       return ret;
+    }
+
+    /**
+     * Advance the iterator to the next codepoint
+     */
+    inline void forward_one_codepoint() {
+      rewind_to_start_of_codepoint(*raw_iterator_);
+      difference_type size = utf8_util::codepoint_size(*raw_iterator_);
+      std::advance(raw_iterator_, size);
     }
 
     /**

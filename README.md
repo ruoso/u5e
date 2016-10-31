@@ -15,7 +15,8 @@ These are the problems that this library intends to solve (links for examples):
    * words
    * sentences
  * Normalization
-   * All standard normalization forms
+   * Normalization Form D [in utf8](normalization_form_d.html)
+   * Other standard normalization forms
    * "Normalization Form Grapheme" (as used by the Perl 6 Rakudo project)
  * Explicitly Localized and Explicitly Non-localized support for:
    * Comparison

@@ -47,8 +47,7 @@ namespace u5e {
          OutputType& output, Functor operation) {
     int counter = 0;
     while (input_from != input_to) {
-      typename InputIteratorType::value_type item = *input_from;
-      counter += operation(item, output);
+      counter += operation(*input_from, output);
       input_from++;
     }
     return counter;

@@ -7,6 +7,7 @@ foreach(TEST
     007_utf8_bounds
     008_filter
     009_canonical_decomposition_mapping
+    010_canonical_decomposition
     )
   add_executable(${TEST}.t ${TEST}.t.cpp)
   target_compile_options(${TEST}.t PUBLIC -std=c++1y)

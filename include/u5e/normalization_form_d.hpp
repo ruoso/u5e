@@ -6,7 +6,7 @@
 #include <u5e/utf32ne_string.hpp>
 #include <u5e/filter.hpp>
 #include <u5e/canonical_decomposition.hpp>
-#include <u5e/props/canonical_combining_class.hpp>
+#include <u5e/canonical_combining_order.hpp>
 
 namespace u5e {
   /**
@@ -32,12 +32,7 @@ namespace u5e {
 
     // then sort based on canonical combining class
     std::sort(decomposed.codepoint_begin(), decomposed.codepoint_end(),
-              [](int a, int b) {
-                return
-                  props::canonical_combining_class::resolve(a)
-                  <
-                  props::canonical_combining_class::resolve(b);
-              });
+              canonical_combining_order);
 
     // finally append the output
     output.template append_from_utf32ne<utf32ne_string>

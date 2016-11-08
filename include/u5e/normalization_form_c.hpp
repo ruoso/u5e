@@ -7,7 +7,7 @@
 #include <u5e/filter.hpp>
 #include <u5e/canonical_decomposition.hpp>
 #include <u5e/canonical_combining_order.hpp>
-#include <u5e/props/canonical_composition_mapping.hpp>
+#include <u5e/canonical_composition.hpp>
 
 namespace u5e {
   /**
@@ -37,35 +37,18 @@ namespace u5e {
 
     // finally recompose. we will do that in-place on the decomposed
     // string, since we never have to look back.
+    int compositions = 0;
     utf32ne_string::iterator oi_begin(decomposed.codepoint_begin());
-    utf32ne_string::iterator oi(decomposed.codepoint_begin());
-    utf32ne_string::const_iterator input(decomposed.codepoint_cbegin());
-    utf32ne_string::const_iterator input_end(decomposed.codepoint_cend());
-    while (input != input_end) {
-      int a = *(input++);
-      if (input == input_end) {
-        // there is no b.
-        *(oi++) = a;
-      } else {
-        // look ahead for the next codepoint
-        int b = *input;
-        int composed;
-        if (u5e::props::canonical_composition_mapping::resolve(a, b, &composed)) {
-          *(oi++) = composed;
-          ++input;
-          count--;
-        } else {
-          *(oi++) = a;
-        }
-      }
-    }
-    
+    utf32ne_string::iterator oi
+      (u5e::canonical_composition(decomposed,&compositions));
+
     // finally append the output
     output.template append_from_utf32ne<utf32ne_string>
       (oi_begin, oi);
 
-    // we re-use the counter from the decomposition filter.
-    return count;
+    // we re-use the counter from the decomposition filter and
+    // subtract how many pair were composed into a single codepoint.
+    return count - compositions;
   }
 }
 

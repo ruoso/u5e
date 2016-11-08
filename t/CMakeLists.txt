@@ -12,6 +12,8 @@ foreach(TEST
     012_normalization_form_d_utf32ne
     013_normalization_form_d_utf8
     014_canonical_composition_mapping
+    015_normalization_form_c_utf8
+    016_normalization_form_c_utf32ne
     )
   add_executable(${TEST}.t ${TEST}.t.cpp)
   target_compile_options(${TEST}.t PUBLIC -std=c++1y)

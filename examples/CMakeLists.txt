@@ -7,6 +7,8 @@ foreach(EXAMPLE
     grapheme_iteration
     normalization_form_d
     normalization_form_d_utf32
+    normalization_form_c
+    normalization_form_c_utf32
     )
   add_executable(${EXAMPLE} ${EXAMPLE}.cpp)
   target_compile_options(${EXAMPLE} PUBLIC -std=c++1y)

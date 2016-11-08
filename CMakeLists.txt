@@ -5,6 +5,7 @@ add_library(u5e
   src/u5e/version.cpp
   src/u5e/props/grapheme_cluster_break.cpp
   src/u5e/props/canonical_decomposition_mapping.cpp
+  src/u5e/props/canonical_composition_mapping.cpp
   src/u5e/props/canonical_combining_class.cpp
   )
 target_include_directories(u5e PUBLIC include/)

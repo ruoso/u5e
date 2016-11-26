@@ -6,6 +6,7 @@
 #include <experimental/string_view>
 
 #include <u5e/codepoint.hpp>
+#include <u5e/codepoint_decomposition.hpp>
 #include <u5e/props/compatibility_and_canonical_decomposition_mapping.hpp>
 #include <u5e/utf32ne_string_view.hpp>
 

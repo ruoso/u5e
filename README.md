@@ -17,7 +17,8 @@ These are the problems that this library intends to solve (links for examples):
  * Normalization
    * Normalization Form D - [in utf8](normalization_form_d.html), [in utf32](normalization_form_d_utf32.html)
    * Normalization Form C - [in utf8](normalization_form_c.html), [in utf32](normalization_form_c_utf32.html)
-   * Other standard normalization forms
+   * Normalization Form KD - [in utf8](normalization_form_kd.html), [in utf32](normalization_form_kd_utf32.html)
+   * Normalization Form KC - [in utf8](normalization_form_kc.html), [in utf32](normalization_form_kc_utf32.html)
  * Explicitly Localized and Explicitly Non-localized support for:
    * Comparison
    * Sorting

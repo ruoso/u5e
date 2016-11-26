@@ -9,6 +9,10 @@ foreach(EXAMPLE
     normalization_form_d_utf32
     normalization_form_c
     normalization_form_c_utf32
+    normalization_form_kd
+    normalization_form_kd_utf32
+    normalization_form_kc
+    normalization_form_kc_utf32
     )
   add_executable(${EXAMPLE} ${EXAMPLE}.cpp)
   target_compile_options(${EXAMPLE} PUBLIC -std=c++1y)

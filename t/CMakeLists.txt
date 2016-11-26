@@ -14,6 +14,7 @@ foreach(TEST
     014_canonical_composition_mapping
     015_normalization_form_c_utf8
     016_normalization_form_c_utf32ne
+    017_compatibility_and_canonical_decomposition_mapping
     )
   add_executable(${TEST}.t ${TEST}.t.cpp)
   target_compile_options(${TEST}.t PUBLIC -std=c++1y)

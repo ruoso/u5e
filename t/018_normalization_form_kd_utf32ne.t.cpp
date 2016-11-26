@@ -24,7 +24,7 @@ TEST(t_012_normalization_form_kd_utf32ne, basic1) {
                 output,
                 u5e::normalization_form_kd<u5e::utf32ne_string>);
   ASSERT_EQ( 's' , output.native_string[0]);
-  ASSERT_EQ( 0x0323 , output.native_string[0]);
-  ASSERT_EQ( 0x0307 , output.native_string[0]);
+  ASSERT_EQ( 0x0323 , output.native_string[1]);
+  ASSERT_EQ( 0x0307 , output.native_string[2]);
   ASSERT_EQ(3, count);
 };

@@ -1,0 +1,35 @@
+This example covers the usage of \hyperlink{namespaceu5e_a300b77046593bf5484867461ac65cb88}{u5e\+::filter} with \hyperlink{namespaceu5e_a67caa33a03e9b645861525fcf447c845}{u5e\+::normalization\+\_\+form\+\_\+kc} in order to normalize a utf8 string.
+
+
+\begin{DoxyCode}
+
+\textcolor{preprocessor}{#include <u5e/utf8\_string.hpp>}
+\textcolor{preprocessor}{#include <u5e/filter.hpp>}
+\textcolor{preprocessor}{#include <u5e/normalization\_form\_kc.hpp>}
+\textcolor{preprocessor}{#include <stdio.h>}
+
+\textcolor{keywordtype}{int} main(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} **argv) \{
+
+  \textcolor{comment}{// for each argument}
+  \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 1; i < argc; i++) \{
+
+    \textcolor{comment}{// get a utf8\_string\_view}
+    \hyperlink{classu5e_1_1utf8__string}{u5e::utf8\_string} input(argv[i]);
+    \hyperlink{classu5e_1_1utf8__string}{u5e::utf8\_string} output;
+    \hyperlink{namespaceu5e_a300b77046593bf5484867461ac65cb88}{u5e::filter}(input.grapheme\_begin(), input.grapheme\_end(), output,
+                u5e::normalization\_form\_kc<u5e::utf8\_string>);
+    
+    \textcolor{comment}{// print out the codepoints}
+    \textcolor{keywordflow}{for} (\hyperlink{classu5e_1_1basic__encodedstring_a249da58e8bad9c91fab547516f90c60d}{u5e::utf8\_string::const\_iterator} it = output.codepoint\_cbegin();
+         it != output.codepoint\_cend(); it++ ) \{
+      \textcolor{comment}{// the value dereferenced is the codepoint, not octets even if}
+      \textcolor{comment}{// the original text had "wide" chars.}
+      printf(\textcolor{stringliteral}{" U+%06llx"}, (\textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int})*it);
+    \}
+
+    printf(\textcolor{stringliteral}{"\(\backslash\)n"});
+  \}
+  \textcolor{keywordflow}{return} 0;
+\}
+\end{DoxyCode}
+ 

@@ -1,0 +1,81 @@
+\hypertarget{classu5e_1_1utf32ne}{}\section{u5e\+:\+:utf32ne Class Reference}
+\label{classu5e_1_1utf32ne}\index{u5e\+::utf32ne@{u5e\+::utf32ne}}
+
+
+Architecture-\/specific type to interface U\+T\+F32\+BE or U\+T\+F32\+LE.  
+
+
+
+
+{\ttfamily \#include $<$u5e/utf32ne.\+hpp$>$}
+
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Native\+String $>$ }\\using \hyperlink{classu5e_1_1utf32ne_aa94f3484382747653c46ce429612eedc}{iterator} = typename Native\+String\+::iterator
+\item 
+{\footnotesize template$<$typename Native\+String $>$ }\\using \hyperlink{classu5e_1_1utf32ne_a4d281b04b01e996702b02445fa25fc76}{const\+\_\+iterator} = typename Native\+String\+::const\+\_\+iterator
+\item 
+{\footnotesize template$<$typename Native\+String $>$ }\\static Native\+String\+::const\+\_\+iterator \hyperlink{classu5e_1_1utf32ne_a9ab16ff63de47e7f02532d03af7b70c1}{native\+\_\+const\+\_\+iterator} (typename Native\+String\+::const\+\_\+iterator it)
+\item 
+{\footnotesize template$<$typename Input\+Native\+Iterator , typename Output\+Native\+String $>$ }\\static void \hyperlink{classu5e_1_1utf32ne_a6678bc31c37d8b740ea3fd47d572774b}{append\+\_\+from\+\_\+utf32ne} (Input\+Native\+Iterator first, Input\+Native\+Iterator last, Output\+Native\+String \&output)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Architecture-\/specific type to interface U\+T\+F32\+BE or U\+T\+F32\+LE. 
+
+\hyperlink{classu5e_1_1utf32ne}{utf32ne} is not an encoding. It is a type that should be used to interface with either U\+T\+F32\+BE or with U\+T\+F32\+LE depending on what the native endianess is.
+
+Because utf32 with the native endianess can be used natively, there\textquotesingle{}s no special logic and everything is delegated to the native types. 
+
+Definition at line 20 of file utf32ne.\+hpp.
+
+
+
+\subsection{Member Typedef Documentation}
+\index{u5e\+::utf32ne@{u5e\+::utf32ne}!const\+\_\+iterator@{const\+\_\+iterator}}
+\index{const\+\_\+iterator@{const\+\_\+iterator}!u5e\+::utf32ne@{u5e\+::utf32ne}}
+\subsubsection[{\texorpdfstring{const\+\_\+iterator}{const_iterator}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Native\+String $>$ using {\bf u5e\+::utf32ne\+::const\+\_\+iterator} =  typename Native\+String\+::const\+\_\+iterator}\hypertarget{classu5e_1_1utf32ne_a4d281b04b01e996702b02445fa25fc76}{}\label{classu5e_1_1utf32ne_a4d281b04b01e996702b02445fa25fc76}
+Delegate to the underlying iterator 
+
+Definition at line 30 of file utf32ne.\+hpp.
+
+\index{u5e\+::utf32ne@{u5e\+::utf32ne}!iterator@{iterator}}
+\index{iterator@{iterator}!u5e\+::utf32ne@{u5e\+::utf32ne}}
+\subsubsection[{\texorpdfstring{iterator}{iterator}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Native\+String $>$ using {\bf u5e\+::utf32ne\+::iterator} =  typename Native\+String\+::iterator}\hypertarget{classu5e_1_1utf32ne_aa94f3484382747653c46ce429612eedc}{}\label{classu5e_1_1utf32ne_aa94f3484382747653c46ce429612eedc}
+Delegate to the underlying iterator 
+
+Definition at line 27 of file utf32ne.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{u5e\+::utf32ne@{u5e\+::utf32ne}!append\+\_\+from\+\_\+utf32ne@{append\+\_\+from\+\_\+utf32ne}}
+\index{append\+\_\+from\+\_\+utf32ne@{append\+\_\+from\+\_\+utf32ne}!u5e\+::utf32ne@{u5e\+::utf32ne}}
+\subsubsection[{\texorpdfstring{append\+\_\+from\+\_\+utf32ne(\+Input\+Native\+Iterator first, Input\+Native\+Iterator last, Output\+Native\+String \&output)}{append_from_utf32ne(InputNativeIterator first, InputNativeIterator last, OutputNativeString &output)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Input\+Native\+Iterator , typename Output\+Native\+String $>$ static void u5e\+::utf32ne\+::append\+\_\+from\+\_\+utf32ne (
+\begin{DoxyParamCaption}
+\item[{Input\+Native\+Iterator}]{first, }
+\item[{Input\+Native\+Iterator}]{last, }
+\item[{Output\+Native\+String \&}]{output}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classu5e_1_1utf32ne_a6678bc31c37d8b740ea3fd47d572774b}{}\label{classu5e_1_1utf32ne_a6678bc31c37d8b740ea3fd47d572774b}
+Delegate to the underlying iterator 
+
+Definition at line 40 of file utf32ne.\+hpp.
+
+\index{u5e\+::utf32ne@{u5e\+::utf32ne}!native\+\_\+const\+\_\+iterator@{native\+\_\+const\+\_\+iterator}}
+\index{native\+\_\+const\+\_\+iterator@{native\+\_\+const\+\_\+iterator}!u5e\+::utf32ne@{u5e\+::utf32ne}}
+\subsubsection[{\texorpdfstring{native\+\_\+const\+\_\+iterator(typename Native\+String\+::const\+\_\+iterator it)}{native_const_iterator(typename NativeString::const_iterator it)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Native\+String $>$ static Native\+String\+::const\+\_\+iterator u5e\+::utf32ne\+::native\+\_\+const\+\_\+iterator (
+\begin{DoxyParamCaption}
+\item[{typename Native\+String\+::const\+\_\+iterator}]{it}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classu5e_1_1utf32ne_a9ab16ff63de47e7f02532d03af7b70c1}{}\label{classu5e_1_1utf32ne_a9ab16ff63de47e7f02532d03af7b70c1}
+Delegate to the underlying iterator 
+
+Definition at line 34 of file utf32ne.\+hpp.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+u5e/utf32ne.\+hpp\end{DoxyCompactItemize}

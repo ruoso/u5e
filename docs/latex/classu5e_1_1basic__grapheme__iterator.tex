@@ -1,0 +1,269 @@
+\hypertarget{classu5e_1_1basic__grapheme__iterator}{}\section{u5e\+:\+:basic\+\_\+grapheme\+\_\+iterator$<$ Underlying\+Encoded\+String\+View $>$ Class Template Reference}
+\label{classu5e_1_1basic__grapheme__iterator}\index{u5e\+::basic\+\_\+grapheme\+\_\+iterator$<$ Underlying\+Encoded\+String\+View $>$@{u5e\+::basic\+\_\+grapheme\+\_\+iterator$<$ Underlying\+Encoded\+String\+View $>$}}
+
+
+Iterator that describes full graphemes.  
+
+
+
+
+{\ttfamily \#include $<$u5e/basic\+\_\+grapheme\+\_\+iterator.\+hpp$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef Underlying\+Encoded\+String\+View\+::const\+\_\+iterator \hyperlink{classu5e_1_1basic__grapheme__iterator_a3fd90c1a24fccf790b94199950339846}{const\+\_\+codepoint\+\_\+iterator}
+\item 
+typedef \hyperlink{classu5e_1_1basic__grapheme}{basic\+\_\+grapheme}$<$ Underlying\+Encoded\+String\+View $>$ \hyperlink{classu5e_1_1basic__grapheme__iterator_a7417c5ebb0987c2c74bcfe2cf1be0173}{grapheme}
+\item 
+typedef \hyperlink{classu5e_1_1basic__grapheme__iterator_a7417c5ebb0987c2c74bcfe2cf1be0173}{grapheme} {\bfseries value\+\_\+type}\hypertarget{classu5e_1_1basic__grapheme__iterator_a8f6f40f4385df933196b992f3347a5c0}{}\label{classu5e_1_1basic__grapheme__iterator_a8f6f40f4385df933196b992f3347a5c0}
+
+\item 
+typedef \hyperlink{classu5e_1_1props_1_1grapheme__cluster__break_a49537cfb39f9510acd4096379687cf93}{props\+::grapheme\+\_\+cluster\+\_\+break\+::prop\+\_\+value\+\_\+type} {\bfseries g\+\_\+c\+\_\+b\+\_\+vt}\hypertarget{classu5e_1_1basic__grapheme__iterator_a6615eda0004e78fe9f7032754e2acfff}{}\label{classu5e_1_1basic__grapheme__iterator_a6615eda0004e78fe9f7032754e2acfff}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classu5e_1_1basic__grapheme__iterator_ab8c7cfd962ee60c419ac4829c69b80c5}{is\+\_\+grapheme\+\_\+boundary} (\hyperlink{classu5e_1_1codepoint}{codepoint} a, \hyperlink{classu5e_1_1codepoint}{codepoint} b)
+\item 
+\hyperlink{classu5e_1_1basic__grapheme__iterator_aaf14fa7b9d2a90c065b22ee25737dbd3}{basic\+\_\+grapheme\+\_\+iterator} (\hyperlink{classu5e_1_1basic__grapheme__iterator_a3fd90c1a24fccf790b94199950339846}{const\+\_\+codepoint\+\_\+iterator} b, \hyperlink{classu5e_1_1basic__grapheme__iterator_a3fd90c1a24fccf790b94199950339846}{const\+\_\+codepoint\+\_\+iterator} e)\hypertarget{classu5e_1_1basic__grapheme__iterator_aaf14fa7b9d2a90c065b22ee25737dbd3}{}\label{classu5e_1_1basic__grapheme__iterator_aaf14fa7b9d2a90c065b22ee25737dbd3}
+
+\begin{DoxyCompactList}\small\item\em start at the beginning of the text \end{DoxyCompactList}\item 
+\hyperlink{classu5e_1_1basic__grapheme__iterator_a8673d27f847eab67274bdda3fc52ffe7}{basic\+\_\+grapheme\+\_\+iterator} (\hyperlink{classu5e_1_1basic__grapheme__iterator_a3fd90c1a24fccf790b94199950339846}{const\+\_\+codepoint\+\_\+iterator} b, \hyperlink{classu5e_1_1basic__grapheme__iterator_a3fd90c1a24fccf790b94199950339846}{const\+\_\+codepoint\+\_\+iterator} e, \hyperlink{classu5e_1_1basic__grapheme__iterator_a3fd90c1a24fccf790b94199950339846}{const\+\_\+codepoint\+\_\+iterator} w)\hypertarget{classu5e_1_1basic__grapheme__iterator_a8673d27f847eab67274bdda3fc52ffe7}{}\label{classu5e_1_1basic__grapheme__iterator_a8673d27f847eab67274bdda3fc52ffe7}
+
+\begin{DoxyCompactList}\small\item\em start at a specific point find the start and the end of the grapheme \end{DoxyCompactList}\item 
+\hyperlink{classu5e_1_1basic__grapheme__iterator_a321800ea886b85f2ac501ce8dca9671a}{basic\+\_\+grapheme\+\_\+iterator} (\hyperlink{classu5e_1_1basic__grapheme__iterator_a3fd90c1a24fccf790b94199950339846}{const\+\_\+codepoint\+\_\+iterator} b, \hyperlink{classu5e_1_1basic__grapheme__iterator_a3fd90c1a24fccf790b94199950339846}{const\+\_\+codepoint\+\_\+iterator} e, \hyperlink{classu5e_1_1basic__grapheme__iterator_a3fd90c1a24fccf790b94199950339846}{const\+\_\+codepoint\+\_\+iterator} w, \hyperlink{classu5e_1_1basic__grapheme__iterator_a3fd90c1a24fccf790b94199950339846}{const\+\_\+codepoint\+\_\+iterator} we)\hypertarget{classu5e_1_1basic__grapheme__iterator_a321800ea886b85f2ac501ce8dca9671a}{}\label{classu5e_1_1basic__grapheme__iterator_a321800ea886b85f2ac501ce8dca9671a}
+
+\begin{DoxyCompactList}\small\item\em start at a specific point -\/ precalculated start and end of grapheme \end{DoxyCompactList}\item 
+\hyperlink{classu5e_1_1basic__grapheme__iterator_a24ed7dcd80e07e3c1622622b6c2f9832}{basic\+\_\+grapheme\+\_\+iterator} (const \hyperlink{classu5e_1_1basic__grapheme__iterator}{basic\+\_\+grapheme\+\_\+iterator} \&copy)\hypertarget{classu5e_1_1basic__grapheme__iterator_a24ed7dcd80e07e3c1622622b6c2f9832}{}\label{classu5e_1_1basic__grapheme__iterator_a24ed7dcd80e07e3c1622622b6c2f9832}
+
+\begin{DoxyCompactList}\small\item\em copy constructor \end{DoxyCompactList}\item 
+\hyperlink{classu5e_1_1basic__grapheme__iterator_a7417c5ebb0987c2c74bcfe2cf1be0173}{grapheme} \hyperlink{classu5e_1_1basic__grapheme__iterator_a7c0c750b27aac7086b387b01aa09ca10}{operator$\ast$} ()
+\item 
+bool \hyperlink{classu5e_1_1basic__grapheme__iterator_af0143d8374632eafd9a326174de4485d}{operator==} (\hyperlink{classu5e_1_1basic__grapheme__iterator_a3fd90c1a24fccf790b94199950339846}{const\+\_\+codepoint\+\_\+iterator} other)
+\item 
+bool \hyperlink{classu5e_1_1basic__grapheme__iterator_a0e9990c4f8498d80501435af709c9471}{operator==} (\hyperlink{classu5e_1_1basic__grapheme__iterator}{basic\+\_\+grapheme\+\_\+iterator} other)
+\item 
+bool \hyperlink{classu5e_1_1basic__grapheme__iterator_a1395f7b6e67e1083d832ffb4ee7ff3a5}{operator!=} (\hyperlink{classu5e_1_1basic__grapheme__iterator}{basic\+\_\+grapheme\+\_\+iterator} other)
+\item 
+bool \hyperlink{classu5e_1_1basic__grapheme__iterator_aa19753607206c61237affaa45cf3aec4}{operator!=} (\hyperlink{classu5e_1_1basic__grapheme__iterator_a3fd90c1a24fccf790b94199950339846}{const\+\_\+codepoint\+\_\+iterator} other)
+\end{DoxyCompactItemize}
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classu5e_1_1basic__grapheme__iterator_a151a5acc48f8f928663b6135e77ada74}{find\+\_\+end\+\_\+of\+\_\+grapheme} ()
+\item 
+void \hyperlink{classu5e_1_1basic__grapheme__iterator_a2c2a4203e5255cb22c917298660bca90}{find\+\_\+start\+\_\+of\+\_\+grapheme} ()
+\end{DoxyCompactItemize}
+
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classu5e_1_1basic__grapheme__iterator}{basic\+\_\+grapheme\+\_\+iterator} \hyperlink{classu5e_1_1basic__grapheme__iterator_af96840578fa52158af0687c4262f6592}{operator++} ()
+\item 
+\hyperlink{classu5e_1_1basic__grapheme__iterator}{basic\+\_\+grapheme\+\_\+iterator} \hyperlink{classu5e_1_1basic__grapheme__iterator_a8281628c1251387fc1810aef710de5be}{operator++} (int i)
+\end{DoxyCompactItemize}
+
+\subsection*{Public Attributes}
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classu5e_1_1basic__grapheme__iterator_a3fd90c1a24fccf790b94199950339846}{const\+\_\+codepoint\+\_\+iterator} \hyperlink{classu5e_1_1basic__grapheme__iterator_a38321d25691f11f4292dc2a1641f0ddb}{begin\+\_\+}
+\item 
+\hyperlink{classu5e_1_1basic__grapheme__iterator_a3fd90c1a24fccf790b94199950339846}{const\+\_\+codepoint\+\_\+iterator} \hyperlink{classu5e_1_1basic__grapheme__iterator_a717e587924ade6d966be95bfe57487a3}{end\+\_\+}
+\end{DoxyCompactItemize}
+
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classu5e_1_1basic__grapheme__iterator_a3fd90c1a24fccf790b94199950339846}{const\+\_\+codepoint\+\_\+iterator} \hyperlink{classu5e_1_1basic__grapheme__iterator_ad83406ade7728eeb7ad5b8344c44156f}{where\+\_\+}
+\item 
+\hyperlink{classu5e_1_1basic__grapheme__iterator_a3fd90c1a24fccf790b94199950339846}{const\+\_\+codepoint\+\_\+iterator} \hyperlink{classu5e_1_1basic__grapheme__iterator_a74489f73ba6c645254bf28a6e2c42946}{end\+\_\+of\+\_\+grapheme\+\_\+}
+\end{DoxyCompactItemize}
+
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Underlying\+Encoded\+String\+View$>$\\*
+class u5e\+::basic\+\_\+grapheme\+\_\+iterator$<$ Underlying\+Encoded\+String\+View $>$}
+
+Iterator that describes full graphemes. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Underlying\+Encoded\+String\+View} & the underlying encoded string type with an underlying native string-\/like type. \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 11 of file basic\+\_\+encodedstring.\+hpp.
+
+
+
+\subsection{Member Typedef Documentation}
+\index{u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}!const\+\_\+codepoint\+\_\+iterator@{const\+\_\+codepoint\+\_\+iterator}}
+\index{const\+\_\+codepoint\+\_\+iterator@{const\+\_\+codepoint\+\_\+iterator}!u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}}
+\subsubsection[{\texorpdfstring{const\+\_\+codepoint\+\_\+iterator}{const_codepoint_iterator}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Underlying\+Encoded\+String\+View $>$ typedef Underlying\+Encoded\+String\+View\+::const\+\_\+iterator {\bf u5e\+::basic\+\_\+grapheme\+\_\+iterator}$<$ Underlying\+Encoded\+String\+View $>$\+::{\bf const\+\_\+codepoint\+\_\+iterator}}\hypertarget{classu5e_1_1basic__grapheme__iterator_a3fd90c1a24fccf790b94199950339846}{}\label{classu5e_1_1basic__grapheme__iterator_a3fd90c1a24fccf790b94199950339846}
+The type of the underlying encoded iterator 
+
+Definition at line 22 of file basic\+\_\+grapheme\+\_\+iterator.\+hpp.
+
+\index{u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}!grapheme@{grapheme}}
+\index{grapheme@{grapheme}!u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}}
+\subsubsection[{\texorpdfstring{grapheme}{grapheme}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Underlying\+Encoded\+String\+View $>$ typedef {\bf basic\+\_\+grapheme}$<$Underlying\+Encoded\+String\+View$>$ {\bf u5e\+::basic\+\_\+grapheme\+\_\+iterator}$<$ Underlying\+Encoded\+String\+View $>$\+::{\bf grapheme}}\hypertarget{classu5e_1_1basic__grapheme__iterator_a7417c5ebb0987c2c74bcfe2cf1be0173}{}\label{classu5e_1_1basic__grapheme__iterator_a7417c5ebb0987c2c74bcfe2cf1be0173}
+the specific grapheme type for this encoded string view 
+
+Definition at line 27 of file basic\+\_\+grapheme\+\_\+iterator.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}!find\+\_\+end\+\_\+of\+\_\+grapheme@{find\+\_\+end\+\_\+of\+\_\+grapheme}}
+\index{find\+\_\+end\+\_\+of\+\_\+grapheme@{find\+\_\+end\+\_\+of\+\_\+grapheme}!u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}}
+\subsubsection[{\texorpdfstring{find\+\_\+end\+\_\+of\+\_\+grapheme()}{find_end_of_grapheme()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Underlying\+Encoded\+String\+View $>$ void {\bf u5e\+::basic\+\_\+grapheme\+\_\+iterator}$<$ Underlying\+Encoded\+String\+View $>$\+::find\+\_\+end\+\_\+of\+\_\+grapheme (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__grapheme__iterator_a151a5acc48f8f928663b6135e77ada74}{}\label{classu5e_1_1basic__grapheme__iterator_a151a5acc48f8f928663b6135e77ada74}
+Use the data from the unicode database to find the start and end of the current grapheme. 
+
+Definition at line 131 of file basic\+\_\+grapheme\+\_\+iterator.\+hpp.
+
+\index{u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}!find\+\_\+start\+\_\+of\+\_\+grapheme@{find\+\_\+start\+\_\+of\+\_\+grapheme}}
+\index{find\+\_\+start\+\_\+of\+\_\+grapheme@{find\+\_\+start\+\_\+of\+\_\+grapheme}!u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}}
+\subsubsection[{\texorpdfstring{find\+\_\+start\+\_\+of\+\_\+grapheme()}{find_start_of_grapheme()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Underlying\+Encoded\+String\+View $>$ void {\bf u5e\+::basic\+\_\+grapheme\+\_\+iterator}$<$ Underlying\+Encoded\+String\+View $>$\+::find\+\_\+start\+\_\+of\+\_\+grapheme (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__grapheme__iterator_a2c2a4203e5255cb22c917298660bca90}{}\label{classu5e_1_1basic__grapheme__iterator_a2c2a4203e5255cb22c917298660bca90}
+Use the data from the unicode database to find the start and end of the current grapheme. 
+
+Definition at line 157 of file basic\+\_\+grapheme\+\_\+iterator.\+hpp.
+
+\index{u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}!is\+\_\+grapheme\+\_\+boundary@{is\+\_\+grapheme\+\_\+boundary}}
+\index{is\+\_\+grapheme\+\_\+boundary@{is\+\_\+grapheme\+\_\+boundary}!u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}}
+\subsubsection[{\texorpdfstring{is\+\_\+grapheme\+\_\+boundary(codepoint a, codepoint b)}{is_grapheme_boundary(codepoint a, codepoint b)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Underlying\+Encoded\+String\+View $>$ bool {\bf u5e\+::basic\+\_\+grapheme\+\_\+iterator}$<$ Underlying\+Encoded\+String\+View $>$\+::is\+\_\+grapheme\+\_\+boundary (
+\begin{DoxyParamCaption}
+\item[{{\bf codepoint}}]{a, }
+\item[{{\bf codepoint}}]{b}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__grapheme__iterator_ab8c7cfd962ee60c419ac4829c69b80c5}{}\label{classu5e_1_1basic__grapheme__iterator_ab8c7cfd962ee60c419ac4829c69b80c5}
+The unicode standard documents that a grapheme boundary can be determined by looking just at two adjecent codepoints. 
+
+Definition at line 53 of file basic\+\_\+grapheme\+\_\+iterator.\+hpp.
+
+\index{u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}}
+\subsubsection[{\texorpdfstring{operator"!=(basic\+\_\+grapheme\+\_\+iterator other)}{operator!=(basic_grapheme_iterator other)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Underlying\+Encoded\+String\+View $>$ bool {\bf u5e\+::basic\+\_\+grapheme\+\_\+iterator}$<$ Underlying\+Encoded\+String\+View $>$\+::operator!= (
+\begin{DoxyParamCaption}
+\item[{{\bf basic\+\_\+grapheme\+\_\+iterator}$<$ Underlying\+Encoded\+String\+View $>$}]{other}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__grapheme__iterator_a1395f7b6e67e1083d832ffb4ee7ff3a5}{}\label{classu5e_1_1basic__grapheme__iterator_a1395f7b6e67e1083d832ffb4ee7ff3a5}
+delegate the comparison to the underlying iterator 
+
+Definition at line 285 of file basic\+\_\+grapheme\+\_\+iterator.\+hpp.
+
+\index{u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}!operator"!=@{operator"!=}}
+\index{operator"!=@{operator"!=}!u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}}
+\subsubsection[{\texorpdfstring{operator"!=(const\+\_\+codepoint\+\_\+iterator other)}{operator!=(const_codepoint_iterator other)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Underlying\+Encoded\+String\+View $>$ bool {\bf u5e\+::basic\+\_\+grapheme\+\_\+iterator}$<$ Underlying\+Encoded\+String\+View $>$\+::operator!= (
+\begin{DoxyParamCaption}
+\item[{{\bf const\+\_\+codepoint\+\_\+iterator}}]{other}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__grapheme__iterator_aa19753607206c61237affaa45cf3aec4}{}\label{classu5e_1_1basic__grapheme__iterator_aa19753607206c61237affaa45cf3aec4}
+delegate the comparison to the underlying iterator 
+
+Definition at line 292 of file basic\+\_\+grapheme\+\_\+iterator.\+hpp.
+
+\index{u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}}
+\subsubsection[{\texorpdfstring{operator$\ast$()}{operator*()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Underlying\+Encoded\+String\+View $>$ {\bf grapheme} {\bf u5e\+::basic\+\_\+grapheme\+\_\+iterator}$<$ Underlying\+Encoded\+String\+View $>$\+::operator$\ast$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__grapheme__iterator_a7c0c750b27aac7086b387b01aa09ca10}{}\label{classu5e_1_1basic__grapheme__iterator_a7c0c750b27aac7086b387b01aa09ca10}
+dereference to a grapheme object 
+
+Definition at line 226 of file basic\+\_\+grapheme\+\_\+iterator.\+hpp.
+
+\index{u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}!operator++@{operator++}}
+\index{operator++@{operator++}!u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}}
+\subsubsection[{\texorpdfstring{operator++()}{operator++()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Underlying\+Encoded\+String\+View $>$ {\bf basic\+\_\+grapheme\+\_\+iterator} {\bf u5e\+::basic\+\_\+grapheme\+\_\+iterator}$<$ Underlying\+Encoded\+String\+View $>$\+::operator++ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__grapheme__iterator_af96840578fa52158af0687c4262f6592}{}\label{classu5e_1_1basic__grapheme__iterator_af96840578fa52158af0687c4262f6592}
+advance one grapheme 
+
+Definition at line 234 of file basic\+\_\+grapheme\+\_\+iterator.\+hpp.
+
+\index{u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}!operator++@{operator++}}
+\index{operator++@{operator++}!u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}}
+\subsubsection[{\texorpdfstring{operator++(int i)}{operator++(int i)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Underlying\+Encoded\+String\+View $>$ {\bf basic\+\_\+grapheme\+\_\+iterator} {\bf u5e\+::basic\+\_\+grapheme\+\_\+iterator}$<$ Underlying\+Encoded\+String\+View $>$\+::operator++ (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__grapheme__iterator_a8281628c1251387fc1810aef710de5be}{}\label{classu5e_1_1basic__grapheme__iterator_a8281628c1251387fc1810aef710de5be}
+advance one grapheme 
+
+Definition at line 240 of file basic\+\_\+grapheme\+\_\+iterator.\+hpp.
+
+\index{u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}!operator==@{operator==}}
+\index{operator==@{operator==}!u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}}
+\subsubsection[{\texorpdfstring{operator==(const\+\_\+codepoint\+\_\+iterator other)}{operator==(const_codepoint_iterator other)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Underlying\+Encoded\+String\+View $>$ bool {\bf u5e\+::basic\+\_\+grapheme\+\_\+iterator}$<$ Underlying\+Encoded\+String\+View $>$\+::operator== (
+\begin{DoxyParamCaption}
+\item[{{\bf const\+\_\+codepoint\+\_\+iterator}}]{other}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__grapheme__iterator_af0143d8374632eafd9a326174de4485d}{}\label{classu5e_1_1basic__grapheme__iterator_af0143d8374632eafd9a326174de4485d}
+delegate the comparison to the underlying iterator 
+
+Definition at line 250 of file basic\+\_\+grapheme\+\_\+iterator.\+hpp.
+
+\index{u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}!operator==@{operator==}}
+\index{operator==@{operator==}!u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}}
+\subsubsection[{\texorpdfstring{operator==(basic\+\_\+grapheme\+\_\+iterator other)}{operator==(basic_grapheme_iterator other)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Underlying\+Encoded\+String\+View $>$ bool {\bf u5e\+::basic\+\_\+grapheme\+\_\+iterator}$<$ Underlying\+Encoded\+String\+View $>$\+::operator== (
+\begin{DoxyParamCaption}
+\item[{{\bf basic\+\_\+grapheme\+\_\+iterator}$<$ Underlying\+Encoded\+String\+View $>$}]{other}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__grapheme__iterator_a0e9990c4f8498d80501435af709c9471}{}\label{classu5e_1_1basic__grapheme__iterator_a0e9990c4f8498d80501435af709c9471}
+delegate the comparison to the underlying iterator 
+
+Definition at line 267 of file basic\+\_\+grapheme\+\_\+iterator.\+hpp.
+
+
+
+\subsection{Member Data Documentation}
+\index{u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}!begin\+\_\+@{begin\+\_\+}}
+\index{begin\+\_\+@{begin\+\_\+}!u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}}
+\subsubsection[{\texorpdfstring{begin\+\_\+}{begin_}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Underlying\+Encoded\+String\+View $>$ {\bf const\+\_\+codepoint\+\_\+iterator} {\bf u5e\+::basic\+\_\+grapheme\+\_\+iterator}$<$ Underlying\+Encoded\+String\+View $>$\+::begin\+\_\+}\hypertarget{classu5e_1_1basic__grapheme__iterator_a38321d25691f11f4292dc2a1641f0ddb}{}\label{classu5e_1_1basic__grapheme__iterator_a38321d25691f11f4292dc2a1641f0ddb}
+The begin and end iterators for the whole text are necessary for bounds check, since the size of graphemes cannot be predicted. 
+
+Definition at line 35 of file basic\+\_\+grapheme\+\_\+iterator.\+hpp.
+
+\index{u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}!end\+\_\+@{end\+\_\+}}
+\index{end\+\_\+@{end\+\_\+}!u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}}
+\subsubsection[{\texorpdfstring{end\+\_\+}{end_}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Underlying\+Encoded\+String\+View $>$ {\bf const\+\_\+codepoint\+\_\+iterator} {\bf u5e\+::basic\+\_\+grapheme\+\_\+iterator}$<$ Underlying\+Encoded\+String\+View $>$\+::end\+\_\+}\hypertarget{classu5e_1_1basic__grapheme__iterator_a717e587924ade6d966be95bfe57487a3}{}\label{classu5e_1_1basic__grapheme__iterator_a717e587924ade6d966be95bfe57487a3}
+The begin and end iterators for the whole text are necessary for bounds check, since the size of graphemes cannot be predicted. 
+
+Definition at line 36 of file basic\+\_\+grapheme\+\_\+iterator.\+hpp.
+
+\index{u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}!end\+\_\+of\+\_\+grapheme\+\_\+@{end\+\_\+of\+\_\+grapheme\+\_\+}}
+\index{end\+\_\+of\+\_\+grapheme\+\_\+@{end\+\_\+of\+\_\+grapheme\+\_\+}!u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}}
+\subsubsection[{\texorpdfstring{end\+\_\+of\+\_\+grapheme\+\_\+}{end_of_grapheme_}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Underlying\+Encoded\+String\+View $>$ {\bf const\+\_\+codepoint\+\_\+iterator} {\bf u5e\+::basic\+\_\+grapheme\+\_\+iterator}$<$ Underlying\+Encoded\+String\+View $>$\+::end\+\_\+of\+\_\+grapheme\+\_\+}\hypertarget{classu5e_1_1basic__grapheme__iterator_a74489f73ba6c645254bf28a6e2c42946}{}\label{classu5e_1_1basic__grapheme__iterator_a74489f73ba6c645254bf28a6e2c42946}
+This par of iterators point to where we are now and where the end of the current grapheme is. 
+
+Definition at line 44 of file basic\+\_\+grapheme\+\_\+iterator.\+hpp.
+
+\index{u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}!where\+\_\+@{where\+\_\+}}
+\index{where\+\_\+@{where\+\_\+}!u5e\+::basic\+\_\+grapheme\+\_\+iterator@{u5e\+::basic\+\_\+grapheme\+\_\+iterator}}
+\subsubsection[{\texorpdfstring{where\+\_\+}{where_}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Underlying\+Encoded\+String\+View $>$ {\bf const\+\_\+codepoint\+\_\+iterator} {\bf u5e\+::basic\+\_\+grapheme\+\_\+iterator}$<$ Underlying\+Encoded\+String\+View $>$\+::where\+\_\+}\hypertarget{classu5e_1_1basic__grapheme__iterator_ad83406ade7728eeb7ad5b8344c44156f}{}\label{classu5e_1_1basic__grapheme__iterator_ad83406ade7728eeb7ad5b8344c44156f}
+This par of iterators point to where we are now and where the end of the current grapheme is. 
+
+Definition at line 43 of file basic\+\_\+grapheme\+\_\+iterator.\+hpp.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+u5e/basic\+\_\+encodedstring.\+hpp\item 
+u5e/basic\+\_\+grapheme\+\_\+iterator.\+hpp\end{DoxyCompactItemize}

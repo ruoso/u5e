@@ -1,0 +1,142 @@
+Unicode Text C++ library -- fork me on github\+: \href{https://github.com/ruoso/u5e}{\tt https\+://github.\+com/ruoso/u5e}
+
+\section*{What is this library?}
+
+This library provides support for Unicode Text, as specified by the Unicode Standard.
+
+These are the problems that this library intends to solve (links for examples)\+:
+
+
+\begin{DoxyItemize}
+\item Iterating and truncating on correct boundaries for\+:
+\begin{DoxyItemize}
+\item codepoints -\/ \href{simple_iteration.html}{\tt iterate}, \href{smallest_code.html}{\tt over const char$\ast$}, \href{truncate_on_codepoint.html}{\tt truncate}.
+\item graphemes -\/ \href{grapheme_iteration.html}{\tt iterate}, \href{truncate_on_grapheme.html}{\tt truncate}.
+\item words
+\item sentences
+\end{DoxyItemize}
+\item Normalization
+\begin{DoxyItemize}
+\item Normalization Form D -\/ \href{normalization_form_d.html}{\tt in utf8}, \href{normalization_form_d_utf32.html}{\tt in utf32}
+\item Normalization Form C -\/ \href{normalization_form_c.html}{\tt in utf8}, \href{normalization_form_c_utf32.html}{\tt in utf32}
+\item Normalization Form KD -\/ \href{normalization_form_kd.html}{\tt in utf8}, \href{normalization_form_kd_utf32.html}{\tt in utf32}
+\item Normalization Form KC -\/ \href{normalization_form_kc.html}{\tt in utf8}, \href{normalization_form_kc_utf32.html}{\tt in utf32}
+\end{DoxyItemize}
+\item Explicitly Localized and Explicitly Non-\/localized support for\+:
+\begin{DoxyItemize}
+\item Comparison
+\item Sorting
+\item Case Folding
+\item Search Folding (folded to \textquotesingle{}base character\textquotesingle{})
+\item Tokenizing
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+\section*{Why?}
+
+Properly supporting international text is one of these problems that you either think is very easy because you never had to deal with internationalized text, or you give up on it because you think no one can support Unicode correctly. This library is an attempt to provide a simple reusable set of interfaces to deal with international text.
+
+\section*{Why not just use the icu library?}
+
+The first reason for me to consider this was that the icu library is much more complex than what\textquotesingle{}s required for supporting text. I\+CU also supports the full localization definitions of the Unicode C\+L\+DR, which makes its support surface much larger than would be required for simply handling text.
+
+Secondly, the icu library forces the internal representation of the text to always be in a particular encoding (U\+T\+F16). I believe that this is an unecessary constraint, and one of the points of this library is to make the encoding pluggable without requiring different A\+P\+Is or explicit conversions.
+
+\section*{Some important conversations}
+
+\subsection*{A note on dynamic encodings}
+
+While it is technically possible to operate on text with a dynamically assigned encoding, I honestly believe the use case for that is more academic than anything else.
+
+Your application should have one internal encoding and all text should be converted on the borders of the application to whatever makes the most sense for your application.
+
+For instance, if you\textquotesingle{}re dealing with mostly 7-\/bit A\+S\+C\+II text with the ocasional exception (such as most latin languages), U\+T\+F8 is definitely the most efficient usage of memory, and will promote the best cache locality.
+
+If, on the other hand, the application is expected to deal with mostly non-\/latin text, U\+T\+F16 is believed to result in the smallest memory usage.
+
+But if you don\textquotesingle{}t quite care about memory usage and you have a stronger requirement for being able to do more efficient random access on the text, U\+T\+F32 with native endianess will make the most sense.
+
+It is, of course, technically feasible to have encodings that make decisions at run time, but the cost of that runtime decision will be paid over and over in the life-\/cycle of that object.
+
+For that reason, it is much more intelligent to convert the text to one of U\+T\+F8, U\+T\+F16 with native endianess or U\+T\+F32 with native endianess at the border of your application. I cannot see a rason to support any other encoding as the basis for operating on the text, any other encoding may be considered a serialization format to be converted to and from in the borders of your application.
+
+Note that since the encoding is pluggable, it would be possible for a third-\/party to contribute support for dynamic encodings.
+
+\subsection*{A note on endianess}
+
+The unicode standard defines U\+T\+F16\+BE and U\+T\+F16\+LE, as well as U\+T\+F32\+BE and U\+T\+F32\+LE. The bare \char`\"{}\+U\+T\+F16\char`\"{} and \char`\"{}\+U\+T\+F32\char`\"{} encodings are actually runtime-\/defined according to Byte-\/\+Order-\/\+Marker (B\+OM), the default, in the absense of a B\+OM is Big-\/\+Endian, accorting to the standard -- utf8 is always little endian, and B\+OM characters in utf8 are not relevant.
+
+This library introduces the terms U\+T\+F16\+NE and U\+T\+F32\+NE. Those are not encodings, but rather architecture-\/specific runtime types that will either be the BE or the LE variants depending on the machine that runs it. Whenever you are using the U\+T\+F16\+NE and U\+T\+F32\+NE types, you are expected to appropriately convert the incoming texts to the correct native encoding on the borders of your application.
+
+\subsection*{A note on legacy encodings}
+
+This library will not support converting to and from legacy encodings as well as operating on them. You are expected to perform the convertions at the borders of your application.
+
+Note that since the encoding is pluggable, it would be possible for a third-\/party to contribute support for native encodings.
+
+\subsection*{A note on bound checks}
+
+U\+T\+F8 and U\+T\+F16 introduce a new possible type of overflow and underflow. If you are trying to iterate forward, the first octet in U\+T\+F8 -- or the first 16bit in U\+T\+F16 -- may tell you to look for more characters than what fits in the rest of the buffer. Likewise, if you\textquotesingle{}re iterating backwards, the first octet of your utf8 text -- or 16bits in utf16 -- may tell you that you need to look further back, underflowing the buffer.
+
+There are two possible ways to handle this, the first is to make the bounds check pervasively in the code. This means that the entire A\+PI needs to be more complicated because every operation now needs to know where the string ends, not to mention that the additional checks will have a compounding runtime cost.
+
+The alternative, which is what this library implements, is to validate the strings in the borders of your application, whenever you receive a text from the outside, you need to check for correctness on the start and end of your text.
+
+This library will offer a utility function to verify the correctness of the string, and optionally forcing the replacement of the invalid utf8 and utf16 sequences by replacement characters.
+
+\section*{This library will not cover}
+
+These are the problems that are explicitly outside of the scope of this library. They can, and most likely should, be solved in libraries built on top of \hyperlink{namespaceu5e}{u5e}.
+
+
+\begin{DoxyItemize}
+\item Rendering
+\item Font sizes
+\item Word wrapping
+\item Text presentation order (L\+TR vs R\+TL)
+\item Number and Date formatting and parsing
+\item Regular Expressions
+\item Streaming, specifically partial reads and writes
+\end{DoxyItemize}
+
+\section*{What are the guiding principles?}
+
+\subsection*{No \char`\"{}natural\char`\"{} unit}
+
+There is no default unit. Most of the confusion around unicode is derived from the misconceptions on how to iterate over text and how to count and measure it. This libray defines and uses the following units\+:
+
+
+\begin{DoxyEnumerate}
+\item native size\+: This measure the size of the text in its in-\/memory representation. It is not necessarily a number of bytes, but it\textquotesingle{}s rather a variable size depending on the encoding and on the architecture where the code is running\+: for instance, U\+T\+F8 always uses octets as the encoding unit, however U\+T\+F32 may either use a 32 bit int, if the endianess is the same, or it may still be forced to use octets if it\textquotesingle{}s the wrong endianess. The size in bytes is an implementation detail that is architecture-\/specific and can be measured using operators like sizeof().
+\item codepoint\+: The unicode standard calls this \char`\"{}character\char`\"{}, but the oveloading of this term is definitely one of the main sources of confusion around the unicode standard, therefore, in this library we just do not ever use the term \char`\"{}character\char`\"{}, and prefer the more precise term \char`\"{}codepoint\char`\"{}, which represents an encoded unicode entity, which is usually represented as U+\+D\+E\+A\+D\+B\+E\+EF.
+\item grapheme\+: The grapheme is the unit of rendering, also referenced in the standard as \char`\"{}grapheme cluster\char`\"{} or \char`\"{}user perceived
+   character\char`\"{}. It represents a sequence of one or more codepoints that represent a single graphical symbol, previous versions of the unicode standard had a simple rule of \char`\"{}base character\char`\"{} and \char`\"{}combining characters\char`\"{}, but more recent versions of the standard support more complex definitions for grapheme cluster boundaries.
+\item word\+: A word is a set of graphemes that form a unit, it can be as simple as \char`\"{}two words\char`\"{} for english, but it requires the use of the unicode database for full internationalization support.
+\item sentence\+: A collection of words. There is a property of codepoints in the unicode database that specifies if a given character is a sentence separator or not.
+\end{DoxyEnumerate}
+
+\subsection*{Handling of text requires intermediate buffers}
+
+There is no sane way to handle text directly on streams, see \hyperlink{md__home_ruoso_devel_u5e_StreamVsIterators}{Streams versus Iterators} for a longer discussion.
+
+\subsection*{Number and Date format is outside of the scope}
+
+The coupling of number and date format to streams is a major source of ambiguity in the standard library, see \hyperlink{md__home_ruoso_devel_u5e_StreamVsFormat}{Streams versus Format} for a longer discussion.
+
+\section*{The different aspects of Text}
+
+In order to allow maximum reusability of the code, each aspect of the text is going to be expressed in this library as a concept. Different traits will implement that concept in different ways in order to at the same time allow room for optimizations. For instance, U\+T\+F32 with native endianess will be able to use the native integer type, while U\+T\+F32 with the foreign endianess will need to use four octets and will need to do the byte-\/swapping at runtime for most operations.
+
+The usage of traits for this also gives us transparent type-\/safety. Such that we can statically evaluate if you are incorrectly mixing texts of different encodings, which is the most common form of mistake when handling internationalized text.
+
+\subsection*{Encoding}
+
+The encoding concept will provide that basic interface from the in-\/memory representation to iteration and access of codepoints.
+
+\subsection*{Normalization Form}
+
+Normalization is what allows equivalent sequences of characters to be treated as being the same. By making the normalization a trait of the text, we allow the implicit re-\/normalization when dealing with denormalized text, at te same time that it gives room for important optimizations when two different texts have the same normalization form.
+
+\subsection*{Locale tailoring}
+
+The unicode standard has several features that are coupled with the tailoring to specific locales, this will also be applicable to different features. Making this into a trait allows to selectively disable the tailoring for application where the speed gain from not supporting this is more important than the use cases where such support is a requirement. Making this into a trait even allows optimizing away the storage required for storing the language of the text, or if an application needs optimization for the tailoring for a single language, it could be implemented directly as code and avoid any runtime language queries. 

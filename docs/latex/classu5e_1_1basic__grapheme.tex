@@ -1,0 +1,112 @@
+\hypertarget{classu5e_1_1basic__grapheme}{}\section{u5e\+:\+:basic\+\_\+grapheme$<$ Underlying\+Encoded\+String\+View $>$ Class Template Reference}
+\label{classu5e_1_1basic__grapheme}\index{u5e\+::basic\+\_\+grapheme$<$ Underlying\+Encoded\+String\+View $>$@{u5e\+::basic\+\_\+grapheme$<$ Underlying\+Encoded\+String\+View $>$}}
+
+
+Represents a single grapheme cluster.  
+
+
+
+
+{\ttfamily \#include $<$u5e/basic\+\_\+grapheme.\+hpp$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+typedef Underlying\+Encoded\+String\+View\+::const\+\_\+iterator \hyperlink{classu5e_1_1basic__grapheme_ad2ae62d95df689316cd516736c0a3b92}{const\+\_\+codepoint\+\_\+iterator}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classu5e_1_1basic__grapheme_a5fcb394f223a2b33f77ad64d33fc6f89}{basic\+\_\+grapheme} ()
+\item 
+\hyperlink{classu5e_1_1basic__grapheme_a07c3c5d726e070e1c4c8daf13f504916}{basic\+\_\+grapheme} (\hyperlink{classu5e_1_1basic__grapheme_ad2ae62d95df689316cd516736c0a3b92}{const\+\_\+codepoint\+\_\+iterator} b, \hyperlink{classu5e_1_1basic__grapheme_ad2ae62d95df689316cd516736c0a3b92}{const\+\_\+codepoint\+\_\+iterator} e)
+\item 
+\hyperlink{classu5e_1_1basic__grapheme_ad2ae62d95df689316cd516736c0a3b92}{const\+\_\+codepoint\+\_\+iterator} \hyperlink{classu5e_1_1basic__grapheme_a955bc52ec49af2aba6592ce717e05ca4}{codepoint\+\_\+begin} ()
+\item 
+\hyperlink{classu5e_1_1basic__grapheme_ad2ae62d95df689316cd516736c0a3b92}{const\+\_\+codepoint\+\_\+iterator} \hyperlink{classu5e_1_1basic__grapheme_a34222861fe382bd89ece4ed61e3e877f}{codepoint\+\_\+end} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Underlying\+Encoded\+String\+View$>$\\*
+class u5e\+::basic\+\_\+grapheme$<$ Underlying\+Encoded\+String\+View $>$}
+
+Represents a single grapheme cluster. 
+
+It works by holding start and end values for an underlying encodedstring\+\_\+view-\/like object.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Underlying\+Encoded\+String\+View} & a \hyperlink{classu5e_1_1basic__encodedstring}{basic\+\_\+encodedstring} instantiation. \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 15 of file basic\+\_\+grapheme.\+hpp.
+
+
+
+\subsection{Member Typedef Documentation}
+\index{u5e\+::basic\+\_\+grapheme@{u5e\+::basic\+\_\+grapheme}!const\+\_\+codepoint\+\_\+iterator@{const\+\_\+codepoint\+\_\+iterator}}
+\index{const\+\_\+codepoint\+\_\+iterator@{const\+\_\+codepoint\+\_\+iterator}!u5e\+::basic\+\_\+grapheme@{u5e\+::basic\+\_\+grapheme}}
+\subsubsection[{\texorpdfstring{const\+\_\+codepoint\+\_\+iterator}{const_codepoint_iterator}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Underlying\+Encoded\+String\+View $>$ typedef Underlying\+Encoded\+String\+View\+::const\+\_\+iterator {\bf u5e\+::basic\+\_\+grapheme}$<$ Underlying\+Encoded\+String\+View $>$\+::{\bf const\+\_\+codepoint\+\_\+iterator}}\hypertarget{classu5e_1_1basic__grapheme_ad2ae62d95df689316cd516736c0a3b92}{}\label{classu5e_1_1basic__grapheme_ad2ae62d95df689316cd516736c0a3b92}
+const\+\_\+codepoint\+\_\+iterator allows you to traverse the codepoints inside this grapheme. 
+
+Definition at line 22 of file basic\+\_\+grapheme.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{u5e\+::basic\+\_\+grapheme@{u5e\+::basic\+\_\+grapheme}!basic\+\_\+grapheme@{basic\+\_\+grapheme}}
+\index{basic\+\_\+grapheme@{basic\+\_\+grapheme}!u5e\+::basic\+\_\+grapheme@{u5e\+::basic\+\_\+grapheme}}
+\subsubsection[{\texorpdfstring{basic\+\_\+grapheme()}{basic_grapheme()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Underlying\+Encoded\+String\+View $>$ {\bf u5e\+::basic\+\_\+grapheme}$<$ Underlying\+Encoded\+String\+View $>$\+::{\bf basic\+\_\+grapheme} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__grapheme_a5fcb394f223a2b33f77ad64d33fc6f89}{}\label{classu5e_1_1basic__grapheme_a5fcb394f223a2b33f77ad64d33fc6f89}
+Default constructor is only valid if the underlying type allows it 
+
+Definition at line 39 of file basic\+\_\+grapheme.\+hpp.
+
+\index{u5e\+::basic\+\_\+grapheme@{u5e\+::basic\+\_\+grapheme}!basic\+\_\+grapheme@{basic\+\_\+grapheme}}
+\index{basic\+\_\+grapheme@{basic\+\_\+grapheme}!u5e\+::basic\+\_\+grapheme@{u5e\+::basic\+\_\+grapheme}}
+\subsubsection[{\texorpdfstring{basic\+\_\+grapheme(const\+\_\+codepoint\+\_\+iterator b, const\+\_\+codepoint\+\_\+iterator e)}{basic_grapheme(const_codepoint_iterator b, const_codepoint_iterator e)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Underlying\+Encoded\+String\+View $>$ {\bf u5e\+::basic\+\_\+grapheme}$<$ Underlying\+Encoded\+String\+View $>$\+::{\bf basic\+\_\+grapheme} (
+\begin{DoxyParamCaption}
+\item[{{\bf const\+\_\+codepoint\+\_\+iterator}}]{b, }
+\item[{{\bf const\+\_\+codepoint\+\_\+iterator}}]{e}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__grapheme_a07c3c5d726e070e1c4c8daf13f504916}{}\label{classu5e_1_1basic__grapheme_a07c3c5d726e070e1c4c8daf13f504916}
+Construct it with the iterators representing the begin and the end of the grapheme. 
+
+Definition at line 45 of file basic\+\_\+grapheme.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{u5e\+::basic\+\_\+grapheme@{u5e\+::basic\+\_\+grapheme}!codepoint\+\_\+begin@{codepoint\+\_\+begin}}
+\index{codepoint\+\_\+begin@{codepoint\+\_\+begin}!u5e\+::basic\+\_\+grapheme@{u5e\+::basic\+\_\+grapheme}}
+\subsubsection[{\texorpdfstring{codepoint\+\_\+begin()}{codepoint_begin()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Underlying\+Encoded\+String\+View $>$ {\bf const\+\_\+codepoint\+\_\+iterator} {\bf u5e\+::basic\+\_\+grapheme}$<$ Underlying\+Encoded\+String\+View $>$\+::codepoint\+\_\+begin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__grapheme_a955bc52ec49af2aba6592ce717e05ca4}{}\label{classu5e_1_1basic__grapheme_a955bc52ec49af2aba6592ce717e05ca4}
+get the beginning of the codepoints 
+
+Definition at line 52 of file basic\+\_\+grapheme.\+hpp.
+
+\index{u5e\+::basic\+\_\+grapheme@{u5e\+::basic\+\_\+grapheme}!codepoint\+\_\+end@{codepoint\+\_\+end}}
+\index{codepoint\+\_\+end@{codepoint\+\_\+end}!u5e\+::basic\+\_\+grapheme@{u5e\+::basic\+\_\+grapheme}}
+\subsubsection[{\texorpdfstring{codepoint\+\_\+end()}{codepoint_end()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Underlying\+Encoded\+String\+View $>$ {\bf const\+\_\+codepoint\+\_\+iterator} {\bf u5e\+::basic\+\_\+grapheme}$<$ Underlying\+Encoded\+String\+View $>$\+::codepoint\+\_\+end (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__grapheme_a34222861fe382bd89ece4ed61e3e877f}{}\label{classu5e_1_1basic__grapheme_a34222861fe382bd89ece4ed61e3e877f}
+get the end of the codepoints 
+
+Definition at line 59 of file basic\+\_\+grapheme.\+hpp.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+u5e/basic\+\_\+grapheme.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,14 @@
+This example shows that it\textquotesingle{}s possible to use the utf8 iterator with a bare const char$\ast$, even without getting a string or a string\+\_\+view.
+
+
+\begin{DoxyCode}
+
+\textcolor{preprocessor}{#include <u5e/utf8\_iterator.hpp>}
+\textcolor{keywordtype}{int} main(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char}** argv) \{
+  \textcolor{comment}{// you can instantiate utf8\_iterator even with const char*}
+  \hyperlink{classu5e_1_1utf8__iterator}{u5e::utf8\_iterator<const char*>} it(argv[1]);
+  \textcolor{keywordflow}{return} *it;
+\}
+
+\end{DoxyCode}
+ 

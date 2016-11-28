@@ -1,0 +1,94 @@
+\hypertarget{classu5e_1_1utf8__util}{}\section{u5e\+:\+:utf8\+\_\+util Class Reference}
+\label{classu5e_1_1utf8__util}\index{u5e\+::utf8\+\_\+util@{u5e\+::utf8\+\_\+util}}
+
+
+Basic operations necessary for implementing \hyperlink{classu5e_1_1utf8}{utf8}.  
+
+
+
+
+{\ttfamily \#include $<$u5e/utf8\+\_\+util.\+hpp$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{classu5e_1_1utf8__util_a16bd32801dbac091a8034cc5acd6ae10}{is\+\_\+7bit\+\_\+character} (const char octet)
+\item 
+static bool \hyperlink{classu5e_1_1utf8__util_a404648033dd6c6bb4627f521204fea1d}{is\+\_\+codepoint\+\_\+continuation} (const char octet)
+\item 
+static bool \hyperlink{classu5e_1_1utf8__util_a522009c40678d411aa01b520fab756e6}{is\+\_\+codepoint\+\_\+start} (const char octet)
+\item 
+static int \hyperlink{classu5e_1_1utf8__util_ab51ca43f1228e81f195ab7ffe144fb42}{codepoint\+\_\+size} (const char first\+\_\+octet)
+\item 
+static int \hyperlink{classu5e_1_1utf8__util_a357cfe45396ba74cd39ae9de587383f6}{encoded\+\_\+size} (int value)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Basic operations necessary for implementing \hyperlink{classu5e_1_1utf8}{utf8}. 
+
+Definition at line 11 of file utf8\+\_\+util.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{u5e\+::utf8\+\_\+util@{u5e\+::utf8\+\_\+util}!codepoint\+\_\+size@{codepoint\+\_\+size}}
+\index{codepoint\+\_\+size@{codepoint\+\_\+size}!u5e\+::utf8\+\_\+util@{u5e\+::utf8\+\_\+util}}
+\subsubsection[{\texorpdfstring{codepoint\+\_\+size(const char first\+\_\+octet)}{codepoint_size(const char first_octet)}}]{\setlength{\rightskip}{0pt plus 5cm}static int u5e\+::utf8\+\_\+util\+::codepoint\+\_\+size (
+\begin{DoxyParamCaption}
+\item[{const char}]{first\+\_\+octet}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classu5e_1_1utf8__util_ab51ca43f1228e81f195ab7ffe144fb42}{}\label{classu5e_1_1utf8__util_ab51ca43f1228e81f195ab7ffe144fb42}
+Find the codepoint size given the first \hyperlink{classu5e_1_1utf8}{utf8} octet 
+
+Definition at line 50 of file utf8\+\_\+util.\+hpp.
+
+\index{u5e\+::utf8\+\_\+util@{u5e\+::utf8\+\_\+util}!encoded\+\_\+size@{encoded\+\_\+size}}
+\index{encoded\+\_\+size@{encoded\+\_\+size}!u5e\+::utf8\+\_\+util@{u5e\+::utf8\+\_\+util}}
+\subsubsection[{\texorpdfstring{encoded\+\_\+size(int value)}{encoded_size(int value)}}]{\setlength{\rightskip}{0pt plus 5cm}static int u5e\+::utf8\+\_\+util\+::encoded\+\_\+size (
+\begin{DoxyParamCaption}
+\item[{int}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classu5e_1_1utf8__util_a357cfe45396ba74cd39ae9de587383f6}{}\label{classu5e_1_1utf8__util_a357cfe45396ba74cd39ae9de587383f6}
+How many octets will this codepoint take 
+
+Definition at line 60 of file utf8\+\_\+util.\+hpp.
+
+\index{u5e\+::utf8\+\_\+util@{u5e\+::utf8\+\_\+util}!is\+\_\+7bit\+\_\+character@{is\+\_\+7bit\+\_\+character}}
+\index{is\+\_\+7bit\+\_\+character@{is\+\_\+7bit\+\_\+character}!u5e\+::utf8\+\_\+util@{u5e\+::utf8\+\_\+util}}
+\subsubsection[{\texorpdfstring{is\+\_\+7bit\+\_\+character(const char octet)}{is_7bit_character(const char octet)}}]{\setlength{\rightskip}{0pt plus 5cm}static bool u5e\+::utf8\+\_\+util\+::is\+\_\+7bit\+\_\+character (
+\begin{DoxyParamCaption}
+\item[{const char}]{octet}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classu5e_1_1utf8__util_a16bd32801dbac091a8034cc5acd6ae10}{}\label{classu5e_1_1utf8__util_a16bd32801dbac091a8034cc5acd6ae10}
+Check whether or not this is a 7bit character 
+
+Definition at line 17 of file utf8\+\_\+util.\+hpp.
+
+\index{u5e\+::utf8\+\_\+util@{u5e\+::utf8\+\_\+util}!is\+\_\+codepoint\+\_\+continuation@{is\+\_\+codepoint\+\_\+continuation}}
+\index{is\+\_\+codepoint\+\_\+continuation@{is\+\_\+codepoint\+\_\+continuation}!u5e\+::utf8\+\_\+util@{u5e\+::utf8\+\_\+util}}
+\subsubsection[{\texorpdfstring{is\+\_\+codepoint\+\_\+continuation(const char octet)}{is_codepoint_continuation(const char octet)}}]{\setlength{\rightskip}{0pt plus 5cm}static bool u5e\+::utf8\+\_\+util\+::is\+\_\+codepoint\+\_\+continuation (
+\begin{DoxyParamCaption}
+\item[{const char}]{octet}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classu5e_1_1utf8__util_a404648033dd6c6bb4627f521204fea1d}{}\label{classu5e_1_1utf8__util_a404648033dd6c6bb4627f521204fea1d}
+Check whether or not this is octet is a codepoint continuation 
+
+Definition at line 28 of file utf8\+\_\+util.\+hpp.
+
+\index{u5e\+::utf8\+\_\+util@{u5e\+::utf8\+\_\+util}!is\+\_\+codepoint\+\_\+start@{is\+\_\+codepoint\+\_\+start}}
+\index{is\+\_\+codepoint\+\_\+start@{is\+\_\+codepoint\+\_\+start}!u5e\+::utf8\+\_\+util@{u5e\+::utf8\+\_\+util}}
+\subsubsection[{\texorpdfstring{is\+\_\+codepoint\+\_\+start(const char octet)}{is_codepoint_start(const char octet)}}]{\setlength{\rightskip}{0pt plus 5cm}static bool u5e\+::utf8\+\_\+util\+::is\+\_\+codepoint\+\_\+start (
+\begin{DoxyParamCaption}
+\item[{const char}]{octet}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classu5e_1_1utf8__util_a522009c40678d411aa01b520fab756e6}{}\label{classu5e_1_1utf8__util_a522009c40678d411aa01b520fab756e6}
+Check whether or not this is a first octet in a sequence 
+
+Definition at line 39 of file utf8\+\_\+util.\+hpp.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+u5e/utf8\+\_\+util.\+hpp\end{DoxyCompactItemize}

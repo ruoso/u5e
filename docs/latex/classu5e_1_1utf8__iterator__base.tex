@@ -1,0 +1,195 @@
+\hypertarget{classu5e_1_1utf8__iterator__base}{}\section{u5e\+:\+:utf8\+\_\+iterator\+\_\+base$<$ Native\+Iterator $>$ Class Template Reference}
+\label{classu5e_1_1utf8__iterator__base}\index{u5e\+::utf8\+\_\+iterator\+\_\+base$<$ Native\+Iterator $>$@{u5e\+::utf8\+\_\+iterator\+\_\+base$<$ Native\+Iterator $>$}}
+
+
+Defines the basic inner workings of \hyperlink{classu5e_1_1utf8}{utf8} iterator.  
+
+
+
+
+{\ttfamily \#include $<$u5e/utf8\+\_\+iterator.\+hpp$>$}
+
+
+
+Inheritance diagram for u5e\+:\+:utf8\+\_\+iterator\+\_\+base$<$ Native\+Iterator $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{classu5e_1_1utf8__iterator__base__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for u5e\+:\+:utf8\+\_\+iterator\+\_\+base$<$ Native\+Iterator $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{classu5e_1_1utf8__iterator__base__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+typedef \hyperlink{classu5e_1_1codepoint}{codepoint} \hyperlink{classu5e_1_1utf8__iterator__base_a5048b05c23d80befdfdcc5a47b8bcbce}{value\+\_\+type}
+\item 
+typedef const \hyperlink{classu5e_1_1codepoint}{codepoint} \& \hyperlink{classu5e_1_1utf8__iterator__base_a49c75ca98a7c550f584e28e5ea1af883}{reference}
+\item 
+typedef int \hyperlink{classu5e_1_1utf8__iterator__base_a5b9d4769be94cd6a896ea2305927e467}{difference\+\_\+type}
+\item 
+typedef std\+::bidirectional\+\_\+iterator\+\_\+tag \hyperlink{classu5e_1_1utf8__iterator__base_a06735854415e6c5c5a7488c9fcd8a115}{iterator\+\_\+category}
+\end{DoxyCompactItemize}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classu5e_1_1utf8__iterator__base_ae8727bcbe775266a0e71e441c9e0e75f}{utf8\+\_\+iterator\+\_\+base} (const Native\+Iterator raw\+\_\+iterator)
+\item 
+bool \hyperlink{classu5e_1_1utf8__iterator__base_a835eb35233e2f9995fb3ae305eb97030}{rewind\+\_\+to\+\_\+start\+\_\+of\+\_\+codepoint} (const char current\+\_\+octet)
+\item 
+void \hyperlink{classu5e_1_1utf8__iterator__base_a72dd067d0a8de9acf9892e6a1e1d0bc4}{forward\+\_\+one\+\_\+codepoint} ()
+\item 
+void \hyperlink{classu5e_1_1utf8__iterator__base_a4654e35335e651fcb745fb823ae7e1b9}{rewind\+\_\+one\+\_\+codepoint} ()
+\item 
+const \hyperlink{classu5e_1_1codepoint}{codepoint} \hyperlink{classu5e_1_1utf8__iterator__base_aef76c20634461c3acbb09e2e66f33c52}{current\+\_\+codepoint} ()
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classu5e_1_1iterator__assertion}{iterator\+\_\+assertion}$<$ Native\+Iterator, char $>$ \hyperlink{classu5e_1_1utf8__iterator__base_ae3bac08f8551f282fa7e70a09fa5b37f}{\+\_\+assertions}
+\item 
+Native\+Iterator \hyperlink{classu5e_1_1utf8__iterator__base_a7b744615e45b142d6139a8920b70d2fc}{raw\+\_\+iterator\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Native\+Iterator$>$\\*
+class u5e\+::utf8\+\_\+iterator\+\_\+base$<$ Native\+Iterator $>$}
+
+Defines the basic inner workings of \hyperlink{classu5e_1_1utf8}{utf8} iterator. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Native\+Iterator} & The underlying type to be iterated over. \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 17 of file utf8\+\_\+iterator.\+hpp.
+
+
+
+\subsection{Member Typedef Documentation}
+\index{u5e\+::utf8\+\_\+iterator\+\_\+base@{u5e\+::utf8\+\_\+iterator\+\_\+base}!difference\+\_\+type@{difference\+\_\+type}}
+\index{difference\+\_\+type@{difference\+\_\+type}!u5e\+::utf8\+\_\+iterator\+\_\+base@{u5e\+::utf8\+\_\+iterator\+\_\+base}}
+\subsubsection[{\texorpdfstring{difference\+\_\+type}{difference_type}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Native\+Iterator $>$ typedef int {\bf u5e\+::utf8\+\_\+iterator\+\_\+base}$<$ Native\+Iterator $>$\+::{\bf difference\+\_\+type}}\hypertarget{classu5e_1_1utf8__iterator__base_a5b9d4769be94cd6a896ea2305927e467}{}\label{classu5e_1_1utf8__iterator__base_a5b9d4769be94cd6a896ea2305927e467}
+Basic iterator typedefs 
+
+Definition at line 34 of file utf8\+\_\+iterator.\+hpp.
+
+\index{u5e\+::utf8\+\_\+iterator\+\_\+base@{u5e\+::utf8\+\_\+iterator\+\_\+base}!iterator\+\_\+category@{iterator\+\_\+category}}
+\index{iterator\+\_\+category@{iterator\+\_\+category}!u5e\+::utf8\+\_\+iterator\+\_\+base@{u5e\+::utf8\+\_\+iterator\+\_\+base}}
+\subsubsection[{\texorpdfstring{iterator\+\_\+category}{iterator_category}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Native\+Iterator $>$ typedef std\+::bidirectional\+\_\+iterator\+\_\+tag {\bf u5e\+::utf8\+\_\+iterator\+\_\+base}$<$ Native\+Iterator $>$\+::{\bf iterator\+\_\+category}}\hypertarget{classu5e_1_1utf8__iterator__base_a06735854415e6c5c5a7488c9fcd8a115}{}\label{classu5e_1_1utf8__iterator__base_a06735854415e6c5c5a7488c9fcd8a115}
+Basic iterator typedefs 
+
+Definition at line 35 of file utf8\+\_\+iterator.\+hpp.
+
+\index{u5e\+::utf8\+\_\+iterator\+\_\+base@{u5e\+::utf8\+\_\+iterator\+\_\+base}!reference@{reference}}
+\index{reference@{reference}!u5e\+::utf8\+\_\+iterator\+\_\+base@{u5e\+::utf8\+\_\+iterator\+\_\+base}}
+\subsubsection[{\texorpdfstring{reference}{reference}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Native\+Iterator $>$ typedef const {\bf codepoint}\& {\bf u5e\+::utf8\+\_\+iterator\+\_\+base}$<$ Native\+Iterator $>$\+::{\bf reference}}\hypertarget{classu5e_1_1utf8__iterator__base_a49c75ca98a7c550f584e28e5ea1af883}{}\label{classu5e_1_1utf8__iterator__base_a49c75ca98a7c550f584e28e5ea1af883}
+Basic iterator typedefs 
+
+Definition at line 33 of file utf8\+\_\+iterator.\+hpp.
+
+\index{u5e\+::utf8\+\_\+iterator\+\_\+base@{u5e\+::utf8\+\_\+iterator\+\_\+base}!value\+\_\+type@{value\+\_\+type}}
+\index{value\+\_\+type@{value\+\_\+type}!u5e\+::utf8\+\_\+iterator\+\_\+base@{u5e\+::utf8\+\_\+iterator\+\_\+base}}
+\subsubsection[{\texorpdfstring{value\+\_\+type}{value_type}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Native\+Iterator $>$ typedef {\bf codepoint} {\bf u5e\+::utf8\+\_\+iterator\+\_\+base}$<$ Native\+Iterator $>$\+::{\bf value\+\_\+type}}\hypertarget{classu5e_1_1utf8__iterator__base_a5048b05c23d80befdfdcc5a47b8bcbce}{}\label{classu5e_1_1utf8__iterator__base_a5048b05c23d80befdfdcc5a47b8bcbce}
+Basic iterator typedefs 
+
+Definition at line 32 of file utf8\+\_\+iterator.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{u5e\+::utf8\+\_\+iterator\+\_\+base@{u5e\+::utf8\+\_\+iterator\+\_\+base}!utf8\+\_\+iterator\+\_\+base@{utf8\+\_\+iterator\+\_\+base}}
+\index{utf8\+\_\+iterator\+\_\+base@{utf8\+\_\+iterator\+\_\+base}!u5e\+::utf8\+\_\+iterator\+\_\+base@{u5e\+::utf8\+\_\+iterator\+\_\+base}}
+\subsubsection[{\texorpdfstring{utf8\+\_\+iterator\+\_\+base(const Native\+Iterator raw\+\_\+iterator)}{utf8_iterator_base(const NativeIterator raw_iterator)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Native\+Iterator $>$ {\bf u5e\+::utf8\+\_\+iterator\+\_\+base}$<$ Native\+Iterator $>$\+::{\bf utf8\+\_\+iterator\+\_\+base} (
+\begin{DoxyParamCaption}
+\item[{const Native\+Iterator}]{raw\+\_\+iterator}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1utf8__iterator__base_ae8727bcbe775266a0e71e441c9e0e75f}{}\label{classu5e_1_1utf8__iterator__base_ae8727bcbe775266a0e71e441c9e0e75f}
+Create a iterator from the underlying iterator 
+
+Definition at line 41 of file utf8\+\_\+iterator.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{u5e\+::utf8\+\_\+iterator\+\_\+base@{u5e\+::utf8\+\_\+iterator\+\_\+base}!current\+\_\+codepoint@{current\+\_\+codepoint}}
+\index{current\+\_\+codepoint@{current\+\_\+codepoint}!u5e\+::utf8\+\_\+iterator\+\_\+base@{u5e\+::utf8\+\_\+iterator\+\_\+base}}
+\subsubsection[{\texorpdfstring{current\+\_\+codepoint()}{current_codepoint()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Native\+Iterator $>$ const {\bf codepoint} {\bf u5e\+::utf8\+\_\+iterator\+\_\+base}$<$ Native\+Iterator $>$\+::current\+\_\+codepoint (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1utf8__iterator__base_aef76c20634461c3acbb09e2e66f33c52}{}\label{classu5e_1_1utf8__iterator__base_aef76c20634461c3acbb09e2e66f33c52}
+Return the codepoint that starts where we are now 
+
+Definition at line 83 of file utf8\+\_\+iterator.\+hpp.
+
+\index{u5e\+::utf8\+\_\+iterator\+\_\+base@{u5e\+::utf8\+\_\+iterator\+\_\+base}!forward\+\_\+one\+\_\+codepoint@{forward\+\_\+one\+\_\+codepoint}}
+\index{forward\+\_\+one\+\_\+codepoint@{forward\+\_\+one\+\_\+codepoint}!u5e\+::utf8\+\_\+iterator\+\_\+base@{u5e\+::utf8\+\_\+iterator\+\_\+base}}
+\subsubsection[{\texorpdfstring{forward\+\_\+one\+\_\+codepoint()}{forward_one_codepoint()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Native\+Iterator $>$ void {\bf u5e\+::utf8\+\_\+iterator\+\_\+base}$<$ Native\+Iterator $>$\+::forward\+\_\+one\+\_\+codepoint (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1utf8__iterator__base_a72dd067d0a8de9acf9892e6a1e1d0bc4}{}\label{classu5e_1_1utf8__iterator__base_a72dd067d0a8de9acf9892e6a1e1d0bc4}
+Advance the iterator to the next codepoint 
+
+Definition at line 63 of file utf8\+\_\+iterator.\+hpp.
+
+\index{u5e\+::utf8\+\_\+iterator\+\_\+base@{u5e\+::utf8\+\_\+iterator\+\_\+base}!rewind\+\_\+one\+\_\+codepoint@{rewind\+\_\+one\+\_\+codepoint}}
+\index{rewind\+\_\+one\+\_\+codepoint@{rewind\+\_\+one\+\_\+codepoint}!u5e\+::utf8\+\_\+iterator\+\_\+base@{u5e\+::utf8\+\_\+iterator\+\_\+base}}
+\subsubsection[{\texorpdfstring{rewind\+\_\+one\+\_\+codepoint()}{rewind_one_codepoint()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Native\+Iterator $>$ void {\bf u5e\+::utf8\+\_\+iterator\+\_\+base}$<$ Native\+Iterator $>$\+::rewind\+\_\+one\+\_\+codepoint (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1utf8__iterator__base_a4654e35335e651fcb745fb823ae7e1b9}{}\label{classu5e_1_1utf8__iterator__base_a4654e35335e651fcb745fb823ae7e1b9}
+Go to the previous codepoint. 
+
+Definition at line 72 of file utf8\+\_\+iterator.\+hpp.
+
+\index{u5e\+::utf8\+\_\+iterator\+\_\+base@{u5e\+::utf8\+\_\+iterator\+\_\+base}!rewind\+\_\+to\+\_\+start\+\_\+of\+\_\+codepoint@{rewind\+\_\+to\+\_\+start\+\_\+of\+\_\+codepoint}}
+\index{rewind\+\_\+to\+\_\+start\+\_\+of\+\_\+codepoint@{rewind\+\_\+to\+\_\+start\+\_\+of\+\_\+codepoint}!u5e\+::utf8\+\_\+iterator\+\_\+base@{u5e\+::utf8\+\_\+iterator\+\_\+base}}
+\subsubsection[{\texorpdfstring{rewind\+\_\+to\+\_\+start\+\_\+of\+\_\+codepoint(const char current\+\_\+octet)}{rewind_to_start_of_codepoint(const char current_octet)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Native\+Iterator $>$ bool {\bf u5e\+::utf8\+\_\+iterator\+\_\+base}$<$ Native\+Iterator $>$\+::rewind\+\_\+to\+\_\+start\+\_\+of\+\_\+codepoint (
+\begin{DoxyParamCaption}
+\item[{const char}]{current\+\_\+octet}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1utf8__iterator__base_a835eb35233e2f9995fb3ae305eb97030}{}\label{classu5e_1_1utf8__iterator__base_a835eb35233e2f9995fb3ae305eb97030}
+When doing a reverse itetor, you need to be able to find where the current codepoint started. 
+
+Definition at line 49 of file utf8\+\_\+iterator.\+hpp.
+
+
+
+\subsection{Member Data Documentation}
+\index{u5e\+::utf8\+\_\+iterator\+\_\+base@{u5e\+::utf8\+\_\+iterator\+\_\+base}!\+\_\+assertions@{\+\_\+assertions}}
+\index{\+\_\+assertions@{\+\_\+assertions}!u5e\+::utf8\+\_\+iterator\+\_\+base@{u5e\+::utf8\+\_\+iterator\+\_\+base}}
+\subsubsection[{\texorpdfstring{\+\_\+assertions}{_assertions}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Native\+Iterator $>$ {\bf iterator\+\_\+assertion}$<$Native\+Iterator, char$>$ {\bf u5e\+::utf8\+\_\+iterator\+\_\+base}$<$ Native\+Iterator $>$\+::\+\_\+assertions}\hypertarget{classu5e_1_1utf8__iterator__base_ae3bac08f8551f282fa7e70a09fa5b37f}{}\label{classu5e_1_1utf8__iterator__base_ae3bac08f8551f282fa7e70a09fa5b37f}
+The Native\+Iterator must match the attributes of char 
+
+Definition at line 22 of file utf8\+\_\+iterator.\+hpp.
+
+\index{u5e\+::utf8\+\_\+iterator\+\_\+base@{u5e\+::utf8\+\_\+iterator\+\_\+base}!raw\+\_\+iterator\+\_\+@{raw\+\_\+iterator\+\_\+}}
+\index{raw\+\_\+iterator\+\_\+@{raw\+\_\+iterator\+\_\+}!u5e\+::utf8\+\_\+iterator\+\_\+base@{u5e\+::utf8\+\_\+iterator\+\_\+base}}
+\subsubsection[{\texorpdfstring{raw\+\_\+iterator\+\_\+}{raw_iterator_}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Native\+Iterator $>$ Native\+Iterator {\bf u5e\+::utf8\+\_\+iterator\+\_\+base}$<$ Native\+Iterator $>$\+::raw\+\_\+iterator\+\_\+}\hypertarget{classu5e_1_1utf8__iterator__base_a7b744615e45b142d6139a8920b70d2fc}{}\label{classu5e_1_1utf8__iterator__base_a7b744615e45b142d6139a8920b70d2fc}
+This class composes over the Native\+Iterator 
+
+Definition at line 26 of file utf8\+\_\+iterator.\+hpp.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+u5e/utf8\+\_\+iterator.\+hpp\end{DoxyCompactItemize}

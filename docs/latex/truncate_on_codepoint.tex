@@ -1,0 +1,32 @@
+The challenge of truncating a string is that if you operate on the native level, you risk breaking a codepoint in half.
+
+The \hyperlink{namespaceu5e}{u5e} library provides an easy way to truncate a text, starting from a target native size and finding the correct boundary.
+
+
+\begin{DoxyCode}
+\textcolor{preprocessor}{#include <algorithm>}
+\textcolor{preprocessor}{#include <iostream>}
+\textcolor{preprocessor}{#include <string>}
+\textcolor{preprocessor}{#include <u5e/utf8\_string.hpp>}
+\textcolor{keyword}{using} std::string;
+\textcolor{keyword}{using} \hyperlink{namespaceu5e_a3814526c6ea7ca04223a8ec1b662d497}{u5e::utf8\_string};
+\textcolor{keywordtype}{int} main(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char}** argv) \{
+  \textcolor{comment}{// the original string}
+  \textcolor{keywordtype}{string} str(\textcolor{stringliteral}{"Ola\(\backslash\)xCC\(\backslash\)x81!"});
+
+  \textcolor{comment}{// we find the point on the native string where we want to truncate.}
+  \textcolor{comment}{// Count 4 in octets leaves us in the middle of a codepoint}
+  string::const\_iterator stri = str.cbegin();
+  std::advance(stri, 4);
+  
+  \textcolor{comment}{// now we produce the output string truncated at where we want.}
+  \textcolor{comment}{// note that this assumes that the text was already in utf8. this is}
+  \textcolor{comment}{// not a conversion operator, it just makes sure the append happens}
+  \textcolor{comment}{// while respecting the codepoint boundaries in the utf8 text.}
+  \hyperlink{namespaceu5e_a3814526c6ea7ca04223a8ec1b662d497}{utf8\_string} output(\textcolor{stringliteral}{""});
+  output.append(str.cbegin(), stri);
+
+  std::cout << output.native\_string << std::endl;
+\}
+\end{DoxyCode}
+ 

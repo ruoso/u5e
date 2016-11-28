@@ -1,0 +1,79 @@
+\hypertarget{classu5e_1_1utf8}{}\section{u5e\+:\+:utf8 Class Reference}
+\label{classu5e_1_1utf8}\index{u5e\+::utf8@{u5e\+::utf8}}
+
+
+Encoding type for U\+T\+F8 text. Unlike U\+T\+F16 and U\+T\+F32, U\+T\+F8 is endian independent.  
+
+
+
+
+{\ttfamily \#include $<$u5e/utf8.\+hpp$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Native\+String $>$ }\\using \hyperlink{classu5e_1_1utf8_a4a1112036dbaf999d2c7752ac7536ea0}{iterator} = \hyperlink{classu5e_1_1utf8__iterator}{utf8\+\_\+iterator}$<$ typename Native\+String\+::iterator $>$
+\item 
+{\footnotesize template$<$typename Native\+String $>$ }\\using \hyperlink{classu5e_1_1utf8_a0a0e49f87a51183640beb235c89fd996}{const\+\_\+iterator} = \hyperlink{classu5e_1_1utf8__const__iterator}{utf8\+\_\+const\+\_\+iterator}$<$ typename Native\+String\+::const\+\_\+iterator $>$
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Native\+String $>$ }\\static Native\+String\+::const\+\_\+iterator \hyperlink{classu5e_1_1utf8_a96aee1a73b68ed1396bf12b469093942}{native\+\_\+const\+\_\+iterator} (\hyperlink{classu5e_1_1utf8__const__iterator}{utf8\+\_\+const\+\_\+iterator}$<$ typename Native\+String\+::const\+\_\+iterator $>$ it)
+\item 
+{\footnotesize template$<$typename Input\+Native\+Iterator , typename Output\+Native\+String $>$ }\\static void {\bfseries append\+\_\+from\+\_\+utf32ne} (Input\+Native\+Iterator first, Input\+Native\+Iterator last, Output\+Native\+String \&output)\hypertarget{classu5e_1_1utf8_a3b756c2ac9c47477f2cbe89311d559a9}{}\label{classu5e_1_1utf8_a3b756c2ac9c47477f2cbe89311d559a9}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Encoding type for U\+T\+F8 text. Unlike U\+T\+F16 and U\+T\+F32, U\+T\+F8 is endian independent. 
+
+Definition at line 17 of file utf8.\+hpp.
+
+
+
+\subsection{Member Typedef Documentation}
+\index{u5e\+::utf8@{u5e\+::utf8}!const\+\_\+iterator@{const\+\_\+iterator}}
+\index{const\+\_\+iterator@{const\+\_\+iterator}!u5e\+::utf8@{u5e\+::utf8}}
+\subsubsection[{\texorpdfstring{const\+\_\+iterator}{const_iterator}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Native\+String $>$ using {\bf u5e\+::utf8\+::const\+\_\+iterator} =  {\bf utf8\+\_\+const\+\_\+iterator}$<$typename Native\+String\+::const\+\_\+iterator$>$}\hypertarget{classu5e_1_1utf8_a0a0e49f87a51183640beb235c89fd996}{}\label{classu5e_1_1utf8_a0a0e49f87a51183640beb235c89fd996}
+Delegated to \hyperlink{classu5e_1_1utf8__const__iterator}{utf8\+\_\+const\+\_\+iterator} of the native type 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Native\+String} & the native string type with \hyperlink{classu5e_1_1utf8}{utf8} data \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 34 of file utf8.\+hpp.
+
+\index{u5e\+::utf8@{u5e\+::utf8}!iterator@{iterator}}
+\index{iterator@{iterator}!u5e\+::utf8@{u5e\+::utf8}}
+\subsubsection[{\texorpdfstring{iterator}{iterator}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Native\+String $>$ using {\bf u5e\+::utf8\+::iterator} =  {\bf utf8\+\_\+iterator}$<$typename Native\+String\+::iterator$>$}\hypertarget{classu5e_1_1utf8_a4a1112036dbaf999d2c7752ac7536ea0}{}\label{classu5e_1_1utf8_a4a1112036dbaf999d2c7752ac7536ea0}
+Delegated to \hyperlink{classu5e_1_1utf8__iterator}{utf8\+\_\+iterator} of the native type. 
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Native\+String} & the native string type with \hyperlink{classu5e_1_1utf8}{utf8} data \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 26 of file utf8.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{u5e\+::utf8@{u5e\+::utf8}!native\+\_\+const\+\_\+iterator@{native\+\_\+const\+\_\+iterator}}
+\index{native\+\_\+const\+\_\+iterator@{native\+\_\+const\+\_\+iterator}!u5e\+::utf8@{u5e\+::utf8}}
+\subsubsection[{\texorpdfstring{native\+\_\+const\+\_\+iterator(utf8\+\_\+const\+\_\+iterator$<$ typename Native\+String\+::const\+\_\+iterator $>$ it)}{native_const_iterator(utf8_const_iterator< typename NativeString::const_iterator > it)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Native\+String $>$ static Native\+String\+::const\+\_\+iterator u5e\+::utf8\+::native\+\_\+const\+\_\+iterator (
+\begin{DoxyParamCaption}
+\item[{{\bf utf8\+\_\+const\+\_\+iterator}$<$ typename Native\+String\+::const\+\_\+iterator $>$}]{it}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}\hypertarget{classu5e_1_1utf8_a96aee1a73b68ed1396bf12b469093942}{}\label{classu5e_1_1utf8_a96aee1a73b68ed1396bf12b469093942}
+Get access to the native const\+\_\+iterator with the native data. 
+
+Definition at line 42 of file utf8.\+hpp.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+u5e/utf8.\+hpp\end{DoxyCompactItemize}

@@ -1,0 +1,129 @@
+\hypertarget{classu5e_1_1codepoint}{}\section{u5e\+:\+:codepoint Class Reference}
+\label{classu5e_1_1codepoint}\index{u5e\+::codepoint@{u5e\+::codepoint}}
+
+
+Native representation of a codepoint.  
+
+
+
+
+{\ttfamily \#include $<$u5e/codepoint.\+hpp$>$}
+
+
+
+Inheritance diagram for u5e\+:\+:codepoint\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{classu5e_1_1codepoint__inherit__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+constexpr \hyperlink{classu5e_1_1codepoint_a6125584b5079e2ca72f4930e2890ac6d}{codepoint} ()
+\item 
+constexpr \hyperlink{classu5e_1_1codepoint_a2d033712b1118e34f32e067bf8c90e50}{codepoint} (int32\+\_\+t v)
+\item 
+constexpr \hyperlink{classu5e_1_1codepoint_a84c5769315b27a56cbf8c077d10c3f79}{codepoint} (const \hyperlink{classu5e_1_1codepoint}{codepoint} \&x)=default
+\item 
+constexpr \hyperlink{classu5e_1_1codepoint}{codepoint} \& \hyperlink{classu5e_1_1codepoint_a60cccd31a7d78336ffb226df79e2fb58}{operator=} (const \hyperlink{classu5e_1_1codepoint}{codepoint} \&x)=default
+\item 
+constexpr \hyperlink{classu5e_1_1codepoint}{codepoint} \& \hyperlink{classu5e_1_1codepoint_a06f7e693dc997163c98d9a42fb069b71}{operator=} (int c)
+\item 
+constexpr \hyperlink{classu5e_1_1codepoint_a62f2f28a2cd7c7f59a13e98deacf3249}{operator int} () const 
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classu5e_1_1codepoint__traits_a11f00d20915e28671519ef0c96fab05d}{codepoint\+\_\+traits\+::int\+\_\+type} \hyperlink{classu5e_1_1codepoint_ae9340f920cdb4f6615647cbd8dc0fc84}{value}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Native representation of a codepoint. 
+
+Explicity class in order to hijack overloads, such that we only build codepoints out of known encodings and we only write to encodings out of known codepoints. 
+
+Definition at line 15 of file codepoint.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{u5e\+::codepoint@{u5e\+::codepoint}!codepoint@{codepoint}}
+\index{codepoint@{codepoint}!u5e\+::codepoint@{u5e\+::codepoint}}
+\subsubsection[{\texorpdfstring{codepoint()}{codepoint()}}]{\setlength{\rightskip}{0pt plus 5cm}constexpr u5e\+::codepoint\+::codepoint (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1codepoint_a6125584b5079e2ca72f4930e2890ac6d}{}\label{classu5e_1_1codepoint_a6125584b5079e2ca72f4930e2890ac6d}
+Default constructor, starts as N\+U\+LL. 
+
+Definition at line 25 of file codepoint.\+hpp.
+
+\index{u5e\+::codepoint@{u5e\+::codepoint}!codepoint@{codepoint}}
+\index{codepoint@{codepoint}!u5e\+::codepoint@{u5e\+::codepoint}}
+\subsubsection[{\texorpdfstring{codepoint(int32\+\_\+t v)}{codepoint(int32_t v)}}]{\setlength{\rightskip}{0pt plus 5cm}constexpr u5e\+::codepoint\+::codepoint (
+\begin{DoxyParamCaption}
+\item[{int32\+\_\+t}]{v}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1codepoint_a2d033712b1118e34f32e067bf8c90e50}{}\label{classu5e_1_1codepoint_a2d033712b1118e34f32e067bf8c90e50}
+Implicit constructor from an integer value. 
+
+Definition at line 30 of file codepoint.\+hpp.
+
+\index{u5e\+::codepoint@{u5e\+::codepoint}!codepoint@{codepoint}}
+\index{codepoint@{codepoint}!u5e\+::codepoint@{u5e\+::codepoint}}
+\subsubsection[{\texorpdfstring{codepoint(const codepoint \&x)=default}{codepoint(const codepoint &x)=default}}]{\setlength{\rightskip}{0pt plus 5cm}constexpr u5e\+::codepoint\+::codepoint (
+\begin{DoxyParamCaption}
+\item[{const {\bf codepoint} \&}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [default]}}\hypertarget{classu5e_1_1codepoint_a84c5769315b27a56cbf8c077d10c3f79}{}\label{classu5e_1_1codepoint_a84c5769315b27a56cbf8c077d10c3f79}
+Copy constructor. 
+
+\subsection{Member Function Documentation}
+\index{u5e\+::codepoint@{u5e\+::codepoint}!operator int@{operator int}}
+\index{operator int@{operator int}!u5e\+::codepoint@{u5e\+::codepoint}}
+\subsubsection[{\texorpdfstring{operator int() const }{operator int() const }}]{\setlength{\rightskip}{0pt plus 5cm}constexpr u5e\+::codepoint\+::operator int (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1codepoint_a62f2f28a2cd7c7f59a13e98deacf3249}{}\label{classu5e_1_1codepoint_a62f2f28a2cd7c7f59a13e98deacf3249}
+Override int operator to return the codepoint value. 
+
+Definition at line 50 of file codepoint.\+hpp.
+
+\index{u5e\+::codepoint@{u5e\+::codepoint}!operator=@{operator=}}
+\index{operator=@{operator=}!u5e\+::codepoint@{u5e\+::codepoint}}
+\subsubsection[{\texorpdfstring{operator=(const codepoint \&x)=default}{operator=(const codepoint &x)=default}}]{\setlength{\rightskip}{0pt plus 5cm}constexpr {\bf codepoint}\& u5e\+::codepoint\+::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf codepoint} \&}]{x}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [default]}}\hypertarget{classu5e_1_1codepoint_a60cccd31a7d78336ffb226df79e2fb58}{}\label{classu5e_1_1codepoint_a60cccd31a7d78336ffb226df79e2fb58}
+Assignment operator from another codepoint. \index{u5e\+::codepoint@{u5e\+::codepoint}!operator=@{operator=}}
+\index{operator=@{operator=}!u5e\+::codepoint@{u5e\+::codepoint}}
+\subsubsection[{\texorpdfstring{operator=(int c)}{operator=(int c)}}]{\setlength{\rightskip}{0pt plus 5cm}constexpr {\bf codepoint}\& u5e\+::codepoint\+::operator= (
+\begin{DoxyParamCaption}
+\item[{int}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1codepoint_a06f7e693dc997163c98d9a42fb069b71}{}\label{classu5e_1_1codepoint_a06f7e693dc997163c98d9a42fb069b71}
+Assignment operator from an int. 
+
+Definition at line 45 of file codepoint.\+hpp.
+
+
+
+\subsection{Member Data Documentation}
+\index{u5e\+::codepoint@{u5e\+::codepoint}!value@{value}}
+\index{value@{value}!u5e\+::codepoint@{u5e\+::codepoint}}
+\subsubsection[{\texorpdfstring{value}{value}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf codepoint\+\_\+traits\+::int\+\_\+type} u5e\+::codepoint\+::value}\hypertarget{classu5e_1_1codepoint_ae9340f920cdb4f6615647cbd8dc0fc84}{}\label{classu5e_1_1codepoint_ae9340f920cdb4f6615647cbd8dc0fc84}
+A codepoint has an integer value type. 
+
+Definition at line 20 of file codepoint.\+hpp.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+u5e/codepoint.\+hpp\end{DoxyCompactItemize}

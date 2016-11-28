@@ -1,0 +1,84 @@
+\hypertarget{classu5e_1_1utf8__iterator_1_1proxyobject}{}\section{u5e\+:\+:utf8\+\_\+iterator$<$ Native\+Iterator $>$\+:\+:proxyobject Class Reference}
+\label{classu5e_1_1utf8__iterator_1_1proxyobject}\index{u5e\+::utf8\+\_\+iterator$<$ Native\+Iterator $>$\+::proxyobject@{u5e\+::utf8\+\_\+iterator$<$ Native\+Iterator $>$\+::proxyobject}}
+
+
+offers write access to the iterator at a given position  
+
+
+
+
+{\ttfamily \#include $<$u5e/utf8\+\_\+iterator.\+hpp$>$}
+
+
+
+Inheritance diagram for u5e\+:\+:utf8\+\_\+iterator$<$ Native\+Iterator $>$\+:\+:proxyobject\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{classu5e_1_1utf8__iterator_1_1proxyobject__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for u5e\+:\+:utf8\+\_\+iterator$<$ Native\+Iterator $>$\+:\+:proxyobject\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{classu5e_1_1utf8__iterator_1_1proxyobject__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classu5e_1_1utf8__iterator_1_1proxyobject_a81e1a4e72b44fb59be44669304dcf741}{proxyobject} (\hyperlink{classu5e_1_1utf8__iterator}{utf8\+\_\+iterator}$<$ Native\+Iterator $>$ \&refin)
+\item 
+\hyperlink{classu5e_1_1utf8__iterator_1_1proxyobject}{proxyobject} \& \hyperlink{classu5e_1_1utf8__iterator_1_1proxyobject_a7e78eebdd29c280b3b39da10a259a8f3}{operator=} (const \hyperlink{classu5e_1_1codepoint}{codepoint} c)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Native\+Iterator$>$\\*
+class u5e\+::utf8\+\_\+iterator$<$ Native\+Iterator $>$\+::proxyobject}
+
+offers write access to the iterator at a given position 
+
+This is necessary because operator= can only be done after operator$\ast$ is executed, this wouldn\textquotesingle{}t be necessary if there was a dedicated operator for \textquotesingle{}assign to the dereference\textquotesingle{}. 
+
+Definition at line 292 of file utf8\+\_\+iterator.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{u5e\+::utf8\+\_\+iterator\+::proxyobject@{u5e\+::utf8\+\_\+iterator\+::proxyobject}!proxyobject@{proxyobject}}
+\index{proxyobject@{proxyobject}!u5e\+::utf8\+\_\+iterator\+::proxyobject@{u5e\+::utf8\+\_\+iterator\+::proxyobject}}
+\subsubsection[{\texorpdfstring{proxyobject(utf8\+\_\+iterator$<$ Native\+Iterator $>$ \&refin)}{proxyobject(utf8_iterator< NativeIterator > &refin)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Native\+Iterator$>$ {\bf u5e\+::utf8\+\_\+iterator}$<$ Native\+Iterator $>$\+::proxyobject\+::proxyobject (
+\begin{DoxyParamCaption}
+\item[{{\bf utf8\+\_\+iterator}$<$ Native\+Iterator $>$ \&}]{refin}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1utf8__iterator_1_1proxyobject_a81e1a4e72b44fb59be44669304dcf741}{}\label{classu5e_1_1utf8__iterator_1_1proxyobject_a81e1a4e72b44fb59be44669304dcf741}
+Create from the iterator 
+
+Definition at line 303 of file utf8\+\_\+iterator.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{u5e\+::utf8\+\_\+iterator\+::proxyobject@{u5e\+::utf8\+\_\+iterator\+::proxyobject}!operator=@{operator=}}
+\index{operator=@{operator=}!u5e\+::utf8\+\_\+iterator\+::proxyobject@{u5e\+::utf8\+\_\+iterator\+::proxyobject}}
+\subsubsection[{\texorpdfstring{operator=(const codepoint c)}{operator=(const codepoint c)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Native\+Iterator$>$ {\bf proxyobject}\& {\bf u5e\+::utf8\+\_\+iterator}$<$ Native\+Iterator $>$\+::proxyobject\+::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf codepoint}}]{c}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1utf8__iterator_1_1proxyobject_a7e78eebdd29c280b3b39da10a259a8f3}{}\label{classu5e_1_1utf8__iterator_1_1proxyobject_a7e78eebdd29c280b3b39da10a259a8f3}
+Assign a codepoint to this position, writing as many octets as necessary. Note that if you do this in the middle of a string, there is a likely chance that you will render the remainder of the string invalid. So it\textquotesingle{}s really only a good idea to do this as an \char`\"{}append\char`\"{} operation. 
+
+Definition at line 316 of file utf8\+\_\+iterator.\+hpp.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+u5e/utf8\+\_\+iterator.\+hpp\end{DoxyCompactItemize}

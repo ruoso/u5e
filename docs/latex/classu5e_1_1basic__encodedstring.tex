@@ -1,0 +1,456 @@
+\hypertarget{classu5e_1_1basic__encodedstring}{}\section{u5e\+:\+:basic\+\_\+encodedstring$<$ Encoding, Native\+String $>$ Class Template Reference}
+\label{classu5e_1_1basic__encodedstring}\index{u5e\+::basic\+\_\+encodedstring$<$ Encoding, Native\+String $>$@{u5e\+::basic\+\_\+encodedstring$<$ Encoding, Native\+String $>$}}
+
+
+basic encoding support over string-\/like objects.  
+
+
+
+
+{\ttfamily \#include $<$u5e/basic\+\_\+encodedstring.\+hpp$>$}
+
+\subsection*{Public Types}
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+typedef \hyperlink{classu5e_1_1codepoint__traits}{u5e\+::codepoint\+\_\+traits} \hyperlink{classu5e_1_1basic__encodedstring_a3ac9c7e8b96dae6342a47ab933e285ca}{traits\+\_\+type}
+\item 
+typedef \hyperlink{classu5e_1_1codepoint}{u5e\+::codepoint} \hyperlink{classu5e_1_1basic__encodedstring_a958081aa18370a191d00b33032a203bc}{value\+\_\+type}
+\item 
+typedef \hyperlink{classu5e_1_1codepoint__traits_afb5588dd802b42f267a6c254ad7842f1}{u5e\+::codepoint\+\_\+traits\+::pos\+\_\+type} \hyperlink{classu5e_1_1basic__encodedstring_afba33e845bb625c7f80cb5874a14f957}{size\+\_\+type}
+\item 
+typedef \hyperlink{classu5e_1_1codepoint__traits_ab169bad68f239d5248f82749a2962346}{u5e\+::codepoint\+\_\+traits\+::off\+\_\+type} \hyperlink{classu5e_1_1basic__encodedstring_a73562c9a665a0bc4816bf79983dcfbb1}{difference\+\_\+type}
+\item 
+typedef \hyperlink{classu5e_1_1basic__encodedstring_a958081aa18370a191d00b33032a203bc}{value\+\_\+type} \& \hyperlink{classu5e_1_1basic__encodedstring_a543f128888d49bf71508d1e4c705aeba}{reference}
+\item 
+typedef const \hyperlink{classu5e_1_1basic__encodedstring_a958081aa18370a191d00b33032a203bc}{value\+\_\+type} \& \hyperlink{classu5e_1_1basic__encodedstring_a4652a99a020af37293ab37f638282832}{const\+\_\+reference}
+\item 
+typedef Native\+String\+::pointer \hyperlink{classu5e_1_1basic__encodedstring_a623b4942f22b5976802f7745aae892cd}{pointer}
+\item 
+typedef Native\+String\+::const\+\_\+pointer \hyperlink{classu5e_1_1basic__encodedstring_aa26a9042f17c34e711979c7089045ee2}{const\+\_\+pointer}
+\end{DoxyCompactItemize}
+
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+typedef Encoding\+::template \hyperlink{classu5e_1_1basic__encodedstring_a6657b5ba8bb502ff86626bffe324aae6}{iterator}$<$ Native\+String $>$ \hyperlink{classu5e_1_1basic__encodedstring_a6657b5ba8bb502ff86626bffe324aae6}{iterator}
+\item 
+typedef Encoding\+::template \hyperlink{classu5e_1_1basic__encodedstring_a249da58e8bad9c91fab547516f90c60d}{const\+\_\+iterator}$<$ Native\+String $>$ \hyperlink{classu5e_1_1basic__encodedstring_a249da58e8bad9c91fab547516f90c60d}{const\+\_\+iterator}
+\end{DoxyCompactItemize}
+
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+typedef std\+::reverse\+\_\+iterator$<$ \hyperlink{classu5e_1_1basic__encodedstring_a6657b5ba8bb502ff86626bffe324aae6}{iterator} $>$ \hyperlink{classu5e_1_1basic__encodedstring_ac41ff2456ae679490fffb9fa99cd01bb}{reverse\+\_\+iterator}
+\item 
+typedef std\+::reverse\+\_\+iterator$<$ \hyperlink{classu5e_1_1basic__encodedstring_a249da58e8bad9c91fab547516f90c60d}{const\+\_\+iterator} $>$ \hyperlink{classu5e_1_1basic__encodedstring_afaaf9b36cd1b6ad6821450e5445e32fd}{const\+\_\+reverse\+\_\+iterator}
+\end{DoxyCompactItemize}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classu5e_1_1basic__encodedstring_aa7d1d23500978ade5927cfa279c3e6fd}{basic\+\_\+encodedstring} ()=default
+\item 
+\hyperlink{classu5e_1_1basic__encodedstring_a2a6405334c282118a3607d9ada1568c3}{basic\+\_\+encodedstring} (const Native\+String \&s)
+\item 
+\hyperlink{classu5e_1_1basic__encodedstring}{basic\+\_\+encodedstring} \& \hyperlink{classu5e_1_1basic__encodedstring_a69d3205b0a9c0b0050eb55e9ffadec6f}{operator=} (const \hyperlink{classu5e_1_1basic__encodedstring}{basic\+\_\+encodedstring} \&other)
+\end{DoxyCompactItemize}
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+Native\+String\+::iterator \hyperlink{classu5e_1_1basic__encodedstring_adc6a9c61efa6382f7e51e395d24f4cfe}{native\+\_\+begin} ()
+\item 
+Native\+String\+::iterator \hyperlink{classu5e_1_1basic__encodedstring_af54b77b3ff0eb0a2fb635c4df165df54}{native\+\_\+end} ()
+\item 
+Native\+String\+::const\+\_\+iterator \hyperlink{classu5e_1_1basic__encodedstring_aebe88902bf87cf621765e2ea064b01c4}{native\+\_\+cbegin} ()
+\item 
+Native\+String\+::const\+\_\+iterator \hyperlink{classu5e_1_1basic__encodedstring_a8ef364adc67eec590eae8ee847f30d79}{native\+\_\+cend} ()
+\end{DoxyCompactItemize}
+
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classu5e_1_1basic__encodedstring_a6657b5ba8bb502ff86626bffe324aae6}{iterator} \hyperlink{classu5e_1_1basic__encodedstring_ab07f01768823bdf39dfdaac0dada5775}{codepoint\+\_\+begin} ()
+\item 
+\hyperlink{classu5e_1_1basic__encodedstring_a6657b5ba8bb502ff86626bffe324aae6}{iterator} \hyperlink{classu5e_1_1basic__encodedstring_a02b5965403773072209311320a5485e1}{codepoint\+\_\+end} ()
+\item 
+\hyperlink{classu5e_1_1basic__encodedstring_a249da58e8bad9c91fab547516f90c60d}{const\+\_\+iterator} \hyperlink{classu5e_1_1basic__encodedstring_ac1809651d897f7de1daf84eacbb26acf}{codepoint\+\_\+cbegin} ()
+\item 
+\hyperlink{classu5e_1_1basic__encodedstring_a249da58e8bad9c91fab547516f90c60d}{const\+\_\+iterator} \hyperlink{classu5e_1_1basic__encodedstring_a528612717377edb02f7610d3c8a600ed}{codepoint\+\_\+cend} ()
+\end{DoxyCompactItemize}
+
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classu5e_1_1basic__grapheme__iterator}{basic\+\_\+grapheme\+\_\+iterator}$<$ \hyperlink{classu5e_1_1basic__encodedstring}{basic\+\_\+encodedstring} $>$ \hyperlink{classu5e_1_1basic__encodedstring_a8c66254c1ea54fd290fff2c7fc6b2f75}{grapheme\+\_\+begin} ()
+\item 
+\hyperlink{classu5e_1_1basic__grapheme__iterator}{basic\+\_\+grapheme\+\_\+iterator}$<$ \hyperlink{classu5e_1_1basic__encodedstring}{basic\+\_\+encodedstring} $>$ \hyperlink{classu5e_1_1basic__encodedstring_ab4febf8ab197b789efc546d8ac66b842}{grapheme\+\_\+end} ()
+\end{DoxyCompactItemize}
+
+{\bf }\par
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Storage\+Type $>$ }\\\hyperlink{classu5e_1_1basic__encodedstring}{basic\+\_\+encodedstring} \& \hyperlink{classu5e_1_1basic__encodedstring_a7c2f3d7fbdc7abe4d98100e914c58432}{append} (typename \hyperlink{classu5e_1_1basic__encodedstring}{basic\+\_\+encodedstring}$<$ Encoding, Storage\+Type $>$\+::\hyperlink{classu5e_1_1basic__encodedstring_a249da58e8bad9c91fab547516f90c60d}{const\+\_\+iterator} first, typename \hyperlink{classu5e_1_1basic__encodedstring}{basic\+\_\+encodedstring}$<$ Encoding, Storage\+Type $>$\+::\hyperlink{classu5e_1_1basic__encodedstring_a249da58e8bad9c91fab547516f90c60d}{const\+\_\+iterator} last)
+\item 
+\hyperlink{classu5e_1_1basic__encodedstring}{basic\+\_\+encodedstring} \& \hyperlink{classu5e_1_1basic__encodedstring_a5ecfdb33d48ffa64ffe37e53b1e0afca}{append} (\hyperlink{classu5e_1_1basic__encodedstring_a249da58e8bad9c91fab547516f90c60d}{const\+\_\+iterator} first, \hyperlink{classu5e_1_1basic__encodedstring_a249da58e8bad9c91fab547516f90c60d}{const\+\_\+iterator} last)
+\item 
+{\footnotesize template$<$typename Storage\+Type $>$ }\\\hyperlink{classu5e_1_1basic__encodedstring}{basic\+\_\+encodedstring} \& \hyperlink{classu5e_1_1basic__encodedstring_a640ee5bdb029183dd80a0ecec9fa654e}{append} (\hyperlink{classu5e_1_1basic__grapheme__iterator}{basic\+\_\+grapheme\+\_\+iterator}$<$ \hyperlink{classu5e_1_1basic__encodedstring}{basic\+\_\+encodedstring}$<$ Encoding, Storage\+Type $>$$>$ \&first, \hyperlink{classu5e_1_1basic__grapheme__iterator}{basic\+\_\+grapheme\+\_\+iterator}$<$ \hyperlink{classu5e_1_1basic__encodedstring}{basic\+\_\+encodedstring}$<$ Encoding, Storage\+Type $>$$>$ \&last)
+\item 
+\hyperlink{classu5e_1_1basic__encodedstring}{basic\+\_\+encodedstring} \& \hyperlink{classu5e_1_1basic__encodedstring_a39b67e509add304644ce00ebc5271f8f}{append} (\hyperlink{classu5e_1_1basic__grapheme__iterator}{basic\+\_\+grapheme\+\_\+iterator}$<$ \hyperlink{classu5e_1_1basic__encodedstring}{basic\+\_\+encodedstring} $>$ \&first, \hyperlink{classu5e_1_1basic__grapheme__iterator}{basic\+\_\+grapheme\+\_\+iterator}$<$ \hyperlink{classu5e_1_1basic__encodedstring}{basic\+\_\+encodedstring} $>$ \&last)
+\item 
+{\footnotesize template$<$typename Storage\+Type $>$ }\\\hyperlink{classu5e_1_1basic__encodedstring}{basic\+\_\+encodedstring} \& \hyperlink{classu5e_1_1basic__encodedstring_acbc86737292f60ea4bc9eba17873378d}{append\+\_\+from\+\_\+utf32ne} (typename \hyperlink{classu5e_1_1basic__encodedstring}{basic\+\_\+encodedstring}$<$ \hyperlink{classu5e_1_1utf32ne}{utf32ne}, Storage\+Type $>$\+::\hyperlink{classu5e_1_1basic__encodedstring_a249da58e8bad9c91fab547516f90c60d}{const\+\_\+iterator} first, typename \hyperlink{classu5e_1_1basic__encodedstring}{basic\+\_\+encodedstring}$<$ \hyperlink{classu5e_1_1utf32ne}{utf32ne}, Storage\+Type $>$\+::\hyperlink{classu5e_1_1basic__encodedstring_a249da58e8bad9c91fab547516f90c60d}{const\+\_\+iterator} last)
+\end{DoxyCompactItemize}
+
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Native\+String \hyperlink{classu5e_1_1basic__encodedstring_af0569e45cfb2fe1321f0af84b460822b}{native\+\_\+string}
+\begin{DoxyCompactList}\small\item\em Raw buffer as specified by the native type. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename Encoding, typename Native\+String$>$\\*
+class u5e\+::basic\+\_\+encodedstring$<$ Encoding, Native\+String $>$}
+
+basic encoding support over string-\/like objects. 
+
+\hyperlink{classu5e_1_1basic__encodedstring}{u5e\+::basic\+\_\+encodedstring} implements encoding support on top of a string-\/like object, it is implemented by simply wrapping the native string type in order to provide a customized iterator that offers codepoint-\/by-\/codepoint access instead of iterating over the native type.
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em Encoding} & Text is always represented in a specific encoding, there is no such thing as a \char`\"{}natural\char`\"{}, or \char`\"{}native\char`\"{} representation of text, for that reason, the encoding is a part of the type.\\
+\hline
+{\em Native\+String} & In order to re-\/use the string support, this will always be implemented as a wrapper around an native string-\/like type. The idea is that the C++ string libraries operate on unencoded memory, while the \hyperlink{namespaceu5e}{u5e} types offer a layer on top of that for the purposes of implementing unicode in a type-\/safe way. Note that this applies to any \textquotesingle{}string-\/like\textquotesingle{} object, such as string or string\+\_\+view. \\
+\hline
+\end{DoxyTemplParams}
+
+
+Definition at line 37 of file basic\+\_\+encodedstring.\+hpp.
+
+
+
+\subsection{Member Typedef Documentation}
+\index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!const\+\_\+iterator@{const\+\_\+iterator}}
+\index{const\+\_\+iterator@{const\+\_\+iterator}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{const\+\_\+iterator}{const_iterator}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ typedef Encoding\+::template {\bf const\+\_\+iterator}$<$Native\+String$>$ {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::{\bf const\+\_\+iterator}}\hypertarget{classu5e_1_1basic__encodedstring_a249da58e8bad9c91fab547516f90c60d}{}\label{classu5e_1_1basic__encodedstring_a249da58e8bad9c91fab547516f90c60d}
+The Encoding template argument must provide iterator and const\+\_\+iterator member types. Those should iterate over codepoints, regardless of the encoding and the native type.
+
+The iterator and const\+\_\+iterator member types must be themselves templates that take the Native\+String type as a template argument. 
+
+Definition at line 68 of file basic\+\_\+encodedstring.\+hpp.
+
+\index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!const\+\_\+pointer@{const\+\_\+pointer}}
+\index{const\+\_\+pointer@{const\+\_\+pointer}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{const\+\_\+pointer}{const_pointer}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ typedef Native\+String\+::const\+\_\+pointer {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::{\bf const\+\_\+pointer}}\hypertarget{classu5e_1_1basic__encodedstring_aa26a9042f17c34e711979c7089045ee2}{}\label{classu5e_1_1basic__encodedstring_aa26a9042f17c34e711979c7089045ee2}
+Offer an interface such that the size of the thing you\textquotesingle{}re iterating over is a codepoint, regardless of the native type. 
+
+Definition at line 52 of file basic\+\_\+encodedstring.\+hpp.
+
+\index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!const\+\_\+reference@{const\+\_\+reference}}
+\index{const\+\_\+reference@{const\+\_\+reference}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{const\+\_\+reference}{const_reference}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ typedef const {\bf value\+\_\+type}\& {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::{\bf const\+\_\+reference}}\hypertarget{classu5e_1_1basic__encodedstring_a4652a99a020af37293ab37f638282832}{}\label{classu5e_1_1basic__encodedstring_a4652a99a020af37293ab37f638282832}
+Offer an interface such that the size of the thing you\textquotesingle{}re iterating over is a codepoint, regardless of the native type. 
+
+Definition at line 50 of file basic\+\_\+encodedstring.\+hpp.
+
+\index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!const\+\_\+reverse\+\_\+iterator@{const\+\_\+reverse\+\_\+iterator}}
+\index{const\+\_\+reverse\+\_\+iterator@{const\+\_\+reverse\+\_\+iterator}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{const\+\_\+reverse\+\_\+iterator}{const_reverse_iterator}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ typedef std\+::reverse\+\_\+iterator$<${\bf const\+\_\+iterator}$>$ {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::{\bf const\+\_\+reverse\+\_\+iterator}}\hypertarget{classu5e_1_1basic__encodedstring_afaaf9b36cd1b6ad6821450e5445e32fd}{}\label{classu5e_1_1basic__encodedstring_afaaf9b36cd1b6ad6821450e5445e32fd}
+Delegated to std\+::reverse\+\_\+iterator 
+
+Definition at line 76 of file basic\+\_\+encodedstring.\+hpp.
+
+\index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!difference\+\_\+type@{difference\+\_\+type}}
+\index{difference\+\_\+type@{difference\+\_\+type}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{difference\+\_\+type}{difference_type}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ typedef {\bf u5e\+::codepoint\+\_\+traits\+::off\+\_\+type} {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::{\bf difference\+\_\+type}}\hypertarget{classu5e_1_1basic__encodedstring_a73562c9a665a0bc4816bf79983dcfbb1}{}\label{classu5e_1_1basic__encodedstring_a73562c9a665a0bc4816bf79983dcfbb1}
+Offer an interface such that the size of the thing you\textquotesingle{}re iterating over is a codepoint, regardless of the native type. 
+
+Definition at line 48 of file basic\+\_\+encodedstring.\+hpp.
+
+\index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!iterator@{iterator}}
+\index{iterator@{iterator}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{iterator}{iterator}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ typedef Encoding\+::template {\bf iterator}$<$Native\+String$>$ {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::{\bf iterator}}\hypertarget{classu5e_1_1basic__encodedstring_a6657b5ba8bb502ff86626bffe324aae6}{}\label{classu5e_1_1basic__encodedstring_a6657b5ba8bb502ff86626bffe324aae6}
+The Encoding template argument must provide iterator and const\+\_\+iterator member types. Those should iterate over codepoints, regardless of the encoding and the native type.
+
+The iterator and const\+\_\+iterator member types must be themselves templates that take the Native\+String type as a template argument. 
+
+Definition at line 66 of file basic\+\_\+encodedstring.\+hpp.
+
+\index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!pointer@{pointer}}
+\index{pointer@{pointer}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{pointer}{pointer}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ typedef Native\+String\+::pointer {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::{\bf pointer}}\hypertarget{classu5e_1_1basic__encodedstring_a623b4942f22b5976802f7745aae892cd}{}\label{classu5e_1_1basic__encodedstring_a623b4942f22b5976802f7745aae892cd}
+Offer an interface such that the size of the thing you\textquotesingle{}re iterating over is a codepoint, regardless of the native type. 
+
+Definition at line 51 of file basic\+\_\+encodedstring.\+hpp.
+
+\index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!reference@{reference}}
+\index{reference@{reference}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{reference}{reference}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ typedef {\bf value\+\_\+type}\& {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::{\bf reference}}\hypertarget{classu5e_1_1basic__encodedstring_a543f128888d49bf71508d1e4c705aeba}{}\label{classu5e_1_1basic__encodedstring_a543f128888d49bf71508d1e4c705aeba}
+Offer an interface such that the size of the thing you\textquotesingle{}re iterating over is a codepoint, regardless of the native type. 
+
+Definition at line 49 of file basic\+\_\+encodedstring.\+hpp.
+
+\index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!reverse\+\_\+iterator@{reverse\+\_\+iterator}}
+\index{reverse\+\_\+iterator@{reverse\+\_\+iterator}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{reverse\+\_\+iterator}{reverse_iterator}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ typedef std\+::reverse\+\_\+iterator$<${\bf iterator}$>$ {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::{\bf reverse\+\_\+iterator}}\hypertarget{classu5e_1_1basic__encodedstring_ac41ff2456ae679490fffb9fa99cd01bb}{}\label{classu5e_1_1basic__encodedstring_ac41ff2456ae679490fffb9fa99cd01bb}
+Delegated to std\+::reverse\+\_\+iterator 
+
+Definition at line 75 of file basic\+\_\+encodedstring.\+hpp.
+
+\index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!size\+\_\+type@{size\+\_\+type}}
+\index{size\+\_\+type@{size\+\_\+type}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{size\+\_\+type}{size_type}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ typedef {\bf u5e\+::codepoint\+\_\+traits\+::pos\+\_\+type} {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::{\bf size\+\_\+type}}\hypertarget{classu5e_1_1basic__encodedstring_afba33e845bb625c7f80cb5874a14f957}{}\label{classu5e_1_1basic__encodedstring_afba33e845bb625c7f80cb5874a14f957}
+Offer an interface such that the size of the thing you\textquotesingle{}re iterating over is a codepoint, regardless of the native type. 
+
+Definition at line 47 of file basic\+\_\+encodedstring.\+hpp.
+
+\index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!traits\+\_\+type@{traits\+\_\+type}}
+\index{traits\+\_\+type@{traits\+\_\+type}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{traits\+\_\+type}{traits_type}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ typedef {\bf u5e\+::codepoint\+\_\+traits} {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::{\bf traits\+\_\+type}}\hypertarget{classu5e_1_1basic__encodedstring_a3ac9c7e8b96dae6342a47ab933e285ca}{}\label{classu5e_1_1basic__encodedstring_a3ac9c7e8b96dae6342a47ab933e285ca}
+Offer an interface such that the size of the thing you\textquotesingle{}re iterating over is a codepoint, regardless of the native type. 
+
+Definition at line 45 of file basic\+\_\+encodedstring.\+hpp.
+
+\index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!value\+\_\+type@{value\+\_\+type}}
+\index{value\+\_\+type@{value\+\_\+type}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{value\+\_\+type}{value_type}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ typedef {\bf u5e\+::codepoint} {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::{\bf value\+\_\+type}}\hypertarget{classu5e_1_1basic__encodedstring_a958081aa18370a191d00b33032a203bc}{}\label{classu5e_1_1basic__encodedstring_a958081aa18370a191d00b33032a203bc}
+Offer an interface such that the size of the thing you\textquotesingle{}re iterating over is a codepoint, regardless of the native type. 
+
+Definition at line 46 of file basic\+\_\+encodedstring.\+hpp.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!basic\+\_\+encodedstring@{basic\+\_\+encodedstring}}
+\index{basic\+\_\+encodedstring@{basic\+\_\+encodedstring}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{basic\+\_\+encodedstring()=default}{basic_encodedstring()=default}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::{\bf basic\+\_\+encodedstring} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [default]}}\hypertarget{classu5e_1_1basic__encodedstring_aa7d1d23500978ade5927cfa279c3e6fd}{}\label{classu5e_1_1basic__encodedstring_aa7d1d23500978ade5927cfa279c3e6fd}
+Default constructor, delegated to the native type. \index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!basic\+\_\+encodedstring@{basic\+\_\+encodedstring}}
+\index{basic\+\_\+encodedstring@{basic\+\_\+encodedstring}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{basic\+\_\+encodedstring(const Native\+String \&s)}{basic_encodedstring(const NativeString &s)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::{\bf basic\+\_\+encodedstring} (
+\begin{DoxyParamCaption}
+\item[{const Native\+String \&}]{s}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__encodedstring_a2a6405334c282118a3607d9ada1568c3}{}\label{classu5e_1_1basic__encodedstring_a2a6405334c282118a3607d9ada1568c3}
+Implicit conversion from the native type. 
+
+Definition at line 99 of file basic\+\_\+encodedstring.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!append@{append}}
+\index{append@{append}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{append(typename basic\+\_\+encodedstring$<$ Encoding, Storage\+Type $>$\+::const\+\_\+iterator first, typename basic\+\_\+encodedstring$<$ Encoding, Storage\+Type $>$\+::const\+\_\+iterator last)}{append(typename basic_encodedstring< Encoding, StorageType >::const_iterator first, typename basic_encodedstring< Encoding, StorageType >::const_iterator last)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ template$<$typename Storage\+Type $>$ {\bf basic\+\_\+encodedstring}\& {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::append (
+\begin{DoxyParamCaption}
+\item[{typename {\bf basic\+\_\+encodedstring}$<$ Encoding, Storage\+Type $>$\+::{\bf const\+\_\+iterator}}]{first, }
+\item[{typename {\bf basic\+\_\+encodedstring}$<$ Encoding, Storage\+Type $>$\+::{\bf const\+\_\+iterator}}]{last}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__encodedstring_a7c2f3d7fbdc7abe4d98100e914c58432}{}\label{classu5e_1_1basic__encodedstring_a7c2f3d7fbdc7abe4d98100e914c58432}
+Append from input iterators.
+
+Note that this is only possible from iterators of the same encoding. This will not perform any conversion. 
+
+Definition at line 174 of file basic\+\_\+encodedstring.\+hpp.
+
+\index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!append@{append}}
+\index{append@{append}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{append(const\+\_\+iterator first, const\+\_\+iterator last)}{append(const_iterator first, const_iterator last)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ {\bf basic\+\_\+encodedstring}\& {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::append (
+\begin{DoxyParamCaption}
+\item[{{\bf const\+\_\+iterator}}]{first, }
+\item[{{\bf const\+\_\+iterator}}]{last}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__encodedstring_a5ecfdb33d48ffa64ffe37e53b1e0afca}{}\label{classu5e_1_1basic__encodedstring_a5ecfdb33d48ffa64ffe37e53b1e0afca}
+Append from input iterators.
+
+Note that this is only possible from iterators of the same encoding. This will not perform any conversion. 
+
+Definition at line 186 of file basic\+\_\+encodedstring.\+hpp.
+
+\index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!append@{append}}
+\index{append@{append}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{append(basic\+\_\+grapheme\+\_\+iterator$<$ basic\+\_\+encodedstring$<$ Encoding, Storage\+Type $>$$>$ \&first, basic\+\_\+grapheme\+\_\+iterator$<$ basic\+\_\+encodedstring$<$ Encoding, Storage\+Type $>$$>$ \&last)}{append(basic_grapheme_iterator< basic_encodedstring< Encoding, StorageType >> &first, basic_grapheme_iterator< basic_encodedstring< Encoding, StorageType >> &last)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ template$<$typename Storage\+Type $>$ {\bf basic\+\_\+encodedstring}\& {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::append (
+\begin{DoxyParamCaption}
+\item[{{\bf basic\+\_\+grapheme\+\_\+iterator}$<$ {\bf basic\+\_\+encodedstring}$<$ Encoding, Storage\+Type $>$$>$ \&}]{first, }
+\item[{{\bf basic\+\_\+grapheme\+\_\+iterator}$<$ {\bf basic\+\_\+encodedstring}$<$ Encoding, Storage\+Type $>$$>$ \&}]{last}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__encodedstring_a640ee5bdb029183dd80a0ecec9fa654e}{}\label{classu5e_1_1basic__encodedstring_a640ee5bdb029183dd80a0ecec9fa654e}
+Append from input iterators.
+
+Note that this is only possible from iterators of the same encoding. This will not perform any conversion. 
+
+Definition at line 193 of file basic\+\_\+encodedstring.\+hpp.
+
+\index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!append@{append}}
+\index{append@{append}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{append(basic\+\_\+grapheme\+\_\+iterator$<$ basic\+\_\+encodedstring $>$ \&first, basic\+\_\+grapheme\+\_\+iterator$<$ basic\+\_\+encodedstring $>$ \&last)}{append(basic_grapheme_iterator< basic_encodedstring > &first, basic_grapheme_iterator< basic_encodedstring > &last)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ {\bf basic\+\_\+encodedstring}\& {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::append (
+\begin{DoxyParamCaption}
+\item[{{\bf basic\+\_\+grapheme\+\_\+iterator}$<$ {\bf basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$ $>$ \&}]{first, }
+\item[{{\bf basic\+\_\+grapheme\+\_\+iterator}$<$ {\bf basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$ $>$ \&}]{last}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__encodedstring_a39b67e509add304644ce00ebc5271f8f}{}\label{classu5e_1_1basic__encodedstring_a39b67e509add304644ce00ebc5271f8f}
+Append from input iterators.
+
+Note that this is only possible from iterators of the same encoding. This will not perform any conversion. 
+
+Definition at line 202 of file basic\+\_\+encodedstring.\+hpp.
+
+\index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!append\+\_\+from\+\_\+utf32ne@{append\+\_\+from\+\_\+utf32ne}}
+\index{append\+\_\+from\+\_\+utf32ne@{append\+\_\+from\+\_\+utf32ne}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{append\+\_\+from\+\_\+utf32ne(typename basic\+\_\+encodedstring$<$ utf32ne, Storage\+Type $>$\+::const\+\_\+iterator first, typename basic\+\_\+encodedstring$<$ utf32ne, Storage\+Type $>$\+::const\+\_\+iterator last)}{append_from_utf32ne(typename basic_encodedstring< utf32ne, StorageType >::const_iterator first, typename basic_encodedstring< utf32ne, StorageType >::const_iterator last)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ template$<$typename Storage\+Type $>$ {\bf basic\+\_\+encodedstring}\& {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::append\+\_\+from\+\_\+utf32ne (
+\begin{DoxyParamCaption}
+\item[{typename {\bf basic\+\_\+encodedstring}$<$ {\bf utf32ne}, Storage\+Type $>$\+::{\bf const\+\_\+iterator}}]{first, }
+\item[{typename {\bf basic\+\_\+encodedstring}$<$ {\bf utf32ne}, Storage\+Type $>$\+::{\bf const\+\_\+iterator}}]{last}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__encodedstring_acbc86737292f60ea4bc9eba17873378d}{}\label{classu5e_1_1basic__encodedstring_acbc86737292f60ea4bc9eba17873378d}
+Append from input iterators.
+
+Note that this is only possible from iterators of the same encoding. This will not perform any conversion. 
+
+Definition at line 209 of file basic\+\_\+encodedstring.\+hpp.
+
+\index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!codepoint\+\_\+begin@{codepoint\+\_\+begin}}
+\index{codepoint\+\_\+begin@{codepoint\+\_\+begin}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{codepoint\+\_\+begin()}{codepoint_begin()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ {\bf iterator} {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::codepoint\+\_\+begin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__encodedstring_ab07f01768823bdf39dfdaac0dada5775}{}\label{classu5e_1_1basic__encodedstring_ab07f01768823bdf39dfdaac0dada5775}
+Get begin and end codepoint iterators. 
+
+Definition at line 132 of file basic\+\_\+encodedstring.\+hpp.
+
+\index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!codepoint\+\_\+cbegin@{codepoint\+\_\+cbegin}}
+\index{codepoint\+\_\+cbegin@{codepoint\+\_\+cbegin}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{codepoint\+\_\+cbegin()}{codepoint_cbegin()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ {\bf const\+\_\+iterator} {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::codepoint\+\_\+cbegin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__encodedstring_ac1809651d897f7de1daf84eacbb26acf}{}\label{classu5e_1_1basic__encodedstring_ac1809651d897f7de1daf84eacbb26acf}
+Get begin and end codepoint iterators. 
+
+Definition at line 138 of file basic\+\_\+encodedstring.\+hpp.
+
+\index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!codepoint\+\_\+cend@{codepoint\+\_\+cend}}
+\index{codepoint\+\_\+cend@{codepoint\+\_\+cend}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{codepoint\+\_\+cend()}{codepoint_cend()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ {\bf const\+\_\+iterator} {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::codepoint\+\_\+cend (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__encodedstring_a528612717377edb02f7610d3c8a600ed}{}\label{classu5e_1_1basic__encodedstring_a528612717377edb02f7610d3c8a600ed}
+Get begin and end codepoint iterators. 
+
+Definition at line 141 of file basic\+\_\+encodedstring.\+hpp.
+
+\index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!codepoint\+\_\+end@{codepoint\+\_\+end}}
+\index{codepoint\+\_\+end@{codepoint\+\_\+end}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{codepoint\+\_\+end()}{codepoint_end()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ {\bf iterator} {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::codepoint\+\_\+end (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__encodedstring_a02b5965403773072209311320a5485e1}{}\label{classu5e_1_1basic__encodedstring_a02b5965403773072209311320a5485e1}
+Get begin and end codepoint iterators. 
+
+Definition at line 135 of file basic\+\_\+encodedstring.\+hpp.
+
+\index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!grapheme\+\_\+begin@{grapheme\+\_\+begin}}
+\index{grapheme\+\_\+begin@{grapheme\+\_\+begin}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{grapheme\+\_\+begin()}{grapheme_begin()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ {\bf basic\+\_\+grapheme\+\_\+iterator}$<${\bf basic\+\_\+encodedstring}$>$ {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::grapheme\+\_\+begin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__encodedstring_a8c66254c1ea54fd290fff2c7fc6b2f75}{}\label{classu5e_1_1basic__encodedstring_a8c66254c1ea54fd290fff2c7fc6b2f75}
+Get begin and end grapheme iterators. Graphemes are always built from the const iterators, since graphemes are always immutable. 
+
+Definition at line 152 of file basic\+\_\+encodedstring.\+hpp.
+
+\index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!grapheme\+\_\+end@{grapheme\+\_\+end}}
+\index{grapheme\+\_\+end@{grapheme\+\_\+end}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{grapheme\+\_\+end()}{grapheme_end()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ {\bf basic\+\_\+grapheme\+\_\+iterator}$<${\bf basic\+\_\+encodedstring}$>$ {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::grapheme\+\_\+end (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__encodedstring_ab4febf8ab197b789efc546d8ac66b842}{}\label{classu5e_1_1basic__encodedstring_ab4febf8ab197b789efc546d8ac66b842}
+Get begin and end grapheme iterators. Graphemes are always built from the const iterators, since graphemes are always immutable. 
+
+Definition at line 157 of file basic\+\_\+encodedstring.\+hpp.
+
+\index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!native\+\_\+begin@{native\+\_\+begin}}
+\index{native\+\_\+begin@{native\+\_\+begin}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{native\+\_\+begin()}{native_begin()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ Native\+String\+::iterator {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::native\+\_\+begin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__encodedstring_adc6a9c61efa6382f7e51e395d24f4cfe}{}\label{classu5e_1_1basic__encodedstring_adc6a9c61efa6382f7e51e395d24f4cfe}
+Get begin and end native iterators. 
+
+Definition at line 114 of file basic\+\_\+encodedstring.\+hpp.
+
+\index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!native\+\_\+cbegin@{native\+\_\+cbegin}}
+\index{native\+\_\+cbegin@{native\+\_\+cbegin}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{native\+\_\+cbegin()}{native_cbegin()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ Native\+String\+::const\+\_\+iterator {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::native\+\_\+cbegin (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__encodedstring_aebe88902bf87cf621765e2ea064b01c4}{}\label{classu5e_1_1basic__encodedstring_aebe88902bf87cf621765e2ea064b01c4}
+Get begin and end native iterators. 
+
+Definition at line 120 of file basic\+\_\+encodedstring.\+hpp.
+
+\index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!native\+\_\+cend@{native\+\_\+cend}}
+\index{native\+\_\+cend@{native\+\_\+cend}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{native\+\_\+cend()}{native_cend()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ Native\+String\+::const\+\_\+iterator {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::native\+\_\+cend (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__encodedstring_a8ef364adc67eec590eae8ee847f30d79}{}\label{classu5e_1_1basic__encodedstring_a8ef364adc67eec590eae8ee847f30d79}
+Get begin and end native iterators. 
+
+Definition at line 123 of file basic\+\_\+encodedstring.\+hpp.
+
+\index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!native\+\_\+end@{native\+\_\+end}}
+\index{native\+\_\+end@{native\+\_\+end}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{native\+\_\+end()}{native_end()}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ Native\+String\+::iterator {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::native\+\_\+end (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__encodedstring_af54b77b3ff0eb0a2fb635c4df165df54}{}\label{classu5e_1_1basic__encodedstring_af54b77b3ff0eb0a2fb635c4df165df54}
+Get begin and end native iterators. 
+
+Definition at line 117 of file basic\+\_\+encodedstring.\+hpp.
+
+\index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!operator=@{operator=}}
+\index{operator=@{operator=}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{operator=(const basic\+\_\+encodedstring \&other)}{operator=(const basic_encodedstring &other)}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ {\bf basic\+\_\+encodedstring}\& {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$ \&}]{other}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\hypertarget{classu5e_1_1basic__encodedstring_a69d3205b0a9c0b0050eb55e9ffadec6f}{}\label{classu5e_1_1basic__encodedstring_a69d3205b0a9c0b0050eb55e9ffadec6f}
+Assignment operator, assigns the native type. 
+
+Definition at line 106 of file basic\+\_\+encodedstring.\+hpp.
+
+
+
+\subsection{Member Data Documentation}
+\index{u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}!native\+\_\+string@{native\+\_\+string}}
+\index{native\+\_\+string@{native\+\_\+string}!u5e\+::basic\+\_\+encodedstring@{u5e\+::basic\+\_\+encodedstring}}
+\subsubsection[{\texorpdfstring{native\+\_\+string}{native_string}}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename Encoding , typename Native\+String $>$ Native\+String {\bf u5e\+::basic\+\_\+encodedstring}$<$ Encoding, Native\+String $>$\+::native\+\_\+string}\hypertarget{classu5e_1_1basic__encodedstring_af0569e45cfb2fe1321f0af84b460822b}{}\label{classu5e_1_1basic__encodedstring_af0569e45cfb2fe1321f0af84b460822b}
+
+
+Raw buffer as specified by the native type. 
+
+This means that this class is exactly as expensive as whichever native type is being used, it also means this class delegates all memory management to that native type.
+
+This member is public because you should be able to completely manage the native object if you need to. 
+
+Definition at line 89 of file basic\+\_\+encodedstring.\+hpp.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+u5e/basic\+\_\+encodedstring.\+hpp\end{DoxyCompactItemize}

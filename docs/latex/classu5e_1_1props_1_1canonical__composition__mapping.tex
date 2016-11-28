@@ -1,0 +1,53 @@
+\hypertarget{classu5e_1_1props_1_1canonical__composition__mapping}{}\section{u5e\+:\+:props\+:\+:canonical\+\_\+composition\+\_\+mapping Class Reference}
+\label{classu5e_1_1props_1_1canonical__composition__mapping}\index{u5e\+::props\+::canonical\+\_\+composition\+\_\+mapping@{u5e\+::props\+::canonical\+\_\+composition\+\_\+mapping}}
+
+
+Derived property for canonical composition.  
+
+
+
+
+{\ttfamily \#include $<$u5e/props/canonical\+\_\+composition\+\_\+mapping.\+hpp$>$}
+
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static bool \hyperlink{classu5e_1_1props_1_1canonical__composition__mapping_a38f0192df16f4d1ed768c4789d1cbb48}{resolve} (int a, int b, int $\ast$r\+\_\+composed)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Derived property for canonical composition. 
+
+This has the fully resolved canonical composition for characters, including the composition exclusions specified in the standard. 
+
+Definition at line 16 of file canonical\+\_\+composition\+\_\+mapping.\+hpp.
+
+
+
+\subsection{Member Function Documentation}
+\index{u5e\+::props\+::canonical\+\_\+composition\+\_\+mapping@{u5e\+::props\+::canonical\+\_\+composition\+\_\+mapping}!resolve@{resolve}}
+\index{resolve@{resolve}!u5e\+::props\+::canonical\+\_\+composition\+\_\+mapping@{u5e\+::props\+::canonical\+\_\+composition\+\_\+mapping}}
+\subsubsection[{\texorpdfstring{resolve(int a, int b, int $\ast$r\+\_\+composed)}{resolve(int a, int b, int *r_composed)}}]{\setlength{\rightskip}{0pt plus 5cm}static bool u5e\+::props\+::canonical\+\_\+composition\+\_\+mapping\+::resolve (
+\begin{DoxyParamCaption}
+\item[{int}]{a, }
+\item[{int}]{b, }
+\item[{int $\ast$}]{r\+\_\+composed}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{classu5e_1_1props_1_1canonical__composition__mapping_a38f0192df16f4d1ed768c4789d1cbb48}{}\label{classu5e_1_1props_1_1canonical__composition__mapping_a38f0192df16f4d1ed768c4789d1cbb48}
+Given a pair of input codepoints a and b returns whether or not that pair has a canonical composition. The composed codepoint is returned via the r\+\_\+composed pointer if that is the case.
+
+
+\begin{DoxyParams}{Parameters}
+{\em a} & the first codepoint in the decomposed pair\\
+\hline
+{\em b} & the second codepoint in the decomposed pair\\
+\hline
+{\em r\+\_\+composed} & the pointer where the composed codepoint will be set if the return is true. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+u5e/props/canonical\+\_\+composition\+\_\+mapping.\+hpp\end{DoxyCompactItemize}

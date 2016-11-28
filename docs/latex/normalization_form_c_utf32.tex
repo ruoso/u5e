@@ -1,0 +1,28 @@
+This example covers the usage of \hyperlink{namespaceu5e_a300b77046593bf5484867461ac65cb88}{u5e\+::filter} with \hyperlink{namespaceu5e_a683f83d363d3e0fbfa6417e4b4b44123}{u5e\+::normalization\+\_\+form\+\_\+c} in order to normalize a utf32 string in the native endianess.
+
+
+\begin{DoxyCode}
+
+\textcolor{preprocessor}{#include <u5e/utf32ne\_string.hpp>}
+\textcolor{preprocessor}{#include <u5e/filter.hpp>}
+\textcolor{preprocessor}{#include <u5e/normalization\_form\_c.hpp>}
+\textcolor{preprocessor}{#include <stdio.h>}
+
+\textcolor{keywordtype}{int} main(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} **argv) \{
+
+  \hyperlink{classu5e_1_1utf32ne__string}{u5e::utf32ne\_string} input(\{ 0xC4, 0xFB03, \textcolor{charliteral}{'n'} \});
+  \hyperlink{classu5e_1_1utf32ne__string}{u5e::utf32ne\_string} output;
+  \hyperlink{namespaceu5e_a300b77046593bf5484867461ac65cb88}{u5e::filter}(input.grapheme\_begin(), input.grapheme\_end(), output,
+              u5e::normalization\_form\_c<u5e::utf32ne\_string>);
+    
+  \textcolor{comment}{// print out the codepoints}
+  \textcolor{keywordflow}{for} (\hyperlink{classu5e_1_1basic__encodedstring_a249da58e8bad9c91fab547516f90c60d}{u5e::utf32ne\_string::const\_iterator} it = output.codepoint\_cbegin(
+      );
+       it != output.codepoint\_cend(); it++ ) \{
+    printf(\textcolor{stringliteral}{" U+%06llx"}, (\textcolor{keywordtype}{long} \textcolor{keywordtype}{long} \textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int})*it);
+  \}
+
+  \textcolor{keywordflow}{return} 0;
+\}
+\end{DoxyCode}
+ 

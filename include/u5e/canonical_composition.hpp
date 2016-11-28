@@ -27,26 +27,45 @@ namespace u5e {
   template <typename StorageType>
   typename StorageType::iterator
   inline canonical_composition(StorageType& data, int* count) {
-    typename StorageType::iterator oi_begin(data.codepoint_begin());
     typename StorageType::iterator oi(data.codepoint_begin());
-    typename StorageType::const_iterator input(data.codepoint_cbegin());
-    typename StorageType::const_iterator input_end(data.codepoint_cend());
+    typename StorageType::iterator in = oi;
+    typename StorageType::iterator end(data.codepoint_end());
 
-    while (input != input_end) {
-      int a = *(input++);
-      if (input == input_end) {
-        // there is no b.
+    int a, b, c;
+    while (in != end) {
+      //
+      // grab the codepoint in the current input iterator
+      //
+      a = *in;
+      if ((in + 1) == end) {
+        //
+        // If this is the last codepoint, it can't be composed, so we
+        // just push it to the output as-is.
+        //
         *(oi++) = a;
+        in++;
       } else {
+        //
         // look ahead for the next codepoint
-        int b = *input;
-        int c;
+        //
+        b = *(in + 1);
         if (u5e::props::canonical_composition_mapping::resolve(a, b, &c)) {
-          *(oi++) = c;
-          ++input;
+          //
+          // If this is a composition, we set it as the current input
+          // iterator after advancing, because it may still be
+          // composed more.
+          //
+          *(++in) = c;
           *count = *count + 1;
         } else {
+          //
+          // If there is no composition, we set it in the output iterator
+          //
           *(oi++) = a;
+          //
+          // And finally advance the input iterator.
+          //
+          in++;
         }
       }
     }
